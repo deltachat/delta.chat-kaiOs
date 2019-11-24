@@ -1,0 +1,29 @@
+{
+  "name": "delta.chat-kaios",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack && npm run build-css",
+    "build-css": "npx node-sass styles/main.scss dist/style.css --output-style compact",
+    "package": "npm run build && ./tools/package"
+  },
+  "authors": [
+    "strukturart",
+    "simonLaux"
+  ],
+  "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "jquery": "^3.4.1",
+    "jquery.autocomplete": "^1.2.0",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.4.13",
+    "fs-extra": "^8.1.0",
+    "node-sass": "^4.13.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
