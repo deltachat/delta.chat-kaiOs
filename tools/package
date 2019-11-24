@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e #fail on error
+
+mkdir -p ./build/tmp
+
+rm ./build/tmp/application.zip || true
+rm ./build/delta.chat.zip || true
+
+cp ./metadata.json ./build/tmp/metadata.json
+
+cd build/tmp
+
+zip -jqr application.zip ../../dist
+
+cd ..
+
+zip -jqr delta.chat.zip tmp
+
+echo "Created delta.chat.zip"
