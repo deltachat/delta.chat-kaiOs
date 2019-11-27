@@ -1,0 +1,14 @@
+#chat-list
+
+#chat-input
+enter: submit
+softRight: open attachments list
+softLeft: leave input-field -> focus article next to input field to scroll in history
+
+##chat-input open attachments-list
+enter: select focused element
+softleft: close attachments list without 
+
+
+#chat-scrolling
+cursor up/down: scroll
