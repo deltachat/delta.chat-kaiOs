@@ -23,4 +23,4 @@ npm run package
 
 ## used stuff / usefull links
 
-https://lit-element.polymer-project.org/guide
+https://preactjs.com/guide/v10/getting-started

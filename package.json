@@ -12,9 +12,8 @@
     "simonLaux"
   ],
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.4.0",
-    "lit-element": "^2.2.1",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "preact": "^10.0.5"
   },
   "devDependencies": {
     "css-loader": "^3.2.0",
