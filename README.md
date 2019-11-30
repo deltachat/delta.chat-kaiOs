@@ -19,3 +19,8 @@ to package
 ```sh
 npm run package
 ```
+
+
+## used stuff / usefull links
+
+https://lit-element.polymer-project.org/guide
