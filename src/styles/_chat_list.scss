@@ -1,0 +1,31 @@
+
+
+
+.chat-list-item {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px black solid;
+    justify-content: space-between;
+
+    &:focus {
+        background: grey;
+    }
+
+    .name {
+
+    }
+
+    .unread-counter {
+        display: inline-block;
+        background-color: rgb(40, 119, 184);
+        color:white;
+        border-radius: 14pt;
+        font-size: 10px;
+        line-height: 20px;
+        height: 20px;
+        min-width: 20px;
+        text-align: center;
+        margin: 2px;
+        font-family: monospace;
+    }
+}

@@ -1,0 +1,29 @@
+.software-keys {
+    background-color: gray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+    padding: 0 0.5rem;
+
+    div {
+        background: none;
+        border: none;
+        overflow: hidden;
+        font-size: 14px;
+        &:last-child{
+            text-align: right;
+        }
+        &.middle {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    }
+
+}
