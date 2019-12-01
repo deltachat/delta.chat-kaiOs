@@ -42,7 +42,7 @@ export const ChatListView = (props) => {
     )
 
     const OpenChat = (chatId:number)=>{
-        alert("will open chat", chatId)
+        alert(`will open chat ${chatId}`)
     }
 
     const context:Context = props.context
