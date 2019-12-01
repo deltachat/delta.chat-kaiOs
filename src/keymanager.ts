@@ -5,6 +5,7 @@ type Key =
     |'SoftRight' // does this exist?
     |'ArrowDown'
     |'ArrowUp'
+    |'Escape'
 // TODO add the other possible options
 
 

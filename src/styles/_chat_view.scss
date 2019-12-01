@@ -1,0 +1,31 @@
+.message {
+    border-radius: 10px;
+
+    margin: 2px;
+    padding: 5px;
+
+    .meta {
+        .timestamp {
+            font-size: 0.5em;
+        }
+    }
+
+    &.incomming {
+        background: lightcyan;
+        margin-right: 10px;
+        left: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &.outgoing {
+        background: lightgreen;
+        margin-left: 10px;
+        right: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.message-input {
+    width: 90%;
+    margin: 4pt;
+}

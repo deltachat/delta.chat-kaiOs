@@ -1,7 +1,17 @@
 
-@import '_old_base';
-
+@import '_chat_view';
 @import '_chat_list';
 @import '_kai_components';
 
 [hidden] { display: none !important; }
+
+
+/* KaiOS portrait devices (240x320) */
+@media only screen and (orientation : portrait) {
+    /* styles */
+}
+
+/* KaiOS landscape devices (320x240) */
+@media screen and (orientation: landscape) {
+    /* styles */
+}

@@ -9,15 +9,19 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.5rem;
-    padding: 0 0.5rem;
+    line-height: 1.20rem;
 
     div {
         background: none;
         border: none;
         overflow: hidden;
         font-size: 14px;
-        &:last-child{
+        &:first-child {
+            padding-left: 0.5rem;
+        }
+        &:last-child {
             text-align: right;
+            padding-right: 0.5rem;
         }
         &.middle {
             text-align: center;
