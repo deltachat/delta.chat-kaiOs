@@ -23,6 +23,10 @@
         right: 0;
         border-bottom-right-radius: 0;
     }
+
+    &:focus {
+        outline: 2px dashed red;
+    }
 }
 
 .message-input {
