@@ -2,7 +2,7 @@ import { context } from "../manager";
 import { Component, h, Ref, RefObject } from "preact";
 import { ChatListItem, Context } from "../mock/deltachat";
 import { SoftwareKeys } from "./softwareButtonBar";
-import { setKeyMap, KeyBinding } from "../keymanager";
+import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
 
@@ -33,20 +33,22 @@ export const ChatListView = (props: any) => {
     const [aChatSelected, setAChatSelected] = useState(false)
 
     setKeyMap(
-        new KeyBinding("SoftLeft", () => { }),
-        new KeyBinding("Enter", () => {
+        new KeyBinding(Key.LSK, () => { }),
+        new KeyBinding(Key.CSK, (ev) => {
+            //ev.target
+            console.log("csk")
             if (list.current?.querySelector(":focus") !== null) {
                 (list.current?.querySelector(":focus") as HTMLElement)?.click()
             } else {
                 (list.current?.firstChild as HTMLElement).focus()
             }
         }),
-        new KeyBinding("SoftRight", () => { }),
-        new KeyBinding("ArrowUp", () => {
+        new KeyBinding(Key.RSK, () => { }),
+        new KeyBinding(Key.UP, () => {
             const target = list.current?.querySelector(":focus")?.previousSibling as HTMLDivElement
             target?.focus()
         }),
-        new KeyBinding("ArrowDown", () => {
+        new KeyBinding(Key.DOWN, () => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),

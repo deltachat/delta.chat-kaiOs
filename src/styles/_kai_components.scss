@@ -1,4 +1,5 @@
 .software-keys {
+    
     background-color: gray;
     position: fixed;
     bottom: 0;
@@ -11,12 +12,13 @@
     grid-gap: 0.5rem;
     line-height: 1.20rem;
 
-    div {
+    button {
         background: none;
         border: none;
         overflow: hidden;
         font-size: 14px;
         &:first-child {
+            text-align: left;
             padding-left: 0.5rem;
         }
         &:last-child {

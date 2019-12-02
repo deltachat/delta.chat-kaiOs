@@ -2,7 +2,7 @@ import { h, RefObject } from "preact";
 import { SoftwareKeys } from "./softwareButtonBar";
 import { Context, Message } from "../mock/deltachat";
 import { useRef, useState} from "preact/hooks";
-import { setKeyMap, KeyBinding } from "../keymanager";
+import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { debounce } from "../util";
 
 const BaseTabIndexOffset = 40
@@ -29,21 +29,23 @@ export function ChatView(props: any) {
 
     // data.chatId
     setKeyMap(
-        new KeyBinding("SoftLeft", () => { }),
-        new KeyBinding("Enter", () => {
+        new KeyBinding(Key.LSK, () => { }),
+        new KeyBinding(Key.CSK, () => {
             // is input field selected
         }),
-        new KeyBinding("Escape", () => {
-            // Is that the back button?
+        new KeyBinding(Key.BACK_CLEAR, () => {
+            // if the input field is not selected
             console.log("should go back to chat list view")
             props?.goto("chatList")
+            // else if input field is empty, deselect it
+            // or rather do this thinf dependent on a state
         }),
-        new KeyBinding("SoftRight", () => { }),
-        new KeyBinding("ArrowUp", () => {
+        new KeyBinding(Key.RSK, () => { }),
+        new KeyBinding(Key.UP, () => {
             const target = list.current?.querySelector(":focus")?.previousSibling as HTMLDivElement
             target?.focus()
         }),
-        new KeyBinding("ArrowDown", () => {
+        new KeyBinding(Key.DOWN, () => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
