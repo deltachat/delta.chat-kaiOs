@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && npm run build-css",
-    "build-css": "npx node-sass styles/main.scss dist/style.css --output-style compact",
+    "build": "parcel build src/index.html",
+    "watch": "parcel src/index.html",
     "package": "npm run build && ./tools/package"
   },
   "authors": [
@@ -12,18 +12,22 @@
     "simonLaux"
   ],
   "dependencies": {
-    "@types/jquery": "^3.3.31",
-    "jquery": "^3.4.1",
-    "jquery.autocomplete": "^1.2.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "normalize.css": "^8.0.1",
+    "parcel": "^1.12.4",
+    "preact": "^10.0.5",
+    "react": "^16.12.0"
   },
   "devDependencies": {
     "adm-zip": "^0.4.13",
     "fs-extra": "^8.1.0",
     "node-sass": "^4.13.0",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "parcel-plugin-clean-dist-fsextra": "git+https://github.com/Simon-Laux/parcel-plugin-clean-dist.git",
+    "parcel-plugin-copy": "^1.0.2",
+    "typescript": "^3.7.2"
+  },
+  "staticPath": {
+    "source": "/static",
+    "target": "/dist"
   }
 }

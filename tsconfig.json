@@ -3,7 +3,11 @@
       "outDir": "./dist/",
       "noImplicitAny": true,
       "module": "es6",
-      "target": "es5",
-      "allowJs": true
+      "target": "es2015",
+      "allowJs": true,
+      "experimentalDecorators": true,
+      "moduleResolution": "node",
+      "jsx": "react",
+      "jsxFactory": "h"
     }
   }

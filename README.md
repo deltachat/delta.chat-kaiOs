@@ -1,6 +1,7 @@
-delta.chat-kaiOs
+# delta.chat-kaiOs
+[Work in Progress & Experimental] DeltaChat on KaiOS
 
-
+You will need a rooted phone to run it when its done
 
 ## Build
 
@@ -19,3 +20,21 @@ to package
 ```sh
 npm run package
 ```
+
+## Development
+
+run `npm run watch -- --open` and enable the mobile view for firefox (`ctrl` + `shift` + `m`).
+
+Add a configuration for your phone into the mobild view and select it. (only the dimensions are important)
+
+Examples:
+```
+N8110-4G 240 x 384
+```
+
+
+
+## used stuff / usefull links
+- https://support.delta.chat/t/delta-chat-for-kaios/684
+- https://preactjs.com/guide/v10/getting-started
+- https://developer.kaiostech.com/design-guide/ui-component
