@@ -32,11 +32,13 @@ export const ChatListView = (props: any) => {
     const list: RefObject<HTMLDivElement> = useRef(null)
     const [aChatSelected, setAChatSelected] = useState(false)
 
+    useEffect(()=>{
+        (list.current?.firstChild as HTMLElement).focus()
+    })
+
     setKeyMap(
         new KeyBinding(Key.LSK, () => { }),
-        new KeyBinding(Key.CSK, (ev) => {
-            //ev.target
-            console.log("csk")
+        new KeyBinding(Key.CSK, () => {
             if (list.current?.querySelector(":focus") !== null) {
                 (list.current?.querySelector(":focus") as HTMLElement)?.click()
             } else {
