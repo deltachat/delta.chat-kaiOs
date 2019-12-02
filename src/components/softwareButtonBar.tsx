@@ -21,28 +21,12 @@ export function SoftwareKeys(props: any) {
     </div>
 }
 
-let lastFocusedElement: HTMLElement;
 
-document.addEventListener('focusout', ev => {
-    if ((ev.target as HTMLElement)?.parentElement?.id !== "software-keys")
-        lastFocusedElement = ev.target as HTMLElement
-})
 function emulateKeyPress(key: string, ev: MouseEvent) {
     ev.stopImmediatePropagation()
     ev.preventDefault()
-    const target = lastFocusedElement || document
-    const oncefocus = () => {
-        setTimeout(() => {
-            var keyboardEvent: KeyboardEvent = new KeyboardEvent('keydown', { key })
-            target.dispatchEvent(keyboardEvent);
-        }, 10)
-        lastFocusedElement?.removeEventListener('focus', oncefocus)
-    }
-    if (lastFocusedElement) {
-        lastFocusedElement?.addEventListener('focus', oncefocus)
-        lastFocusedElement?.focus()
-    } else {
-        oncefocus()
-    }
-    console.log("press", lastFocusedElement)
+    const target = document.querySelector(":focus") || document
+    var keyboardEvent: KeyboardEvent = new KeyboardEvent('keydown', { key, bubbles:true })
+    target.dispatchEvent(keyboardEvent);
+    console.log("emulate button: press", key, target, keyboardEvent)
 }
