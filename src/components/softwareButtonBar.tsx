@@ -6,40 +6,42 @@ export function SoftwareKeys(props: any) {
 
     return <div class="software-keys" id="software-keys">
         <button
-            onClick={emulateKeyPress.bind(null, Key.LSK)}
+            tabIndex={-1}
+            onMouseDown={emulateKeyPress.bind(null, Key.LSK)}
         >{leftBtnLabel}</button>
         <button
+            tabIndex={-1}
             class="middle"
-            // onClick={emulateKeyPress.bind(null, Key.CSK)}
-            // Please use the enter key instead of emulating a click with this
+            onMouseDown={emulateKeyPress.bind(null, Key.CSK)}
         >{centerBtnLabel}</button>
         <button
-            onClick={emulateKeyPress.bind(null, Key.RIGHT)}
+            tabIndex={-1}
+            onMouseDown={emulateKeyPress.bind(null, Key.RIGHT)}
         >{rightBtnLabel}</button>
     </div>
 }
 
-let lastFocusedElement:HTMLElement;
+let lastFocusedElement: HTMLElement;
 
 document.addEventListener('focusout', ev => {
     if ((ev.target as HTMLElement)?.parentElement?.id !== "software-keys")
         lastFocusedElement = ev.target as HTMLElement
 })
-function emulateKeyPress(key: string, ev:MouseEvent) {
-    ev.stopPropagation()
+function emulateKeyPress(key: string, ev: MouseEvent) {
+    ev.stopImmediatePropagation()
     ev.preventDefault()
     const target = lastFocusedElement || document
-    const oncefocus = ()=>{
-        setTimeout(()=>{
+    const oncefocus = () => {
+        setTimeout(() => {
             var keyboardEvent: KeyboardEvent = new KeyboardEvent('keydown', { key })
             target.dispatchEvent(keyboardEvent);
         }, 10)
         lastFocusedElement?.removeEventListener('focus', oncefocus)
     }
-    if(lastFocusedElement){
+    if (lastFocusedElement) {
         lastFocusedElement?.addEventListener('focus', oncefocus)
         lastFocusedElement?.focus()
-    }else {
+    } else {
         oncefocus()
     }
     console.log("press", lastFocusedElement)
