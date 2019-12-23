@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,22 +10,61 @@
 
     <!-- <link rel="shortcut icon" type="image/x-icon" href="./icons/icon-112-112.png" /> -->
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="styles/main.scss">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/grid.css">
 
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="grid-col-48">
         <div id="toast">
         </div>
         <!--login page-->
-        <div class="page">
+        <div class="page" id="login">
         </div>
         <!--chat list page-->
-        <div class="page">
+        <div class="page" id="chat-list">
+            <ul class="user-item flex justify-content-spacebetween">
+                <li class="user-name flex">Max Mauser</li>
+                <li class="unread-messages">4</li>
+            </ul>
+            <ul class="user-item flex justify-content-spacebetween">
+                <li class="user-name">Ava Yiko</li>
+                <li class="unread-messages">4</li>
+            </ul>
+            <ul class="user-item flex justify-content-spacebetween">
+                <li class="user-name">Leaf Gomma</li>
+                <li class="unread-messages">4</li>
+            </ul>
         </div>
         <!--chat page-->
-        <div class="page">
+        <div class="page grid-col-48" id="chat">
+            <div id="chat-messages">
+                <div class="message">Klettern ?</div>
+                <div class="message">Ja warum nicht</div>
+                <div class="message">Ich warte Ecke Wilhelm / Magedeburger</div>
+                <div class="message">Du Seil - ich Exen ?</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">Du Seil - ich Exen ?</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">Du Seil - ich Exen ?</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+                <div class="message">OK</div>
+
+
+
+            </div>
+            <div id="chat-input" class="grid-col-48">
+                <textarea name="text" rows="1" wrap="soft"> </textarea>
+            </div>
         </div>
     </div>
 
@@ -32,6 +72,7 @@
     <script src="main.tsx" defer></script>
     <script src="lib/jQuery-3.1.0.js" defer></script>
     <script src="lib/moments.js" defer></script>
+    <script src="js/helper.js" defer></script>
     <script src="app.js" defer></script>
 </body>
 

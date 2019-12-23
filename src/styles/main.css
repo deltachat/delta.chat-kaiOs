@@ -1,0 +1,148 @@
+/*GENERAL*/
+
+:root {
+    --color-one: black;
+    --color-two: yellow;
+    --color-three: silver;
+    --color-four: rgb(99, 99, 99);
+    --color-five: rgb(38, 38, 38);
+    --color-six: rgb(78, 206, 144);
+    --color-seven: rgba(78, 206, 144, 0.5);
+    --color-eight: white;
+}
+
+*,
+*:before,
+*:after {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+*::-webkit-scrollbar {
+    width: 0!important;
+    background-color: transparent!Important;
+    display: none!Important;
+}
+
+html,
+body {
+    font-weight: 100;
+    width: 100%;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+    -webkit-appearance: none;
+    min-height: 320px;
+    max-height: 320px;
+    margin: 0;
+}
+
+.debug {
+    outline: 2px solid red;
+}
+
+div#app {
+    height: 320px;
+    position: relative;
+}
+
+
+/*///////////////////////////
+///TOAST////////////////*/
+
+div#toast {
+    position: fixed;
+    height: auto;
+    overflow: none;
+    top: -100px;
+    background: black;
+    color: white;
+    z-index: 2000;
+    min-width: 100%;
+    padding: 5px;
+}
+
+div#login {
+    display: none;
+}
+
+div#chat {
+    display: none;
+}
+
+:focus {}
+
+
+/*///////////////////////////
+///CHAT LIST////////////////*/
+
+div#chat-list ul.user-item {
+    background: var(--color-four);
+    margin: 0 0 2px 0;
+    padding: 5px;
+}
+
+div#chat-list ul.user-item:focus {
+    background: var(--color-two)!Important;
+}
+
+
+/*///////////////////////////
+///CHAT////////////////*/
+
+div#chat {
+    position: relative;
+    height: 100%;
+}
+
+div#chat div#chat-messages {
+    overflow: scroll;
+    max-height: 320px;
+    padding: 0 0 40px 0;
+}
+
+div#chat div.message {
+    background: var(--color-six);
+    margin: 0 0 2px 0;
+}
+
+div#chat div.message:nth-child(even) {
+    background: var(--color-seven);
+    margin: 0 0 2px 0;
+    border-left: 4px solid white;
+}
+
+div#chat div#chat-input {
+    background: var(--color-four);
+    position: absolute;
+    padding: 5px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+div#chat div#chat-input textarea {
+    background: var(--color-eight);
+    width: 100%;
+    padding: 3px;
+    outline: 0;
+}
+
+
+/* KaiOS portrait devices (240x320) */
+
+@media only screen and (orientation: portrait) {
+    /* styles */
+}
+
+
+/* KaiOS landscape devices (320x240) */
+
+@media screen and (orientation: landscape) {
+    /* styles */
+}
