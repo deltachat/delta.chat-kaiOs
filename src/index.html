@@ -10,8 +10,10 @@
 
     <!-- <link rel="shortcut icon" type="image/x-icon" href="./icons/icon-112-112.png" /> -->
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/grid.css">
+    <link rel="stylesheet" href="styles/main.min.css">
+    <link rel="stylesheet" href="styles/grid.min.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+
 
 </head>
 
@@ -75,13 +77,16 @@
 
             </div>
             <div id="chat-input" class="grid-col-48">
-                <textarea name="text" rows="1" wrap="soft"> </textarea>
+                <textarea name="text" rows="2" wrap="soft"> </textarea>
             </div>
             <div id="chat-attachments">
                 <div class="inner flex">
-                    <div tabindex=0>files</div>
-                    <div tabindex=1>images</div>
-                    <div tabindex=2>position</div>
+                    <div tabindex=0>
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    </div>
+                    <div tabindex=1>
+                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                    </div>
                 </div>
 
             </div>

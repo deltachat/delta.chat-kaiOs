@@ -123,15 +123,17 @@ div#chat div.message:nth-child(even) {
 div#chat div#chat-input {
     background: var(--color-four);
     position: absolute;
-    padding: 5px;
+    padding: 8px;
     bottom: 0px;
     left: 0px;
     z-index: 2;
+    height: 55px;
 }
 
 div#chat div#chat-input textarea {
     background: var(--color-eight);
-    width: 100%;
+    width: 95%;
+    height: 40px;
     padding: 3px;
     outline: 0;
 }

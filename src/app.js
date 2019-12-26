@@ -17,15 +17,17 @@ $(document).ready(function() {
     ////NAV////////////
     /////////////////////////
 
-    //to do make it more universal
-    let focused = $(':focus').attr("tabindex");
+    let $focused = $(':focus').attr("tabindex");
 
     function nav(param) {
 
+        let tagname = ($(':focus').prop('tagName'));
+        let focused = $(':focus').attr("tabindex");
+        let siblingsLength = $(':focus').siblings().length
 
-        if (param == "down" && focused < items.length) {
+        if (param == "down" && focused < siblingsLength) {
             focused++
-            $('ul[tabindex=' + focused + ']').focus()
+            $(tagname + '[tabindex=' + focused + ']').focus()
 
         }
 
@@ -35,7 +37,7 @@ $(document).ready(function() {
 
         }
 
-        if (param == "right" && focused < 2) {
+        if (param == "right" && focused < siblingsLength) {
             focused++
             $('div[tabindex=' + focused + ']').focus()
 
@@ -106,7 +108,7 @@ $(document).ready(function() {
 
             case 'Enter':
                 enter_in_chat()
-                longpress = setTimeout(longpress_func, 2000)
+                longpress = setTimeout(longpress_func, 1500)
                 break;
 
 
@@ -141,7 +143,12 @@ $(document).ready(function() {
 
             case 'Backspace':
                 evt.preventDefault();
+                if ($("div#chat-attachments").is(':visible')) {
+                    $("div#chat-attachments").css("display", "none")
+                    return false;
+                }
                 show_chat_list();
+
                 if ($("div#chat-list").is(':visible')) {
                     //window.close();
                 }

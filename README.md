@@ -40,6 +40,7 @@ N8110-4G 240 x 384
 - soft left/right to scroll
 - enter send message
 - longpress enter to add attachment
+- if the attachment panel is open and you don't want to take any action, you can close it with backspace 
 - backspace come back to chat-list
 
 
