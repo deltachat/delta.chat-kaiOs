@@ -2,7 +2,7 @@
 
 :root {
     --color-one: black;
-    --color-two: rgb(78, 206, 144);
+    --color-two: rgb(236, 207, 234);
     --color-three: silver;
     --color-four: rgb(99, 99, 99);
     --color-five: rgb(38, 38, 38);
@@ -107,17 +107,39 @@ div#chat div#chat-messages {
     overflow: scroll;
     max-height: 320px;
     padding: 0 0 40px 0;
+    position: relative;
 }
 
-div#chat div.message {
+div#chat div#chat-messages div.message div div {
+    max-width: 180px;
+}
+
+div#chat div#chat-messages div.message div.inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+div#chat div#chat-messages div.message div.date {
+    font-size: 0.7rem;
     background: var(--color-six);
-    margin: 0 0 2px 0;
+    padding: 5px;
 }
 
-div#chat div.message:nth-child(even) {
-    background: var(--color-seven);
+div#chat div#chat-messages div.message div.text {
+    background: var(--color-six);
+    padding: 5px;
+}
+
+div#chat div#chat-messages div.message:nth-child(even) {
     margin: 0 0 2px 0;
-    border-left: 4px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div#chat div#chat-messages div.message:nth-child(even) div.inner div {
+    background: var(--color-two);
 }
 
 div#chat div#chat-input {
