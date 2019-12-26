@@ -7,13 +7,17 @@ $(document).ready(function() {
     function enter_in_chat() {
         $("div#chat-list").css("display", "none");
         $("div#chat").css("display", "block");
-        $("div#chat div#chat-input input").focus();
+        $("div#chat div#chat-input textarea").focus();
+        $('div#chat-messages').scrollTop(5000)
+
     }
 
 
     //////////////////////////
     ////NAV////////////
     /////////////////////////
+
+    //to do make it more universal
     let focused = $(':focus').attr("tabindex");
 
     function nav(param) {
@@ -28,6 +32,18 @@ $(document).ready(function() {
         if (param == "up" && focused > 0) {
             focused--
             $('ul[tabindex=' + focused + ']').focus()
+
+        }
+
+        if (param == "right" && focused < 2) {
+            focused++
+            $('div[tabindex=' + focused + ']').focus()
+
+        }
+
+        if (param == "left" && focused > 0) {
+            focused--
+            $('div[tabindex=' + focused + ']').focus()
 
         }
 
@@ -57,10 +73,30 @@ $(document).ready(function() {
 
 
 
+    function showAttachments(showhidde) {
+        if (showhidde == "show") {
+            $("div#chat div#chat-attachments").css("display", "block")
+            $("div#chat div#chat-attachments div.inner div:first-child").focus()
+        }
+        if (showhidde == "hidde") {
+            $("div#chat div#chat-attachments").css("display", "none")
+        }
+    }
+
 
     //////////////////////////
     ////KEYPAD TRIGGER////////////
     /////////////////////////
+
+
+
+    let longpress;
+
+    function longpress_func() {
+        showAttachments("show")
+        clearTimeout(longpress);
+    }
+
 
 
 
@@ -70,6 +106,7 @@ $(document).ready(function() {
 
             case 'Enter':
                 enter_in_chat()
+                longpress = setTimeout(longpress_func, 2000)
                 break;
 
 
@@ -83,6 +120,14 @@ $(document).ready(function() {
 
                 break;
 
+
+            case 'ArrowLeft':
+                nav("left");
+                break;
+
+            case 'ArrowRight':
+                nav("right");
+                break;
 
             case 'SoftLeft':
                 chat_messages_scroll("down")
@@ -119,6 +164,26 @@ $(document).ready(function() {
 
 
 
+
+
+
+
+
+    function handleKeyUp(evt) {
+
+        switch (evt.key) {
+
+            case 'Enter':
+                clearTimeout(longpress);
+                break;
+        }
+
+    };
+
+
+
+
     document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
 
 })

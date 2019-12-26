@@ -32,6 +32,15 @@ Examples:
 N8110-4G 240 x 384
 ```
 
+## Key assignment
+### chat-list
+- cursor up/down to 
+- enter to enter in chat
+### chat
+- soft left/right to scroll
+- enter send message
+- longpress enter to add attachment
+- backspace come back to chat-list
 
 
 ## used stuff / usefull links

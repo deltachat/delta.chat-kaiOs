@@ -2,7 +2,7 @@
 
 :root {
     --color-one: black;
-    --color-two: yellow;
+    --color-two: rgb(78, 206, 144);
     --color-three: silver;
     --color-four: rgb(99, 99, 99);
     --color-five: rgb(38, 38, 38);
@@ -49,6 +49,7 @@ body {
 div#app {
     height: 320px;
     position: relative;
+    overflow: hidden;
 }
 
 
@@ -75,14 +76,16 @@ div#chat {
     display: none;
 }
 
-:focus {}
+:focus {
+    outline: 0;
+}
 
 
 /*///////////////////////////
 ///CHAT LIST////////////////*/
 
 div#chat-list ul.user-item {
-    background: var(--color-four);
+    background: var(--color-three);
     margin: 0 0 2px 0;
     padding: 5px;
 }
@@ -131,6 +134,25 @@ div#chat div#chat-input textarea {
     width: 100%;
     padding: 3px;
     outline: 0;
+}
+
+div#chat div#chat-attachments {
+    background: var(--color-three);
+    position: absolute;
+    z-index: 3;
+    bottom: 0px;
+    padding: 5px;
+    height: 60px;
+    width: 100%;
+    display: none;
+}
+
+div#chat div#chat-attachments div {
+    margin: 0 5px 0 0;
+}
+
+div#chat div#chat-attachments div.inner> :focus {
+    background: var(--color-six);
 }
 
 
