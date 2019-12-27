@@ -4,6 +4,8 @@
 	"description": "Delta chat app",
 	"launch_path": "/index.html",
 	"type": "certified",
+	"fullscreen": "true",
+
 
 
 	"icons": {

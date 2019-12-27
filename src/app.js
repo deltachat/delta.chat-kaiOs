@@ -51,16 +51,16 @@ $(document).ready(function() {
 
     }
 
-    let scroll_step = 0;
+    let scroll_step = 1;
 
     function chat_messages_scroll(dir) {
         if ($("div#chat").is(':visible')) {
             if (dir == "down") {
-                $('div#chat-messages').scrollTop(scroll_step += 10)
+                $('div#chat-messages').scrollTop(scroll_step += 15)
             }
 
             if (dir == "up") {
-                $('div#chat-messages').scrollTop(scroll_step -= 10)
+                $('div#chat-messages').scrollTop(scroll_step -= 15)
             }
         }
     }
@@ -81,7 +81,8 @@ $(document).ready(function() {
             $("div#chat div#chat-attachments div.inner div:first-child").focus()
         }
         if (showhidde == "hidde") {
-            $("div#chat div#chat-attachments").css("display", "none")
+            $("div#chat div#chat-attachments").css("display", "none");
+            $("div#chat div#chat-input textarea").focus();
         }
     }
 
@@ -107,8 +108,15 @@ $(document).ready(function() {
         switch (evt.key) {
 
             case 'Enter':
-                enter_in_chat()
-                longpress = setTimeout(longpress_func, 1500)
+                if ($("div#chat-list").is(':visible')) {
+                    enter_in_chat();
+                    return false;
+                }
+                if ($("div#chat").is(':visible')) {
+                    evt.preventDefault();
+                    longpress = setTimeout(longpress_func, 1500)
+                    return false;
+                }
                 break;
 
 
@@ -144,13 +152,16 @@ $(document).ready(function() {
             case 'Backspace':
                 evt.preventDefault();
                 if ($("div#chat-attachments").is(':visible')) {
-                    $("div#chat-attachments").css("display", "none")
+                    showAttachments("hidde")
                     return false;
                 }
-                show_chat_list();
+                if ($("div#chat").is(':visible')) {
+                    show_chat_list();
+                    return false;
+                }
 
                 if ($("div#chat-list").is(':visible')) {
-                    //window.close();
+                    window.close();
                 }
                 break;
 
