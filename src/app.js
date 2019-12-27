@@ -3,14 +3,9 @@ $(document).ready(function() {
     setTabindex("div#chat-list", "ul.user-item")
     $(items[0]).focus();
 
+    let state = "chat-list";
 
-    function enter_in_chat() {
-        $("div#chat-list").css("display", "none");
-        $("div#chat").css("display", "block");
-        $("div#chat div#chat-input textarea").focus();
-        $('div#chat-messages').scrollTop(5000)
 
-    }
 
 
     //////////////////////////
@@ -65,11 +60,31 @@ $(document).ready(function() {
         }
     }
 
-    function show_chat_list() {
-        if ($("div#chat").is(':visible')) {
-            $("div#chat-list").css("display", "block");
+
+    function showChat(showhidde) {
+
+
+        if (showhidde == "show") {
+            $("div#chat-list").css("display", "none");
+            $("div#chat").css("display", "block");
+            $('div#chat-messages').scrollTop(5000);
+            state = "chat";
+        }
+        if (showhidde == "hidde") {
             $("div#chat").css("display", "none");
+        }
+
+    }
+
+
+    function showChatList(showhidde) {
+        if (showhidde == "show") {
+            $("div#chat-list").css("display", "block");
             $(items[0]).focus();
+            state = "chat-list"
+        }
+        if (showhidde == "hidde") {
+            $("div#chat-list").css("display", "none");
         }
     }
 
@@ -79,10 +94,39 @@ $(document).ready(function() {
         if (showhidde == "show") {
             $("div#chat div#chat-attachments").css("display", "block")
             $("div#chat div#chat-attachments div.inner div:first-child").focus()
+            $("div#chat div#bottom-bar div#button-left").text("cancel");
+            $("div#chat div#bottom-bar div#button-center").text("select");
+            $("div#chat div#bottom-bar div#button-right").text("");
+            state = "attachment"
         }
         if (showhidde == "hidde") {
             $("div#chat div#chat-attachments").css("display", "none");
             $("div#chat div#chat-input textarea").focus();
+            $("div#chat div#bottom-bar div#button-left").text("abort");
+            $("div#chat div#bottom-bar div#button-center").text("attachment");
+            $("div#chat div#bottom-bar div#button-right").text("send");
+            state = "chat-input";
+        }
+    }
+
+
+    function showChatInput(showhidde) {
+        if (showhidde == "show") {
+            $("div#chat div#chat-input").css("display", "block");
+            $("div#chat div#chat-input textarea").focus();
+
+            $("div#chat div#bottom-bar div#button-left").text("abort");
+            $("div#chat div#bottom-bar div#button-center").text("attachment");
+            $("div#chat div#bottom-bar div#button-right").text("send");
+            state = "chat-input";
+
+        }
+        if (showhidde == "hidde") {
+            $("div#chat div#chat-input").css("display", "none");
+            $("div#chat div#bottom-bar div#button-left").text("back");
+            $("div#chat div#bottom-bar div#button-center").text("");
+            $("div#chat div#bottom-bar div#button-right").text("write");
+            state = "chat";
         }
     }
 
@@ -108,11 +152,12 @@ $(document).ready(function() {
         switch (evt.key) {
 
             case 'Enter':
-                if ($("div#chat-list").is(':visible')) {
-                    enter_in_chat();
+                toaster(state);
+                if (state == "chat-list") {
+                    showChat("show");
                     return false;
                 }
-                if ($("div#chat").is(':visible')) {
+                if (state == "chat-input") {
                     evt.preventDefault();
                     longpress = setTimeout(longpress_func, 1500)
                     return false;
@@ -140,38 +185,50 @@ $(document).ready(function() {
                 break;
 
             case 'SoftLeft':
-                chat_messages_scroll("down")
+                toaster(state);
+                if (state == "chat") {
+                    showChatList("show");
+                    showChat("hidde");
+                    return false;
+                }
+
+                if (state == "chat-input") {
+                    showChatInput("hidde");
+                    return false;
+                }
+
+                if (state == "attachment") {
+                    showAttachments("hidde");
+                    return false;
+                }
+
                 break;
 
             case 'SoftRight':
-                chat_messages_scroll("up")
+                toaster(state);
+                if (state = "chat-input") {
+                    showChatInput("show");
+                    return false;
+                }
 
                 break;
 
 
             case 'Backspace':
                 evt.preventDefault();
-                if ($("div#chat-attachments").is(':visible')) {
-                    showAttachments("hidde")
-                    return false;
-                }
-                if ($("div#chat").is(':visible')) {
-                    show_chat_list();
-                    return false;
-                }
 
-                if ($("div#chat-list").is(':visible')) {
+
+
+                if (state = "chat-list") {
                     window.close();
                 }
                 break;
 
             case '2':
-                chat_messages_scroll("down")
 
                 break;
 
             case '1':
-                chat_messages_scroll("up")
 
                 break;
 
