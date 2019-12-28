@@ -1,3 +1,6 @@
+"use strict";
+
+
 $(document).ready(function() {
 
 
@@ -72,6 +75,13 @@ $(document).ready(function() {
 
     function showChatList(showhidde) {
         if (showhidde == "show") {
+
+            for (let i = 0; i < data_chat_list.length; i++) {
+                let user = '<li class="user-name flex">' + data_chat_list[i].name + '</li><li class="unread-messages">' + data_chat_list[i].unreadMessageCount + '</li>';
+                $("div#chat-list").append('<ul class="user-item flex justify-content-spacebetween">' + user + '</ul>');
+            }
+
+
             $("div#chat-list").css("display", "block");
             setTabindex("div#chat-list", "ul.user-item")
             items = $('div#chat-list ul.user-item');
@@ -185,6 +195,8 @@ $(document).ready(function() {
                 nav("right");
                 break;
 
+
+            case '1':
             case 'SoftLeft':
                 if (state == "chat") {
                     showChatList("show");
@@ -206,6 +218,8 @@ $(document).ready(function() {
 
                 break;
 
+
+            case '2':
             case 'SoftRight':
                 if (state = "chat-input") {
                     showChatInput("show");
@@ -225,35 +239,11 @@ $(document).ready(function() {
                 }
                 break;
 
-            case '2':
 
-                if (state = "chat-input") {
-                    showChatInput("show");
-                    return false;
-                }
 
-                break;
 
-            case '1':
-                if (state == "chat") {
-                    showChatList("show");
-                    showChat("hidde");
-                    return false;
-                }
 
-                if (state == "chat-input") {
-                    showChatInput("hidde");
-                    showChat("show");
-                    return false;
-                }
 
-                if (state == "attachment") {
-                    showAttachments("hidde");
-                    showChatInput("show");
-                    return false;
-                }
-
-                break;
 
 
         }
