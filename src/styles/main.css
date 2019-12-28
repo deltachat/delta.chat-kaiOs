@@ -121,9 +121,9 @@ div#chat div#chat-messages div.message div.inner {
 }
 
 div#chat div#chat-messages div.message div.date {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     background: var(--color-six);
-    padding: 5px;
+    padding: 2px;
 }
 
 div#chat div#chat-messages div.message div.text {
@@ -140,6 +140,10 @@ div#chat div#chat-messages div.message:nth-child(even) {
 
 div#chat div#chat-messages div.message:nth-child(even) div.inner div {
     background: var(--color-two);
+}
+
+div#chat div#chat-messages div.message:focus div.inner div {
+    background: var(--color-four);
 }
 
 div#chat div#chat-input {

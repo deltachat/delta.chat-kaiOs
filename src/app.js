@@ -28,7 +28,7 @@ $(document).ready(function() {
 
         if (param == "up" && focused > 0) {
             focused--
-            $('ul[tabindex=' + focused + ']').focus()
+            $(tagname + '[tabindex=' + focused + ']').focus()
 
         }
 
@@ -46,19 +46,7 @@ $(document).ready(function() {
 
     }
 
-    let scroll_step = 1;
 
-    function chat_messages_scroll(dir) {
-        if ($("div#chat").is(':visible')) {
-            if (dir == "down") {
-                $('div#chat-messages').scrollTop(scroll_step += 15)
-            }
-
-            if (dir == "up") {
-                $('div#chat-messages').scrollTop(scroll_step -= 15)
-            }
-        }
-    }
 
 
     function showChat(showhidde) {
@@ -67,8 +55,13 @@ $(document).ready(function() {
         if (showhidde == "show") {
             $("div#chat-list").css("display", "none");
             $("div#chat").css("display", "block");
-            $('div#chat-messages').scrollTop(5000);
+            setTabindex("div#chat-messages", "div.message")
+            items = $('div#chat-messages div.message');
+            let last_item = items.length - 1
+            $(items[last_item]).focus();
+            toaster("hey");
             state = "chat";
+
         }
         if (showhidde == "hidde") {
             $("div#chat").css("display", "none");
@@ -125,7 +118,7 @@ $(document).ready(function() {
             $("div#chat div#chat-input").css("display", "none");
             $("div#chat div#bottom-bar div#button-left").text("back");
             $("div#chat div#bottom-bar div#button-center").text("");
-            $("div#chat div#bottom-bar div#button-right").text("write");
+            $("div#chat div#bottom-bar div#button-right").text("🖉");
             state = "chat";
         }
     }
@@ -140,7 +133,7 @@ $(document).ready(function() {
     let longpress;
 
     function longpress_func() {
-        showAttachments("show")
+
         clearTimeout(longpress);
     }
 
@@ -152,13 +145,13 @@ $(document).ready(function() {
         switch (evt.key) {
 
             case 'Enter':
-                toaster(state);
                 if (state == "chat-list") {
                     showChat("show");
                     return false;
                 }
                 if (state == "chat-input") {
                     evt.preventDefault();
+                    showAttachments("show")
                     longpress = setTimeout(longpress_func, 1500)
                     return false;
                 }
@@ -185,15 +178,15 @@ $(document).ready(function() {
                 break;
 
             case 'SoftLeft':
-                toaster(state);
                 if (state == "chat") {
                     showChatList("show");
-                    showChat("hidde");
                     return false;
                 }
 
                 if (state == "chat-input") {
+                    toaster("ho")
                     showChatInput("hidde");
+                    showChat("show");
                     return false;
                 }
 
@@ -205,7 +198,6 @@ $(document).ready(function() {
                 break;
 
             case 'SoftRight':
-                toaster(state);
                 if (state = "chat-input") {
                     showChatInput("show");
                     return false;
@@ -226,9 +218,29 @@ $(document).ready(function() {
 
             case '2':
 
+                if (state = "chat-input") {
+                    showChatInput("show");
+                    return false;
+                }
+
                 break;
 
             case '1':
+                if (state == "chat") {
+                    showChatList("show");
+                    return false;
+                }
+
+                if (state == "chat-input") {
+                    showChatInput("hidde");
+                    showChat("show");
+                    return false;
+                }
+
+                if (state == "attachment") {
+                    showAttachments("hidde");
+                    return false;
+                }
 
                 break;
 
@@ -260,5 +272,6 @@ $(document).ready(function() {
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
+
 
 })
