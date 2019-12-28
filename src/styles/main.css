@@ -178,13 +178,18 @@ div#chat div#bottom-bar {
     border-top: 5px solid white;
 }
 
+div#chat div#bottom-bar div {
+    width: 15px;
+    MARGIN: 5PX 0 0 0;
+}
+
 div#chat div#chat-attachments {
     background: var(--color-three);
     position: fixed;
     z-index: 4;
     bottom: 25px;
     padding: 5px;
-    height: 80px;
+    height: 30px;
     width: 100%;
     display: none;
 }
@@ -193,8 +198,12 @@ div#chat div#chat-attachments div {
     margin: 0 5px 0 0;
 }
 
-div#chat div#chat-attachments div.inner> :focus {
-    width: 40px;
+div#chat div#chat-attachments div img {
+    width: 20px;
+}
+
+div#chat div#chat-attachments div.inner>div:focus img {
+    width: 24px;
 }
 
 
