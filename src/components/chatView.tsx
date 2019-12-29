@@ -13,7 +13,7 @@ function MessageElement(props: any) {
     const focusUpdate: (ev: FocusEvent) => void = props.focusUpdate
 
     return <div
-        class={`message ${message.direction}`}
+        class={`message ${ message.isIncomming() ? "incomming" : "outgoing"}`}
         onFocus={focusUpdate}
         onBlur={focusUpdate}
         tabIndex={BaseTabIndexOffset + message.messageId} >
@@ -60,7 +60,7 @@ export function ChatView(props: any) {
     return <div>
         <div ref={list}>
             {
-                context.getAllMessagesForChat(1).map((message) =>
+                context.getAllMessagesForChat(data.chatId).map((message) =>
                     <MessageElement message={message} focusUpdate={focusUpdate} />
                 )
             }
