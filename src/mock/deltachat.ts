@@ -32,8 +32,8 @@ export class Context {
     getContactById(contactId:number){
         const mock_contact_db:{[key:number]:Contact} = {
             1: new Contact(1, "Me"),
-            10: new Contact(1, "Me"),
-            12: new Contact(1, "Me"),
+            10: new Contact(10, "Felix"),
+            12: new Contact(12, "Andrea"),
         }
         return mock_contact_db[contactId]
     }
