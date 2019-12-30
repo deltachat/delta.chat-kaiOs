@@ -75,7 +75,7 @@ $(document).ready(function() {
 
     function showChatList(showhidde) {
         if (showhidde == "show") {
-
+            $("div#chat-list").empty();
             for (let i = 0; i < data_chat_list.length; i++) {
                 let user = '<li class="user-name flex">' + data_chat_list[i].name + '</li><li class="unread-messages">' + data_chat_list[i].unreadMessageCount + '</li>';
                 $("div#chat-list").append('<ul class="user-item flex justify-content-spacebetween">' + user + '</ul>');
