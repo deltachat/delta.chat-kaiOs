@@ -131,15 +131,23 @@ div#chat div#chat-messages div.message div.text {
     padding: 5px;
 }
 
-div#chat div#chat-messages div.message:nth-child(even) {
+div#chat div#chat-messages div.message {
     margin: 0 0 2px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-div#chat div#chat-messages div.message:nth-child(even) div.inner div {
+div#chat div#chat-messages div.message.incoming {
+    align-items: flex-end;
+}
+
+div#chat div#chat-messages div.message.incoming div.inner div {
     background: var(--color-two);
+}
+
+div#chat div#chat-messages div.message.outgoing div.inner div {
+    background: var(--color-six);
 }
 
 div#chat div#chat-messages div.message:focus div.inner div {

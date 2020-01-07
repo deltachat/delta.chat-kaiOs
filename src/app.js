@@ -50,6 +50,24 @@ $(document).ready(function() {
 
     }
 
+    function loadChatData(chatIdFilter) {
+        chat_feed.forEach(function(item, index) {
+            if (item.chatId == chatIdFilter) {
+                let datetime = moment(item.timestamp).format("DD.MM.YYYY, HH:MM");
+
+                $('div#chat-messages').append(
+                    '<div class="message ' + item.direction + '">' +
+                    '<div class="inner">' +
+                    '<div class="text">' +
+                    '<div>' + item.text + '</div>' +
+                    '<div class="date">' + datetime + '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>')
+            }
+        });
+    }
+
 
 
 
@@ -57,6 +75,9 @@ $(document).ready(function() {
 
 
         if (showhidde == "show") {
+            $('div#chat-messages').empty();
+            loadChatData($(':focus').data('id'))
+
             $("div#chat-list").css("display", "none");
             $("div#chat").css("display", "block");
             setTabindex("div#chat-messages", "div.message")
@@ -78,7 +99,7 @@ $(document).ready(function() {
             $("div#chat-list").empty();
             for (let i = 0; i < data_chat_list.length; i++) {
                 let user = '<li class="user-name flex">' + data_chat_list[i].name + '</li><li class="unread-messages">' + data_chat_list[i].unreadMessageCount + '</li>';
-                $("div#chat-list").append('<ul class="user-item flex justify-content-spacebetween">' + user + '</ul>');
+                $("div#chat-list").append('<ul class="user-item flex justify-content-spacebetween" data-id="' + data_chat_list[i].chatId + '"  >' + user + '</ul>');
             }
 
 
