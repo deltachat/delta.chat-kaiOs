@@ -21,7 +21,8 @@ edit chat screen
 
 small things:
 statusbar color
- - transparent statusbar, chrome in manifest isn't the right thing, it doesn't work
+ - transparent statusbar, chrome in manifest isn't the right thing, it doesn't work -> ah it works, but only after restart.
+ -> maybe also look at the code of https://github.com/kaiostech/sample-vanilla/blob/master/src/css/header.css  for styling the header
  - goal is to have the app look like its more part of the system like the other kaiOS apps.
 add name of contact to chatview like in whatsapp.
 
