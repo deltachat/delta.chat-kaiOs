@@ -56,4 +56,10 @@ export function setKeyMap(...newKeyMap: KeyBinding[]) {
 document.addEventListener('keydown', ev => {
     console.debug("Key pressed", ev)
     KeyMap.find(({ key }) => ev.key === key)?._runCallback(ev)
+
+    if(ev.key === Key.BACKSPACE && KeyMap.find(({ key }) => ev.key === key)){
+        // Prevents app from exiting when pressing back and an action is defined
+        ev.preventDefault()
+        ev.stopImmediatePropagation()
+    }
 });
