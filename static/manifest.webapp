@@ -1,6 +1,6 @@
 {
-	"version": "1.0.0",
-	"name": "delta.chat",
+	"version": "0.1.0",
+	"name": "DeltaChat",
 	"description": "delta.chat app for KaiOs",
 	"launch_path": "/index.html",
 	"type": "certified",
@@ -9,6 +9,9 @@
 		"112": "/icons/icon-112-112.png"
 	},
 	"theme_color": "#41496B",
+	"chrome": {
+        "statusbar": "overlap"
+    },
 	"developer": {
 		"name": "DeltaChat Contributors",
 		"url": "https://github.com/deltachat/delta.chat-kaiOs/Contributors.md"
@@ -29,5 +32,7 @@
 		"systemXHR": {
 			"description": "Required to load remote content"
 		}
-	}
+	},
+	"default_locale": "en-US",
+	"orientation": "portrait"
 }

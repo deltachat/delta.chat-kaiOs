@@ -67,6 +67,7 @@ export function ChatView(props: any) {
         </div>
         {JSON.stringify(data)}
         <input class="message-input" ref={composer} type="text" />
+        <div class="software-keys-spacer"></div>
         <SoftwareKeys
             leftBtnLabel={isAMessageSelected ? "Options" : "Attachment"} // Attachment or Message options (depends on wether a message or the input field selected)
             // attachment could be a big icon of a paperclip on its side  

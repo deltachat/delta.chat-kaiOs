@@ -77,6 +77,7 @@ export const ChatListView = (props: any) => {
                 )
             }
         </div>
+        <div class="software-keys-spacer"></div>
         <SoftwareKeys
             leftBtnLabel="Menu"
             centerBtnLabel={aChatSelected?"Select":""}

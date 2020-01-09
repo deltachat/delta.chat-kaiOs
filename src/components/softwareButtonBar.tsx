@@ -26,7 +26,7 @@ function emulateKeyPress(key: string, ev: MouseEvent) {
     ev.stopImmediatePropagation()
     ev.preventDefault()
     const target = document.querySelector(":focus") || document
-    var keyboardEvent: KeyboardEvent = new KeyboardEvent('keydown', { key, bubbles:true })
+    var keyboardEvent: KeyboardEvent = new KeyboardEvent('keydown', { key, bubbles: true })
     target.dispatchEvent(keyboardEvent);
     console.log("emulate button: press", key, target, keyboardEvent)
 }

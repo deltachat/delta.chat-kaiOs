@@ -29,7 +29,14 @@ function App(props: any) {
         setData(data)
     }
 
-    return <Screen context={context} goto={goto} data={data}></Screen>
+    return <div>
+        <div class="header">
+            <div class="header-label">{screen_id}</div>
+        </div>
+        <div class="header-spacer"></div>
+        <Screen context={context} goto={goto} data={data}></Screen>
+    </div>
+    
 }
 
 

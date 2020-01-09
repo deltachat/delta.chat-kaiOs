@@ -7,15 +7,37 @@ about screen
 error messages
 debug menu
 
+don't have the header and software key bar overlay the content,
+ make the content in a content element that has overflow-y:scroll set
 
 
 new chat screen
 settings screen
 profile view
+login screen
 
 edit chat screen
 
 
 small things:
 statusbar color
+ - transparent statusbar, chrome in manifest isn't the right thing, it doesn't work
+ - goal is to have the app look like its more part of the system like the other kaiOS apps.
 add name of contact to chatview like in whatsapp.
+
+
+bigger things:
+QR code scanner view
+
+register as share handler so other apps can share via deltachat
+register urischeme to use delta-login for example
+Localization (translations)
+
+
+interesting for oauth2 (google & yandex):
+"redirects": [
+        {
+            "from": "http://localhost",
+            "to": "/js/cards/oauth2/redirect.html"
+        }
+    ],

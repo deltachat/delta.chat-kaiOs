@@ -1,3 +1,5 @@
+$kai-software-keys-height: 23px;
+
 .software-keys {
     
     background-color: gray;
@@ -11,7 +13,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.5rem;
     line-height: 1.20rem;
-    min-height: 23px;
+    height: $kai-software-keys-height;
 
     button {
         background: none;
@@ -33,4 +35,32 @@
         }
     }
 
+}
+
+.software-keys-spacer {
+    height: $kai-software-keys-height;
+}
+
+$kai-statusbar-heigth: 0px; // for when we figgure out how to make the statusbar transparent (how does the mail app do this?)
+$header-height: 14px;
+
+.header {
+    background-color: purple;
+    position: fixed;
+    width: 100%;
+}
+
+.header-label {
+    margin-top: $kai-statusbar-heigth;
+    height: $header-height;
+    color: white;
+    font-weight: bold;
+    font-family: monospace;
+    text-align: center;
+    padding: 3px;
+    font-size: 13px;
+}
+
+.header-spacer {
+    height: $kai-statusbar-heigth + $header-height;
 }
