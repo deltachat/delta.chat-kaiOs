@@ -1,6 +1,6 @@
 {
 	"version": "1.0.0",
-	"name": "deleta.chat",
+	"name": "delta.chat",
 	"description": "delta.chat app for KaiOs",
 	"launch_path": "/index.html",
 	"type": "certified",
@@ -27,11 +27,9 @@
 
 		"desktop-notification":{},
 
-
 		"geolocation": {
 		"description": "Required to show user's location"
 		},
-
 
 		"spatialnavigation-app-manage": {
 		"navigator.spatialNavigationEnabled": false
@@ -39,12 +37,7 @@
 
 		"systemXHR": {
 		"description": "Required to load remote content"
-		},
-		"tcp-socket": {
-		
 		}
-
-
 
  
 	}
