@@ -33,6 +33,17 @@ N8110-4G 240 x 384
 ```
 
 
+## Packaging
+
+```
+npm run package
+```
+
+(TODO): add an option to exclude the source maps (this will save much space)
+
+If you want to load the app over WebIDE run the package command,
+but select the dist folder instead of the `build/delta.chat.zip` file.
+
 
 ## used stuff / usefull links
 - https://support.delta.chat/t/delta-chat-for-kaios/684
