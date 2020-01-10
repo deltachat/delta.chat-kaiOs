@@ -22,7 +22,7 @@ export function ChatListItemElement(props: any) {
             onClick={props.onClick}
         >
             <div class="name">{item.name}</div>
-            <div class="unread-counter" hidden={item.unreadMessageCount === 0}>{item.unreadMessageCount}</div>
+            <div class="unread-counter" hidden={item.freshMessageCount === 0}>{item.freshMessageCount}</div>
         </div>
     )
 }

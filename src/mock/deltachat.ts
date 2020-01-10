@@ -3,11 +3,90 @@ export class Context {
 
     get chatList() {
         return [
-            new ChatListItem(10, "Peter Johnson", null, 3, "#ffbb00"),
-            new ChatListItem(11, "Tanja Reis", null, 0, "#4f0000"),
-            new ChatListItem(12, "Manuel Schuhmann", null, 13, "#666066"),
-            new ChatListItem(13, "Regina Miller", null, 1, "#ffbb66"),
-            new ChatListItem(14, "Sample group", null, 0, "#f1a866"),
+            new ChatListItem(
+                10,
+                "Peter Johnson",
+                null,
+                "#ffbb00",
+                0,
+                Date.now() - 2900,
+                {
+                    text1: "Me:",
+                    text2: "thanks for creating it!",
+                    status: MessageStatus.PENDING
+                },
+                false
+            ),
+            new ChatListItem(
+                11,
+                "Tanja Reis",
+                null,
+                "#4f0000",
+                1,
+                Date.now(),
+                {
+                    text1: "Me:",
+                    text2: "Jo",
+                    status: MessageStatus.READ
+                },
+                false
+            ),
+            new ChatListItem(
+                12,
+                "Manuel Schuhmann",
+                null,
+                "#666066",
+                0,
+                Date.now() - 2900,
+                {
+                    text1: "",
+                    text2: "Klettern im park morgen ist um 15 uhr, biste dabei?",
+                    status: null
+                },
+                false
+            ),
+            new ChatListItem(
+                13,
+                "Regina Miller",
+                null,
+                "#ffbb66",
+                1,
+                Date.now() - 2900,
+                {
+                    text1: "",
+                    text2: "Jo",
+                    status: null
+                },
+                false
+            ),
+            new ChatListItem(
+                14,
+                "Sample group",
+                null,
+                "#f1a866",
+                0,
+                Date.now() - 3000,
+                {
+                    text1: "Me",
+                    text2: "Genau!",
+                    status: null
+                },
+                true
+            ),
+            new ChatListItem(
+                15,
+                "Gierberger Golfclub",
+                null,
+                "#f1a866",
+                72,
+                Date.now() - 37000,
+                {
+                    text1: "Tanja",
+                    text2: "Ich hab meinen schläger verloren 😭",
+                    status: null
+                },
+                false
+            ),
         ]
     }
 
@@ -32,13 +111,48 @@ export class Context {
 
     getContactById(contactId: number) {
         const mock_contact_db: { [key: number]: Contact } = {
-            1: new Contact(1, "Me"),
-            10: new Contact(10, "Felix"),
-            12: new Contact(12, "Andrea"),
+            1: new Contact(1, "Me", true),
+            10: new Contact(10, "Felix", false),
+            12: new Contact(12, "Andrea", true),
+            14: new Contact(14, "Alex", false),
         }
         return mock_contact_db[contactId]
     }
 
+}
+
+let chat_count = 10
+
+export enum ChatType {
+    Single,
+    Group,
+    VerifiedGroup
+}
+
+export class Chat {
+    constructor(
+        public type: ChatType,
+        private group_name: string | undefined,
+        public contacts: string,
+        //todo rest
+    ) {
+    }
+}
+
+export enum chatListItemType {
+    RealChat,
+    /** deaddrop aka. Contact Request */
+    DeadDrop,
+    /** fake chat that should get rendered as a link to get the chatlist for archived chats */
+    ArchiveLink,
+}
+
+/** information about the last message that was sent to a chat */
+interface chatListItemSummary {
+    text1: string,
+    text2: string,
+    /** null when other party send it */
+    status: MessageStatus | null
 }
 
 export class ChatListItem {
@@ -46,9 +160,13 @@ export class ChatListItem {
     constructor(
         public ChatId: number,
         public name: string,
-        public profileImage: string,
-        public unreadMessageCount: number,
-        public avatarColor: string
+        public avatarImage: string,
+        public avatarColor: string,
+        public freshMessageCount: number,
+        public lastUpdatedTimestamp: number,
+        public summary: chatListItemSummary,
+        public verified: boolean,
+        public type: chatListItemType = chatListItemType.RealChat
     ) { }
 }
 
@@ -88,6 +206,7 @@ export class Contact {
     constructor(
         public contactId: number,
         public displayName: string,
+        public isVerified: boolean,
         // todo - add missing properties
     ) { }
 }
