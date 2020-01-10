@@ -50,6 +50,20 @@ export class Context {
                 false
             ),
             new ChatListItem(
+                15,
+                "Gierberger Golfclub",
+                "img/golf.png",
+                "#f1a866",
+                72,
+                Date.now() - 37000,
+                {
+                    text1: "Tanja:",
+                    text2: "Ich hab meinen schläger verloren 😭",
+                    status: null
+                },
+                false
+            ),
+            new ChatListItem(
                 13,
                 "Regina Miller",
                 null,
@@ -64,6 +78,20 @@ export class Context {
                 false
             ),
             new ChatListItem(
+                15,
+                "🌹 Rene 🌹",
+                null,
+                "#f1a866",
+                0,
+                Date.now() - 342412,
+                {
+                    text1: "",
+                    text2: "💎🌷",
+                    status: null
+                },
+                true
+            ),
+            new ChatListItem(
                 14,
                 "Sample group",
                 null,
@@ -73,24 +101,10 @@ export class Context {
                 {
                     text1: "Me:",
                     text2: "Genau!",
-                    status: null
+                    status: MessageStatus.DELIVERED
                 },
                 true
-            ),
-            new ChatListItem(
-                15,
-                "Gierberger Golfclub",
-                "img/golf.png",
-                "#f1a866",
-                72,
-                Date.now() - 37000,
-                {
-                    text1: "Tanja:",
-                    text2: "Ich hab meinen schläger verloren 😭",
-                    status: null
-                },
-                false
-            ),
+            )
         ]
     }
 
