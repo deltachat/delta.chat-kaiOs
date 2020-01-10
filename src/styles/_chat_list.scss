@@ -10,8 +10,19 @@
         background: grey;
     }
 
-    .name {
+    .main-part {
         flex-grow: 1;
+        .name {
+            font-size: 14px;
+        }
+
+        .summary {
+            font-size: 10px;
+            height: 1.2em;
+            width: 130px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 
     .meta {
@@ -42,31 +53,30 @@
         font-family: monospace;
     }
 
-    $avatar-radius: 2.2rem;
+    $avatar-diameter: 26px;
 
     .avatar {
-        border-radius: 40px;
-        width: $avatar-radius;
-        height: $avatar-radius;
+        border-radius: 100%;
+        width: $avatar-diameter;
+        height: $avatar-diameter;
         display: flex;
-        border-bottom: 1px black solid;
         justify-content: space-between;
 
         &>img {
-            border-radius: 40px;
-            width: $avatar-radius;
-            height: $avatar-radius;
+            border-radius: 100%;
+            width: $avatar-diameter;
+            height: $avatar-diameter;
         }
 
         &>span {
             & {
-                border-radius: 40px;
+                border-radius: 100;
                 display: inline-block;
-                line-height: $avatar-radius;
+                line-height: $avatar-diameter;
                 width: 100%;
                 text-align: center;
                 font-family: monospace;
-                font-size: 1.3rem;
+                font-size: 14px;
                 font-weight: bold;
                 color: white;
             }

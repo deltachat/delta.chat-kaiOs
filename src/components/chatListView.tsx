@@ -34,10 +34,13 @@ export function ChatListItemElement(props: any) {
             onClick={props.onClick}
         >
             <Avatar avatarPath={item.avatarImage} color={item.avatarColor} displayName={item.name} />
-            <div class="name">{item.name}</div>
+            <div class="main-part">
+                <div class="name">{item.name}</div>
+                <div class="summary">{item.summary.text1} {item.summary.text2}</div>
+            </div>
             <div class="meta">
                 <div class="timestamp">{ moment(item.lastUpdatedTimestamp).fromNow() }</div>
-                <div class="status">✓</div>
+                <div class="status">✓</div> {/* todo make dynamic {item.summary.status} */}
             </div>
             <div class="unread-counter" hidden={item.freshMessageCount === 0}>{item.freshMessageCount}</div>
         </div>
