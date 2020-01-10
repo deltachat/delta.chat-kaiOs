@@ -20,12 +20,8 @@ edit chat screen
 
 
 small things:
-statusbar color
- - transparent statusbar, chrome in manifest isn't the right thing, it doesn't work -> ah it works, but only after restart.
- -> maybe also look at the code of https://github.com/kaiostech/sample-vanilla/blob/master/src/css/header.css  for styling the header
- - goal is to have the app look like its more part of the system like the other kaiOS apps.
 add name of contact to chatview like in whatsapp.
-
+- make chat messages view start on the bottom
 
 bigger things:
 QR code scanner view
@@ -33,6 +29,8 @@ QR code scanner view
 register as share handler so other apps can share via deltachat
 register urischeme to use delta-login for example
 Localization (translations)
+ - for that we could copy and adjust the translation system from desktop
+add emoji picker - maybe also with tabs optimize it to work effiently for the user (a few keys to emoji as possible) + a search
 
 
 interesting for oauth2 (google & yandex):
