@@ -8,6 +8,7 @@
       "experimentalDecorators": true,
       "moduleResolution": "node",
       "jsx": "react",
-      "jsxFactory": "h"
+      "jsxFactory": "h",
+      "allowSyntheticDefaultImports": true
     }
   }

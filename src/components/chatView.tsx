@@ -4,9 +4,9 @@ import { Context, Message } from "../mock/deltachat";
 import { useRef, useState} from "preact/hooks";
 import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { debounce } from "../util";
+import moment from 'moment';
 
 const BaseTabIndexOffset = 40
-
 
 function MessageElement(props: any) {
     const message: Message = props.message
@@ -18,6 +18,12 @@ function MessageElement(props: any) {
         onBlur={focusUpdate}
         tabIndex={BaseTabIndexOffset + message.messageId} >
         {message.text}
+        <div class="meta">
+            <span class="timestamp">{ moment(message.timestamp).fromNow() }</span>
+            {message.isOutgoing() && <span class="status">
+                ✓
+            </span>}
+        </div>
     </div>
 }
 
