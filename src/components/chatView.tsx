@@ -58,6 +58,10 @@ export function ChatView(props: any) {
 
     const context: Context = props.context
     return <div>
+        <div class="header">
+            <div class="header-label">{context.getChatName(data.chatId)}</div>
+        </div>
+        <div class="header-spacer"></div>
         <div ref={list}>
             {
                 context.getAllMessagesForChat(data.chatId).map((message) =>

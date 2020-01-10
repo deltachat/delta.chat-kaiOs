@@ -1,6 +1,10 @@
 export class Context {
 
 
+    getChatName(chatId:number) {
+        return this.chatList.find(cli => cli.ChatId === chatId).name
+    }
+
     get chatList() {
         return [
             new ChatListItem(
