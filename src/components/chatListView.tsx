@@ -5,6 +5,7 @@ import { SoftwareKeys } from "./softwareButtonBar";
 import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
+import moment from 'moment';
 
 const BaseTabIndexOffset = 20
 
@@ -34,6 +35,10 @@ export function ChatListItemElement(props: any) {
         >
             <Avatar avatarPath={item.avatarImage} color={item.avatarColor} displayName={item.name} />
             <div class="name">{item.name}</div>
+            <div class="meta">
+                <div class="timestamp">{ moment(item.lastUpdatedTimestamp).fromNow() }</div>
+                <div class="status">✓</div>
+            </div>
             <div class="unread-counter" hidden={item.freshMessageCount === 0}>{item.freshMessageCount}</div>
         </div>
     )

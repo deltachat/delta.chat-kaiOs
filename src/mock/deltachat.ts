@@ -27,7 +27,7 @@ export class Context {
                 null,
                 "#4f0000",
                 1,
-                Date.now(),
+                Date.now() - 4344325,
                 {
                     text1: "Me:",
                     text2: "Jo",
@@ -41,7 +41,7 @@ export class Context {
                 null,
                 "#666066",
                 0,
-                Date.now() - 2900,
+                Date.now() - 45395439,
                 {
                     text1: "",
                     text2: "Klettern im park morgen ist um 15 uhr, biste dabei?",
@@ -69,7 +69,7 @@ export class Context {
                 null,
                 "#f1a866",
                 0,
-                Date.now() - 3000,
+                Date.now() - 342412,
                 {
                     text1: "Me",
                     text2: "Genau!",

@@ -4,6 +4,7 @@
     justify-content: space-between;
     height: 2.5rem;
     padding: 0.5rem;
+    align-items: center;
 
     &:focus {
         background: grey;
@@ -11,6 +12,20 @@
 
     .name {
         flex-grow: 1;
+    }
+
+    .meta {
+        width: 26px;
+        .timestamp {
+            font-size: 0.4em;
+            overflow: hidden;
+            height: 1.5rem;
+            text-overflow: ellipsis;
+            float: right;
+        }
+        .status {
+            float: right;
+        }
     }
 
     .unread-counter {
