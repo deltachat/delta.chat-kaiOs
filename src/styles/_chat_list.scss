@@ -2,8 +2,8 @@
     display: flex;
     border-bottom: 1px lightgrey solid;
     justify-content: space-between;
-    height: 2.5rem;
-    padding: 0.5rem;
+    height: 42px;
+    padding: 2px 4px;
     align-items: center;
 
     &:focus {
@@ -54,7 +54,7 @@
         font-family: monospace;
     }
 
-    $avatar-diameter: 26px;
+    $avatar-diameter: 28px;
 
     .avatar {
         border-radius: 100%;
@@ -62,6 +62,7 @@
         height: $avatar-diameter;
         display: flex;
         justify-content: space-between;
+        margin-right: 2px;
 
         &>img {
             border-radius: 100%;
@@ -77,8 +78,7 @@
                 width: 100%;
                 text-align: center;
                 font-family: monospace;
-                font-size: 14px;
-                font-weight: bold;
+                font-size: 18px;
                 color: white;
             }
         }
