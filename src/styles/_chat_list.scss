@@ -1,6 +1,3 @@
-
-
-
 .chat-list-item {
     display: flex;
     border-bottom: 1px black solid;
@@ -13,13 +10,13 @@
     }
 
     .name {
-
+        flex-grow: 1;
     }
 
     .unread-counter {
         display: inline-block;
         background-color: rgb(40, 119, 184);
-        color:white;
+        color: white;
         border-radius: 14pt;
         font-size: 10px;
         line-height: 20px;
@@ -28,5 +25,36 @@
         text-align: center;
         margin: 2px;
         font-family: monospace;
+    }
+
+    $avatar-radius: 2.2rem;
+
+    .avatar {
+        border-radius: 40px;
+        width: $avatar-radius;
+        height: $avatar-radius;
+        display: flex;
+        border-bottom: 1px black solid;
+        justify-content: space-between;
+
+        &>img {
+            border-radius: 40px;
+            width: $avatar-radius;
+            height: $avatar-radius;
+        }
+
+        &>span {
+            & {
+                border-radius: 40px;
+                display: inline-block;
+                line-height: $avatar-radius;
+                width: 100%;
+                text-align: center;
+                font-family: monospace;
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: white;
+            }
+        }
     }
 }

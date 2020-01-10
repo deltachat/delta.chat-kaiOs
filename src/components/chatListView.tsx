@@ -6,8 +6,19 @@ import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
 
-
 const BaseTabIndexOffset = 20
+
+type avatar_params = {avatarPath:string, color:string, displayName:string}
+export function Avatar({ avatarPath, color, displayName }:avatar_params) {
+    const codepoint = displayName.codePointAt(0)
+    const initial = codepoint ? String.fromCodePoint(codepoint).toUpperCase() : '#'
+
+    return <div class="avatar" style={{"background-color": color || 'grey'}}>
+        {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span> }
+    </div>
+
+}
+
 
 export function ChatListItemElement(props: any) {
     const item: ChatListItem = props.item
@@ -21,6 +32,7 @@ export function ChatListItemElement(props: any) {
             tabIndex={BaseTabIndexOffset + item.ChatId}
             onClick={props.onClick}
         >
+            <Avatar avatarPath={item.avatarImage} color={item.avatarColor} displayName={item.name} />
             <div class="name">{item.name}</div>
             <div class="unread-counter" hidden={item.freshMessageCount === 0}>{item.freshMessageCount}</div>
         </div>

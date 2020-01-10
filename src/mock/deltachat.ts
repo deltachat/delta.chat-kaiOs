@@ -76,7 +76,7 @@ export class Context {
             new ChatListItem(
                 15,
                 "Gierberger Golfclub",
-                null,
+                "img/golf.png",
                 "#f1a866",
                 72,
                 Date.now() - 37000,
