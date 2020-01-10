@@ -1,6 +1,6 @@
 .chat-list-item {
     display: flex;
-    border-bottom: 1px black solid;
+    border-bottom: 1px lightgrey solid;
     justify-content: space-between;
     height: 2.5rem;
     padding: 0.5rem;
@@ -8,6 +8,7 @@
 
     &:focus {
         background: grey;
+        outline: none;
     }
 
     .main-part {
