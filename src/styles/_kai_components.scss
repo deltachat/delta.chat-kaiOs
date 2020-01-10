@@ -2,11 +2,11 @@ $kai-software-keys-height: 23px;
 
 .software-keys {
     
-    background-color: gray;
+    background-color: rgb(165, 165, 165);
     position: fixed;
     bottom: 0;
     width: 100%;
-    border-top: 1px solid black;
+    border-top: 1px solid rgb(168, 168, 168);
     font-family: 'Courier New', Courier, monospace;
 
     display: grid;
@@ -32,6 +32,7 @@ $kai-software-keys-height: 23px;
             text-align: center;
             font-weight: bold;
             font-size: 19px;
+            text-transform: uppercase;
         }
     }
 
@@ -41,21 +42,22 @@ $kai-software-keys-height: 23px;
     height: $kai-software-keys-height;
 }
 
-$kai-statusbar-heigth: 20px; // for when we figgure out how to make the statusbar transparent (how does the mail app do this?)
+$kai-statusbar-heigth: 24px;
 $header-height: 16px;
 
 .header {
-    background-color: purple;
+    background-color: #41496B;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     
     position: fixed;
     width: 100%;
+    min-height: $kai-statusbar-heigth;
 }
 
 .header-label {
-    margin-top: $kai-statusbar-heigth;
+    margin-top: $kai-statusbar-heigth - 3px;
     height: $header-height;
     color: white;
     font-weight: bold;
@@ -67,5 +69,9 @@ $header-height: 16px;
 }
 
 .header-spacer {
-    height: $kai-statusbar-heigth + $header-height + 3px;
+    height: $kai-statusbar-heigth + $header-height;
+}
+
+.header-spacer.small {
+    height: $kai-statusbar-heigth;
 }

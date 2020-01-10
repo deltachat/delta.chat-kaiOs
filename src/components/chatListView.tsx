@@ -86,10 +86,8 @@ export const ChatListView = (props: any) => {
 
     const context: Context = props.context
     return <div>
-        <div class="header">
-            <div class="header-label">{"DeltaChat"}</div>
-        </div>
-        <div class="header-spacer"></div>
+        <div class="header"></div>
+        <div class="header-spacer small"></div>
         <div ref={list}>
             {
                 context.chatList.map((item) =>

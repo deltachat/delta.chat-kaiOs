@@ -71,7 +71,7 @@ export class Context {
                 0,
                 Date.now() - 342412,
                 {
-                    text1: "Me",
+                    text1: "Me:",
                     text2: "Genau!",
                     status: null
                 },
@@ -85,7 +85,7 @@ export class Context {
                 72,
                 Date.now() - 37000,
                 {
-                    text1: "Tanja",
+                    text1: "Tanja:",
                     text2: "Ich hab meinen schläger verloren 😭",
                     status: null
                 },
