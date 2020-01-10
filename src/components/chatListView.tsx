@@ -81,6 +81,7 @@ export const ChatListView = (props: any) => {
     }
 
     const focusUpdate = debounce(
+        // this updates the state on selection
         () => setAChatSelected(list.current?.querySelector(":focus") !== null), 100
     )
 

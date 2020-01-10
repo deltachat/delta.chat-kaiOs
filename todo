@@ -1,4 +1,4 @@
-focus messages on keypresses (looks like tabbing through the elements isn't implemented in kai)
+add searchbar in chatview
 
 reusable popup dialog/menu overlay
 
@@ -9,7 +9,7 @@ debug menu
 
 don't have the header and software key bar overlay the content,
  make the content in a content element that has overflow-y:scroll set
-
+ (that the scrollbar looks better/more acurate)
 
 new chat screen
 settings screen
@@ -20,7 +20,6 @@ edit chat screen
 
 
 small things:
-add name of contact to chatview like in whatsapp.
 - make chat messages view start on the bottom
 
 bigger things:
