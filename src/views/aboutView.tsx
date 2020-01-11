@@ -1,11 +1,11 @@
 import { h, RefObject } from "preact";
 import { Context } from "../mock/deltachat";
-import { SoftwareKeys } from "./softwareButtonBar";
+import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
 import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect } from "preact/hooks";
 
 import * as aboutMd from "../about_information.md"
-import { Header } from "./header";
+import { Header } from "../components/KaiOS/header";
 
 export const AboutView = (props: any) => {
     const about: RefObject<HTMLDivElement> = useRef(null)

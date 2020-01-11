@@ -1,10 +1,10 @@
 import { h, render, Component } from 'preact';
 import { useState } from 'preact/hooks'
-import { ChatListView } from './components/chatListView';
+import { ChatListView } from './views/chatListView';
 import { context } from './manager';
 import { setKeyMap } from './keymanager';
-import { ChatView } from './components/chatView';
-import { AboutView } from './components/aboutView'
+import { ChatView } from './views/chatView';
+import { AboutView } from './views/aboutView'
 
 function getScreen(screen_id: string) {
     switch (screen_id) {

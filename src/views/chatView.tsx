@@ -1,15 +1,15 @@
 import { h, RefObject } from "preact";
-import { SoftwareKeys } from "./softwareButtonBar";
+import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
 import { Context, Message } from "../mock/deltachat";
 import { useRef, useState, useLayoutEffect, useEffect } from "preact/hooks";
 import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { debounce } from "../util";
 import moment from 'moment';
-import { Icon } from "./icon";
+import { Icon } from "../components/icon";
 
-import { MessageStatusIcon } from "./messageStatus";
+import { MessageStatusIcon } from "../components/messageStatus";
 import fa_paperclip from "@fortawesome/fontawesome-free/svgs/solid/paperclip.svg";
-import { Header } from "./header";
+import { Header } from "../components/KaiOS/header";
 
 const BaseTabIndexOffset = 40
 

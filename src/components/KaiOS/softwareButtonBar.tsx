@@ -1,5 +1,5 @@
 import { h } from "preact"
-import { Key } from "../keymanager"
+import { Key } from "../../keymanager"
 
 export function SoftwareKeys(props: any) {
     const { leftBtnLabel, centerBtnLabel, rightBtnLabel } = props

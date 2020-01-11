@@ -1,13 +1,13 @@
 import { context } from "../manager";
 import { Component, h, Ref, RefObject } from "preact";
 import { ChatListItem, Context } from "../mock/deltachat";
-import { SoftwareKeys } from "./softwareButtonBar";
+import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
 import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
 import moment from 'moment';
-import { MessageStatusIcon } from "./messageStatus";
-import { Header } from "./header";
+import { MessageStatusIcon } from "../components/messageStatus";
+import { Header } from "../components/KaiOS/header";
 
 const BaseTabIndexOffset = 20
 
