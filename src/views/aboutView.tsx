@@ -9,9 +9,13 @@ import { Header } from "../components/KaiOS/header";
 
 export const AboutView = (props: any) => {
     const about: RefObject<HTMLDivElement> = useRef(null)
+
+    const goBack = () => {props?.goto("chatList")};
+
     setKeyMap(
-        new KeyBinding(Key.HELP, () => {props?.goto("chatList")}),
-        new KeyBinding(Key.F1, () => {props?.goto("chatList")}),
+        new KeyBinding(Key.HELP, goBack),
+        new KeyBinding(Key.F1, goBack),
+        new KeyBinding(Key.BACK_CLEAR, goBack),
         new KeyBinding(Key.CSK, () => {
             window.open("https://delta.chat")
         }),
