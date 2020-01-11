@@ -17,6 +17,8 @@ edit chat screen
 
 view for long messages
 
+how do we make links in messages clickable?
+
 small things:
 - make chat messages view start on the bottom
 
@@ -37,3 +39,9 @@ interesting for oauth2 (google & yandex):
             "to": "/js/cards/oauth2/redirect.html"
         }
     ],
+
+
+complementary side project - idea: 
+have a companion static website
+that you can put in your credentials and do the oauth2 thing
+and then it gives you a qr code you can scan to login
