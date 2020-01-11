@@ -82,22 +82,22 @@ export function ChatView(props: any) {
     useEffect(() => selectInputField(), [])
 
     const context: Context = props.context
-    return <div>
+    return <div class="screen-wrapper">
         <div class="header">
             <div class="header-label">{context.getChatName(data.chatId)}</div>
         </div>
-        <div class="header-spacer"></div>
-        {JSON.stringify(data)}
-        <div ref={list}>
-            {
-                context.getAllMessagesForChat(data.chatId).map((message) =>
-                    <MessageElement message={message} focusUpdate={focusUpdate} />
-                )
-            }
+        <div class="content">
+            {JSON.stringify(data)}
+            <div ref={list}>
+                {
+                    context.getAllMessagesForChat(data.chatId).map((message) =>
+                        <MessageElement message={message} focusUpdate={focusUpdate} />
+                    )
+                }
 
-            <input id="message-input" ref={composer} type="text" onFocus={focusUpdate} />
+                <input id="message-input" ref={composer} type="text" onFocus={focusUpdate} />
+            </div>
         </div>
-        <div class="software-keys-spacer"></div>
         <SoftwareKeys
             leftBtnLabel={isAMessageSelected ? "Options" : <Icon src={fa_paperclip} style={{ 'margin-top': '3px' }} />} // Attachment or Message options (depends on wether a message or the input field selected)
             // attachment could be a big icon of a paperclip on its side  

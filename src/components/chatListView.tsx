@@ -87,10 +87,9 @@ export const ChatListView = (props: any) => {
     )
 
     const context: Context = props.context
-    return <div>
+    return <div class="screen-wrapper">
         <div class="header"></div>
-        <div class="header-spacer small"></div>
-        <div ref={list}>
+        <div ref={list} class="content">
             {
                 context.chatList.map((item) =>
                     <ChatListItemElement
@@ -101,7 +100,6 @@ export const ChatListView = (props: any) => {
                 )
             }
         </div>
-        <div class="software-keys-spacer"></div>
         <SoftwareKeys
             leftBtnLabel="Menu"
             centerBtnLabel={aChatSelected ? "Select" : ""}

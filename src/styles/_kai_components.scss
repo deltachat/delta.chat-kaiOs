@@ -3,8 +3,7 @@ $kai-software-keys-height: 23px;
 .software-keys {
     
     background-color: rgb(165, 165, 165);
-    position: fixed;
-    bottom: 0;
+
     width: 100%;
     border-top: 1px solid rgb(168, 168, 168);
     font-family: 'Courier New', Courier, monospace;
@@ -38,8 +37,15 @@ $kai-software-keys-height: 23px;
 
 }
 
-.software-keys-spacer {
-    height: $kai-software-keys-height;
+.screen-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    overflow-y: scroll;
+    flex-grow: 1;
 }
 
 $kai-statusbar-heigth: 24px;
@@ -50,8 +56,6 @@ $header-height: 16px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    
-    position: fixed;
     width: 100%;
     min-height: $kai-statusbar-heigth;
 }
@@ -66,12 +70,4 @@ $header-height: 16px;
     padding: 3px 10px;
     font-size: 16px;
     text-transform: uppercase;
-}
-
-.header-spacer {
-    height: $kai-statusbar-heigth + $header-height;
-}
-
-.header-spacer.small {
-    height: $kai-statusbar-heigth;
 }

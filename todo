@@ -7,9 +7,6 @@ about screen
 error messages
 debug menu
 
-don't have the header and software key bar overlay the content,
- make the content in a content element that has overflow-y:scroll set
- (that the scrollbar looks better/more acurate)
 
 new chat screen
 settings screen
