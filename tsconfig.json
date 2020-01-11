@@ -9,9 +9,6 @@
       "moduleResolution": "node",
       "jsx": "react",
       "jsxFactory": "h",
-      "allowSyntheticDefaultImports": true,
-      "types": [
-        "src/definitions/**"
-      ]
+      "allowSyntheticDefaultImports": true
     }
   }
