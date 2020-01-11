@@ -1,10 +1,14 @@
 import { h, RefObject } from "preact";
 import { SoftwareKeys } from "./softwareButtonBar";
 import { Context, Message } from "../mock/deltachat";
-import { useRef, useState, useLayoutEffect, useEffect} from "preact/hooks";
+import { useRef, useState, useLayoutEffect, useEffect } from "preact/hooks";
 import { setKeyMap, KeyBinding, Key } from "../keymanager";
-import { debounce, executeOnFirstRender } from "../util";
+import { debounce } from "../util";
 import moment from 'moment';
+import { Icon } from "./icon";
+
+import { MessageStatusIcon } from "./messageStatus";
+import fa_paperclip from "@fortawesome/fontawesome-free/svgs/solid/paperclip.svg";
 
 const BaseTabIndexOffset = 40
 
@@ -13,15 +17,15 @@ function MessageElement(props: any) {
     const focusUpdate: (ev: FocusEvent) => void = props.focusUpdate
 
     return <div
-        class={`message ${ message.isIncomming() ? "incomming" : "outgoing"}`}
+        class={`message ${message.isIncomming() ? "incomming" : "outgoing"}`}
         onFocus={focusUpdate}
         onBlur={focusUpdate}
         tabIndex={BaseTabIndexOffset + message.messageId} >
         {message.text}
         <div class="meta">
-            <span class="timestamp">{ moment(message.timestamp).fromNow() }</span>
+            <span class="timestamp">{moment(message.timestamp).fromNow()}</span>
             {message.isOutgoing() && <span class="status">
-                ✓
+                <MessageStatusIcon status={message.status} size="14px" />
             </span>}
         </div>
     </div>
@@ -65,8 +69,8 @@ export function ChatView(props: any) {
 
     const focusUpdate = debounce(() => {
         const selectedItem = list.current?.querySelector(":focus")
-        if(selectedItem !== null) {
-            if(selectedItem.classList.contains('message')) {
+        if (selectedItem !== null) {
+            if (selectedItem.classList.contains('message')) {
                 // future todo: save message type to a state var
                 setMessageSelected(true)
             } else if (selectedItem.id === "message-input") {
@@ -90,12 +94,12 @@ export function ChatView(props: any) {
                     <MessageElement message={message} focusUpdate={focusUpdate} />
                 )
             }
-            
+
             <input id="message-input" ref={composer} type="text" onFocus={focusUpdate} />
         </div>
         <div class="software-keys-spacer"></div>
         <SoftwareKeys
-            leftBtnLabel={isAMessageSelected ? "Options" : "Attachment"} // Attachment or Message options (depends on wether a message or the input field selected)
+            leftBtnLabel={isAMessageSelected ? "Options" : <Icon src={fa_paperclip} style={{ 'margin-top': '3px' }} />} // Attachment or Message options (depends on wether a message or the input field selected)
             // attachment could be a big icon of a paperclip on its side  
             centerBtnLabel={isAMessageSelected ? "Info" : "Send"}
             rightBtnLabel="More" // or audio message (depends wether message input field is empty)

@@ -6,16 +6,17 @@ import { setKeyMap, KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
 import moment from 'moment';
+import { MessageStatusIcon } from "./messageStatus";
 
 const BaseTabIndexOffset = 20
 
-type avatar_params = {avatarPath:string, color:string, displayName:string}
-export function Avatar({ avatarPath, color, displayName }:avatar_params) {
+type avatar_params = { avatarPath: string, color: string, displayName: string }
+export function Avatar({ avatarPath, color, displayName }: avatar_params) {
     const codepoint = displayName.codePointAt(0)
     const initial = codepoint ? String.fromCodePoint(codepoint).toUpperCase() : '#'
 
-    return <div class="avatar" style={{"background-color": color || 'grey'}}>
-        {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span> }
+    return <div class="avatar" style={{ "background-color": color || 'grey' }}>
+        {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span>}
     </div>
 
 }
@@ -39,8 +40,8 @@ export function ChatListItemElement(props: any) {
                 <div class="summary">{item.summary.text1} {item.summary.text2}</div>
             </div>
             <div class="meta">
-                <div class="timestamp">{ moment(item.lastUpdatedTimestamp).fromNow() }</div>
-                <div class="status">✓</div> {/* todo make dynamic {item.summary.status} */}
+                <div class="timestamp">{moment(item.lastUpdatedTimestamp).fromNow()}</div>
+                <div class="status"><MessageStatusIcon status={item.summary.status} size="14px" /></div>
             </div>
             <div class="unread-counter" hidden={item.freshMessageCount === 0}>{item.freshMessageCount}</div>
         </div>
@@ -52,7 +53,7 @@ export const ChatListView = (props: any) => {
     const list: RefObject<HTMLDivElement> = useRef(null)
     const [aChatSelected, setAChatSelected] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         (list.current?.firstChild as HTMLElement).focus()
     })
 
@@ -77,7 +78,7 @@ export const ChatListView = (props: any) => {
     )
 
     const OpenChat = (chatId: number) => {
-        props?.goto("chat",{chatId})
+        props?.goto("chat", { chatId })
     }
 
     const focusUpdate = debounce(
@@ -103,7 +104,7 @@ export const ChatListView = (props: any) => {
         <div class="software-keys-spacer"></div>
         <SoftwareKeys
             leftBtnLabel="Menu"
-            centerBtnLabel={aChatSelected?"Select":""}
+            centerBtnLabel={aChatSelected ? "Select" : ""}
             rightBtnLabel="New"
         />
     </div>

@@ -12,9 +12,10 @@
     "simonLaux"
   ],
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.0",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
-    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4",
     "preact": "^10.0.5",
     "react": "^16.12.0"
   },
@@ -24,6 +25,7 @@
     "node-sass": "^4.13.0",
     "parcel-plugin-clean-dist-fsextra": "git+https://github.com/Simon-Laux/parcel-plugin-clean-dist.git",
     "parcel-plugin-copy": "^1.0.2",
+    "parcel-plugin-svg-sprite": "^1.4.1",
     "typescript": "^3.7.2"
   },
   "staticPath": {

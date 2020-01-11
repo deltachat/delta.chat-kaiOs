@@ -15,3 +15,15 @@
 @media screen and (orientation: landscape) {
     /* styles */
 }
+
+
+html {
+    // defaults
+    --icon-size: 1em;
+}
+
+.icon {
+    display: inline-block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
