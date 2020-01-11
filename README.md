@@ -33,6 +33,8 @@ N8110-4G 240 x 384
 ```
 
 
+For closest-to-real experience make sure you have all the fonts from `development/fonts/` installed on your computer.
+
 ## Packaging
 
 ```

@@ -55,30 +55,29 @@
         font-family: monospace;
     }
 
-    $avatar-diameter: 28px;
+    --avatar-diameter: 28px;
 
     .avatar {
         border-radius: 100%;
-        width: $avatar-diameter;
-        height: $avatar-diameter;
+        width: var(--avatar-diameter);
+        height: var(--avatar-diameter);
         display: flex;
         justify-content: space-between;
         margin-right: 2px;
 
         &>img {
             border-radius: 100%;
-            width: $avatar-diameter;
-            height: $avatar-diameter;
+            width: var(--avatar-diameter);
+            height: var(--avatar-diameter);
         }
 
         &>span {
             & {
                 border-radius: 100;
                 display: inline-block;
-                line-height: $avatar-diameter;
+                line-height: var(--avatar-diameter);
                 width: 100%;
                 text-align: center;
-                font-family: monospace;
                 font-size: 18px;
                 color: white;
             }
