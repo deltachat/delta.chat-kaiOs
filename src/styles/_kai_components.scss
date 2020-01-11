@@ -48,7 +48,7 @@ $kai-software-keys-height: 23px;
     flex-grow: 1;
 }
 
-$kai-statusbar-heigth: 24px;
+$kai-statusbar-heigth: 29px;
 
 .header {
     background-color: #41496B;
@@ -62,7 +62,7 @@ $kai-statusbar-heigth: 24px;
 }
 
 .header-label {
-    margin-top: $kai-statusbar-heigth - 3px;
+    margin-top: $kai-statusbar-heigth - 8px;
     color: white;
     font-weight: bold;
     padding: 3px 10px;
