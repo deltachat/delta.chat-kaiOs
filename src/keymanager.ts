@@ -3,6 +3,7 @@ export const enum Key {
     ENTER = 'Enter',
     BACKSPACE = 'Backspace',
     ESCAPE = 'Escape',
+    F1 = "F1",
 
     // Kai OS
     LSK = 'SoftLeft',
@@ -15,6 +16,10 @@ export const enum Key {
     DOWN = 'ArrowDown',
     LEFT = 'ArrowLeft',
     RIGHT = 'ArrowRight',
+
+    HELP = 'Help',
+
+    
 
     // todo Call key?
     // todo End key?
@@ -57,7 +62,7 @@ document.addEventListener('keydown', ev => {
     console.debug("Key pressed", ev)
     KeyMap.find(({ key }) => ev.key === key)?._runCallback(ev)
 
-    if(ev.key === Key.BACKSPACE && KeyMap.find(({ key }) => ev.key === key)){
+    if((ev.key === Key.BACKSPACE || ev.key === Key.HELP) && KeyMap.find(({ key }) => ev.key === key)){
         // Prevents app from exiting when pressing back and an action is defined
         ev.preventDefault()
         ev.stopImmediatePropagation()

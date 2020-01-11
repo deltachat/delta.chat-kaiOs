@@ -9,6 +9,7 @@ import { Icon } from "./icon";
 
 import { MessageStatusIcon } from "./messageStatus";
 import fa_paperclip from "@fortawesome/fontawesome-free/svgs/solid/paperclip.svg";
+import { Header } from "./header";
 
 const BaseTabIndexOffset = 40
 
@@ -83,9 +84,7 @@ export function ChatView(props: any) {
 
     const context: Context = props.context
     return <div class="screen-wrapper">
-        <div class="header">
-            <div class="header-label">{context.getChatName(data.chatId)}</div>
-        </div>
+        <Header>{context.getChatName(data.chatId)}</Header>
         <div class="content">
             {JSON.stringify(data)}
             <div ref={list}>

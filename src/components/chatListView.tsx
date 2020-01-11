@@ -7,6 +7,7 @@ import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
 import moment from 'moment';
 import { MessageStatusIcon } from "./messageStatus";
+import { Header } from "./header";
 
 const BaseTabIndexOffset = 20
 
@@ -75,6 +76,8 @@ export const ChatListView = (props: any) => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
+        new KeyBinding(Key.HELP, () => {props?.goto("about")}),
+        new KeyBinding(Key.F1, () => {props?.goto("about")}),
     )
 
     const OpenChat = (chatId: number) => {
@@ -88,7 +91,7 @@ export const ChatListView = (props: any) => {
 
     const context: Context = props.context
     return <div class="screen-wrapper">
-        <div class="header"></div>
+        <Header />
         <div ref={list} class="content">
             {
                 context.chatList.map((item) =>

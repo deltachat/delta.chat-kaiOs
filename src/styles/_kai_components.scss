@@ -56,7 +56,9 @@ $kai-statusbar-heigth: 24px;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    min-height: $kai-statusbar-heigth;
+    &.empty  {
+        height: $kai-statusbar-heigth;
+    }
 }
 
 .header-label {

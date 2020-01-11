@@ -26,6 +26,7 @@
     "parcel-plugin-bundle-visualiser": "^1.2.0",
     "parcel-plugin-clean-dist-fsextra": "git+https://github.com/Simon-Laux/parcel-plugin-clean-dist.git",
     "parcel-plugin-copy": "^1.0.2",
+    "parcel-plugin-markdown-it": "^0.1.1",
     "parcel-plugin-svg-sprite": "^1.4.1",
     "typescript": "^3.7.2"
   },

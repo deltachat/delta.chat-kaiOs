@@ -4,6 +4,7 @@ import { ChatListView } from './components/chatListView';
 import { context } from './manager';
 import { setKeyMap } from './keymanager';
 import { ChatView } from './components/chatView';
+import { AboutView } from './components/aboutView'
 
 function getScreen(screen_id: string) {
     switch (screen_id) {
@@ -11,6 +12,8 @@ function getScreen(screen_id: string) {
             return ChatListView
         case "chat":
             return ChatView
+        case "about":
+            return AboutView
         default:
             return () => <p>Loading</p>
     }

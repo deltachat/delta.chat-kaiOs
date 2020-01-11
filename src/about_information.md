@@ -1,4 +1,3 @@
-# About Deltachat for kaiOS
 
 This app is
 https://delta.chat
