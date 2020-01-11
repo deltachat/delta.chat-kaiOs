@@ -1,12 +1,15 @@
 "use strict";
 
+let state;
 
 $(document).ready(function() {
 
+    setTimeout(function() {
+        state = "chat-list";
+        showChatList("show")
+        $("div#intro").css("display", "none")
+    }, 2000);
 
-
-    let state = "chat-list";
-    showChatList("show")
 
 
 
@@ -86,8 +89,9 @@ $(document).ready(function() {
             $(items[last_item]).focus();
 
             $("div#bottom-bar div#button-left").html('<img src="icons/arrow-left.svg"/>');
-            $("div#bottom-bar div#button-center").html('<img src="icons/paperclip.svg"/>');
+            $("div#bottom-bar div#button-center").html('');
             $("div#bottom-bar div#button-right").html('<img src="icons/envelope.svg"/>');
+
             state = "chat";
 
         }
@@ -111,10 +115,11 @@ $(document).ready(function() {
             setTabindex("div#chat-list", "ul.user-item")
             items = $('div#chat-list ul.user-item');
             $(items[0]).focus();
+
             $("div#bottom-bar div#button-left").html('');
             $("div#bottom-bar div#button-center").text('select');
             $("div#bottom-bar div#button-right").html('');
-            $("div#bottom-bar div#button-left").css('display', 'block')
+
             state = "chat-list"
         }
         if (showhidde == "hidde") {
@@ -132,6 +137,7 @@ $(document).ready(function() {
             $("div#bottom-bar div#button-left").html('<img src="icons/arrow-left.svg"/>');
             $("div#bottom-bar div#button-center").html('');
             $("div#bottom-bar div#button-right").html('');
+
             setTabindex("div#chat-attachments div.inner", "div")
             items = $('div#chat-attachments div.inner div');
             let last_item = items.length - 1
@@ -141,9 +147,11 @@ $(document).ready(function() {
         if (showhidde == "hidde") {
             $("div#chat div#chat-attachments").css("display", "none");
             $("div#chat div#chat-input textarea").focus();
+
             $("div#chat div#bottom-bar div#button-left").html('<img src="icons/arrow-left.svg"/>');
             $("div#chat div#bottom-bar div#button-center").html('<img src="icons/paperclip.svg"/>');
             $("div#chat div#bottom-bar div#button-right").html('<img src="icons/envelope.svg"/>');
+
             state = "chat-input";
 
         }
