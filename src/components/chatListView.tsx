@@ -41,7 +41,7 @@ export function ChatListItemElement(props: any) {
             </div>
             <div class="meta">
                 <div class="timestamp">{moment(item.lastUpdatedTimestamp).fromNow()}</div>
-                <div class="status"><MessageStatusIcon status={item.summary.status} size="14px" /></div>
+                <div class="status">{item.summary.status && <MessageStatusIcon status={item.summary.status} size="14px" />}</div>
             </div>
             <div class="unread-counter" hidden={item.freshMessageCount === 0}>{item.freshMessageCount}</div>
         </div>
