@@ -1,12 +1,15 @@
 {
 	"version": "0.1.0",
-	"name": "DeltaChat",
+	"name": "Delta Chat",
 	"description": "delta.chat app for KaiOs",
 	"launch_path": "/index.html",
 	"type": "certified",
 	"icons": {
 		"56": "/icons/icon-56-56.png",
-		"112": "/icons/icon-112-112.png"
+		"112": "/icons/icon-112-112.png",
+		"64": "/icons/delta64px.png",
+		"128": "/icons/delta128px.png",
+		"1024": "/icons/delta-logo.svg"
 	},
 	"theme_color": "#41496B",
 	"chrome": {
