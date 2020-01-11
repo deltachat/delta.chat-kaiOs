@@ -174,7 +174,7 @@ div#chat div#chat-input textarea {
     outline: 0;
 }
 
-div#chat div#bottom-bar {
+div#bottom-bar {
     min-height: 30px;
     margin: 0 0 0 0px;
     padding: 0px 8px 0px 8px;
@@ -186,9 +186,9 @@ div#chat div#bottom-bar {
     border-top: 5px solid white;
 }
 
-div#chat div#bottom-bar div {
+div#bottom-bar div {
     width: 15px;
-    MARGIN: 5PX 0 0 0;
+    margin: 5PX 0 0 0;
 }
 
 div#chat div#chat-attachments {
