@@ -199,7 +199,7 @@ div#chat div#chat-attachments div img {
     width: 20px;
 }
 
-div#chat div#chat-attachments div.inner>div:focus img {
+div#chat div#chat-attachments div#inner>div:focus img {
     width: 24px;
 }
 
