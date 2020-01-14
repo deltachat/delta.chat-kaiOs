@@ -2,7 +2,7 @@ import { context } from "../manager";
 import { Component, h, Ref, RefObject } from "preact";
 import { ChatListItem, Context } from "../mock/deltachat";
 import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
-import { setKeyMap, KeyBinding, Key } from "../keymanager";
+import { KeyBinding, Key } from "../keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
 import { debounce } from "../util";
 import moment from 'moment';
@@ -50,7 +50,7 @@ export function ChatListItemElement(props: any) {
 }
 
 
-export const ChatListView = (props: any) => {
+export const ChatListView = ({ctrl}: ScreenProps) => {
     const list: RefObject<HTMLDivElement> = useRef(null)
     const [aChatSelected, setAChatSelected] = useState(false)
 
@@ -58,7 +58,7 @@ export const ChatListView = (props: any) => {
         (list.current?.firstChild as HTMLElement).focus()
     })
 
-    setKeyMap(
+    ctrl.screen.setKeyMap(
         new KeyBinding(Key.LSK, () => { }),
         new KeyBinding(Key.CSK, () => {
             if (list.current?.querySelector(":focus") !== null) {
@@ -90,9 +90,7 @@ export const ChatListView = (props: any) => {
     )
 
     const context: Context = props.context
-    return <div class="screen-wrapper">
-        <Header />
-        <div ref={list} class="content">
+    return <div ref={list}>
             {
                 context.chatList.map((item) =>
                     <ChatListItemElement
@@ -102,12 +100,6 @@ export const ChatListView = (props: any) => {
                     />
                 )
             }
-        </div>
-        <SoftwareKeys
-            leftBtnLabel="Menu"
-            centerBtnLabel={aChatSelected ? "Select" : ""}
-            rightBtnLabel="New"
-        />
     </div>
 };
 

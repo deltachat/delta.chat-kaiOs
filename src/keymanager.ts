@@ -45,6 +45,7 @@ export class KeyBinding {
     constructor(
         public key: Key,
         private cb: (ev: KeyboardEvent) => void,
+        public label?:string
     ) { }
 
     _runCallback(ev: KeyboardEvent) {
@@ -54,7 +55,7 @@ export class KeyBinding {
 
 var KeyMap: KeyBinding[] = [];
 
-export function setKeyMap(...newKeyMap: KeyBinding[]) {
+export function __setGlobalKeyMap(...newKeyMap: KeyBinding[]) {
     KeyMap = newKeyMap
 }
 

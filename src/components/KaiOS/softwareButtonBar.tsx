@@ -1,23 +1,22 @@
 import { h } from "preact"
-import { Key } from "../../keymanager"
+import { Key, KeyBinding } from "../../keymanager"
 
-export function SoftwareKeys(props: any) {
-    const { leftBtnLabel, centerBtnLabel, rightBtnLabel } = props
+export function SoftwareKeys({keymap}:{keymap:KeyBinding[]}) {
 
     return <div class="software-keys" id="software-keys">
         <button
             tabIndex={-1}
             onMouseDown={emulateKeyPress.bind(null, Key.LSK)}
-        >{leftBtnLabel}</button>
+        >{keymap?.find(({key}) => key === Key.LSK)?.label}</button>
         <button
             tabIndex={-1}
             class="middle"
             onMouseDown={emulateKeyPress.bind(null, Key.CSK)}
-        >{centerBtnLabel}</button>
+        >{keymap?.find(({key}) => key === Key.CSK)?.label}</button>
         <button
             tabIndex={-1}
             onMouseDown={emulateKeyPress.bind(null, Key.RIGHT)}
-        >{rightBtnLabel}</button>
+        >{keymap?.find(({key}) => key === Key.RIGHT)?.label}</button>
     </div>
 }
 
