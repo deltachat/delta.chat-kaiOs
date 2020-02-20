@@ -76,8 +76,8 @@ export class Nav extends Component<{
                         </div>
                     })
                 }
-                <SoftwareKeys keymap={top_element.keymap} />
             </div>
+            <SoftwareKeys keymap={top_element.keymap} />
         </div>
     }
     
