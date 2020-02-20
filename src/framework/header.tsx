@@ -1,6 +1,5 @@
 import { h } from "preact"
 
-
 export const Header = (props:any) => {
     const { children } = props
 

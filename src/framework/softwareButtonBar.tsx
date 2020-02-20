@@ -1,5 +1,5 @@
 import { h } from "preact"
-import { Key, KeyBinding } from "../../keymanager"
+import { Key, KeyBinding } from "./keymanager"
 
 export function SoftwareKeys({keymap}:{keymap:KeyBinding[]}) {
 
@@ -19,7 +19,6 @@ export function SoftwareKeys({keymap}:{keymap:KeyBinding[]}) {
         >{keymap?.find(({key}) => key === Key.RIGHT)?.label}</button>
     </div>
 }
-
 
 function emulateKeyPress(key: string, ev: MouseEvent) {
     ev.stopImmediatePropagation()

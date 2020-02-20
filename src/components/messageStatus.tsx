@@ -9,8 +9,6 @@ import exclaimation from '@fortawesome/fontawesome-free/svgs/solid/exclamation-c
 import question_circle from '@fortawesome/fontawesome-free/svgs/solid/question-circle.svg'
 
 
-
-
 type messageStatusProps = { status: MessageStatus, size: string }
 export function MessageStatusIcon({ status, size }: messageStatusProps) {
     switch (status) {

@@ -1,13 +1,12 @@
 import { context } from "../manager";
-import { Component, h, Ref, RefObject } from "preact";
-import { ChatListItem, Context } from "../mock/deltachat";
-import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
-import { KeyBinding, Key } from "../keymanager";
+import { h, RefObject } from "preact";
+import { ChatListItem } from "../mock/deltachat";
+import { KeyBinding, Key } from "../framework/keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
-import { debounce } from "../util";
+import { debounce } from "../framework/util";
 import moment from 'moment';
 import { MessageStatusIcon } from "../components/messageStatus";
-import { Header } from "../components/KaiOS/header";
+import { ScreenProps } from "../framework/screen";
 
 const BaseTabIndexOffset = 20
 
@@ -19,9 +18,7 @@ export function Avatar({ avatarPath, color, displayName }: avatar_params) {
     return <div class="avatar" style={{ "background-color": color || 'grey' }}>
         {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span>}
     </div>
-
 }
-
 
 export function ChatListItemElement(props: any) {
     const item: ChatListItem = props.item
@@ -52,7 +49,7 @@ export function ChatListItemElement(props: any) {
 
 export const ChatListView = ({ctrl}: ScreenProps) => {
     const list: RefObject<HTMLDivElement> = useRef(null)
-    const [aChatSelected, setAChatSelected] = useState(false)
+    const [_aChatSelected, setAChatSelected] = useState(false)
 
     useEffect(() => {
         (list.current?.firstChild as HTMLElement).focus()
@@ -76,12 +73,12 @@ export const ChatListView = ({ctrl}: ScreenProps) => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
-        new KeyBinding(Key.HELP, () => {props?.goto("about")}),
-        new KeyBinding(Key.F1, () => {props?.goto("about")}),
+        new KeyBinding(Key.HELP, () => {ctrl.nav.pushScreen("about")}),
+        new KeyBinding(Key.F1, () => {ctrl.nav.pushScreen("about")}),
     )
 
     const OpenChat = (chatId: number) => {
-        props?.goto("chat", { chatId })
+        ctrl.nav.setRootScreen("chat", { chatId })
     }
 
     const focusUpdate = debounce(
@@ -89,7 +86,6 @@ export const ChatListView = ({ctrl}: ScreenProps) => {
         () => setAChatSelected(list.current?.querySelector(":focus") !== null), 100
     )
 
-    const context: Context = props.context
     return <div ref={list}>
             {
                 context.chatList.map((item) =>

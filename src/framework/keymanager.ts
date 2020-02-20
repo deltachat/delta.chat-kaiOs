@@ -1,3 +1,5 @@
+import { h } from "preact";
+
 export const enum Key {
     // For development on desktop
     ENTER = 'Enter',
@@ -18,8 +20,6 @@ export const enum Key {
     RIGHT = 'ArrowRight',
 
     HELP = 'Help',
-
-    
 
     // todo Call key?
     // todo End key?
@@ -45,27 +45,10 @@ export class KeyBinding {
     constructor(
         public key: Key,
         private cb: (ev: KeyboardEvent) => void,
-        public label?:string
+        public label?: string | h.JSX.Element
     ) { }
 
     _runCallback(ev: KeyboardEvent) {
         this.cb(ev)
     }
 }
-
-var KeyMap: KeyBinding[] = [];
-
-export function __setGlobalKeyMap(...newKeyMap: KeyBinding[]) {
-    KeyMap = newKeyMap
-}
-
-document.addEventListener('keydown', ev => {
-    console.debug("Key pressed", ev)
-    KeyMap.find(({ key }) => ev.key === key)?._runCallback(ev)
-
-    if((ev.key === Key.BACKSPACE || ev.key === Key.HELP) && KeyMap.find(({ key }) => ev.key === key)){
-        // Prevents app from exiting when pressing back and an action is defined
-        ev.preventDefault()
-        ev.stopImmediatePropagation()
-    }
-});

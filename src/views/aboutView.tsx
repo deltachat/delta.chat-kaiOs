@@ -1,12 +1,10 @@
 import { h, RefObject } from "preact"
 import { context } from '../manager'
-import { KeyBinding, Key } from "../keymanager"
+import { KeyBinding, Key } from "../framework/keymanager"
 import { useRef, useEffect } from "preact/hooks"
 
 import * as aboutMd from "../about_information.md"
-import { ScreenProps } from "../main"
-
-
+import { ScreenProps } from "../framework/screen"
 
 export const AboutView = ({ctrl}: ScreenProps) => {
     const about: RefObject<HTMLDivElement> = useRef(null)
