@@ -8,6 +8,7 @@ interface RawScreenProps {
         screen: {
             setKeyMap: typeof NavElement.prototype.setKeyMap
             setHeader: typeof NavElement.prototype.setHeader
+            setTransparency: typeof NavElement.prototype.setTransparency
         },
         nav: {
             pushScreen: typeof Nav.prototype.pushScreen
@@ -25,13 +26,15 @@ class NavElement {
     screen_functions: {}
     public keymap: KeyBinding[]
     public header: string | h.JSX.Element
+    public transparent: boolean = false
     constructor(
         public screen: (props: any) => h.JSX.Element,
         public initData: { [key: string]: any }
     ) {
         this.screen_functions = {
             setKeyMap: this.setKeyMap.bind(this),
-            setHeader: this.setHeader.bind(this)
+            setHeader: this.setHeader.bind(this),
+            setTransparency: this.setTransparency.bind(this)
         }
     }
 
@@ -41,6 +44,10 @@ class NavElement {
 
     setHeader(header: string | h.JSX.Element) {
         this.header = header
+    }
+
+    setTransparency(transparent:boolean){
+        this.transparent = transparent
     }
 }
 
@@ -57,7 +64,7 @@ export class Nav extends Component<{
         const top_element = getTopElement(this.stack)
         return <div class="screen-wrapper">
             <Header>{top_element?.header}</Header>
-            <div class="content" >
+            <div class="content">
                 {
                     this.stack.map((element, index) => {
                         const nav_functions = {
@@ -65,7 +72,9 @@ export class Nav extends Component<{
                             setRootScreen: this.setRootScreen.bind(this),
                             closeScreen: () => this.closeScreen(element)
                         }
-                        return <div style={{ "z-index": index, position: 'relative' }} >
+                        return <div class='nav-element' style={{
+                            "z-index": index, "background-color": element.transparent ? 'transparent' : 'white'
+                        }}>
                             <element.screen
                                 ctrl={{
                                     nav: nav_functions,
@@ -102,7 +111,7 @@ export class Nav extends Component<{
 
     closeScreen(element: NavElement) {
         console.debug('[nav] closeScreen', element)
-        this.stack.filter(el => el !== element)
+        this.stack = this.stack.filter(el => el !== element)
         this.forceUpdate() // trigger rerender
     }
 

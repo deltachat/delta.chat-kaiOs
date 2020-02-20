@@ -23,12 +23,7 @@ export const AboutView = ({ctrl}: ScreenProps) => {
         new KeyBinding(Key.DOWN, () => { about.current?.parentElement.scrollBy(0, 50) }),
     )
 
-    var HeadText = [..."About Delta Chat"]
-
-    setInterval(()=>{
-        HeadText.push(HeadText.shift())
-        ctrl.screen.setHeader(HeadText.join("")) 
-    }, 600)
+    ctrl.screen.setHeader("About Delta Chat")
 
     useEffect(() => { if (about.current) about.current.innerHTML = aboutMd.html })
 

@@ -46,6 +46,12 @@ $kai-software-keys-height: 23px;
 .content {
     overflow-y: scroll;
     flex-grow: 1;
+    position: relative;
+
+    .nav-element {
+        position: absolute;
+        width: 100%;
+    }
 }
 
 $kai-statusbar-heigth: 29px;
