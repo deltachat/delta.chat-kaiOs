@@ -1,0 +1,17 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "firefox": 37
+                },
+                "exclude": ["transform-regenerator"]
+            },
+            "@babel/preset-react"
+        ]
+    ],
+    "plugins": [
+        ["@babel/transform-runtime"]
+    ]
+}
