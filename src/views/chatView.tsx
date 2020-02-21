@@ -11,6 +11,7 @@ import fa_paperclip from "@fortawesome/fontawesome-free/svgs/solid/paperclip.svg
 
 import { context } from "../manager";
 import { useKeyMap, useScreenSetup, useScreen } from "../framework/router";
+import { ChatListView } from "./chatListView";
 
 const BaseTabIndexOffset = 40
 
@@ -55,7 +56,7 @@ export function ChatView(props: PreactProps) {
         new KeyBinding(Key.BACK_CLEAR, () => {
             // if the input field is not selected
             console.log("should go back to chat list view")
-            nav.setRoot("chatList")
+            nav.setRoot(ChatListView)
             // else if input field is empty, deselect it
             // or rather do this thinf dependent on a state
         }),

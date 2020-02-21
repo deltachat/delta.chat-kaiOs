@@ -7,6 +7,8 @@ import { debounce, PreactProps } from "../framework/util";
 import moment from 'moment';
 import { MessageStatusIcon } from "../components/messageStatus";
 import { useKeyMap, useScreen } from "../framework/router";
+import { ChatView } from "./chatView";
+import { AboutView } from "./aboutView";
 
 const BaseTabIndexOffset = 20
 
@@ -74,12 +76,12 @@ export const ChatListView = (props: PreactProps) => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
-        new KeyBinding(Key.HELP, () => {nav.push("about")}),
-        new KeyBinding(Key.F1, () => {nav.push("about")}),
+        new KeyBinding(Key.HELP, () => {nav.push(AboutView)}),
+        new KeyBinding(Key.F1, () => {nav.push(AboutView)}),
     ])
 
     const OpenChat = (chatId: number) => {
-        nav.setRoot("chat", { chatId })
+        nav.setRoot(ChatView, { chatId })
     }
 
     const focusUpdate = debounce(

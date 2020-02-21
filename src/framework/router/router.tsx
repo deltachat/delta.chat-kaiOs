@@ -9,9 +9,7 @@ function getTopElement<T>(stack:T[]):T{
     return stack.length > 0 && stack[stack.length - 1]
 }
 
-export class Router extends Component<{
-    resolveScreenId:(screen_id: string) => ((props: any) => h.JSX.Element)
-}, any> {
+export class Router extends Component<{}, any> {
     stack: NavElement[] = []
 
     render(): import("preact").ComponentChild {
@@ -27,23 +25,23 @@ export class Router extends Component<{
         </div>
     }
     
-    createNavElement(screen_id: string, initData: { [key: string]: any }) {
+    createNavElement(screen: (props: any) => h.JSX.Element, initData: { [key: string]: any }) {
         return new NavElement(
-            this.props.resolveScreenId(screen_id),
+            screen,
             initData,
             this
         )
     }
 
-    pushScreen(screen_id: string, initData?: { [key: string]: any }) {
-        console.debug('[nav] pushScreen', screen_id, initData)
-        this.stack.push(this.createNavElement(screen_id, initData))
+    pushScreen(screen: (props: any) => h.JSX.Element, initData?: { [key: string]: any }) {
+        console.debug('[nav] pushScreen', screen, initData)
+        this.stack.push(this.createNavElement(screen, initData))
         this.forceUpdate() // trigger rerender
     }
 
-    setRootScreen(screen_id: string, initData?: { [key: string]: any }) {
-        console.debug('[nav] setRootScreen', screen_id, initData)
-        this.stack = [this.createNavElement(screen_id, initData)]
+    setRootScreen(screen: (props: any) => h.JSX.Element, initData?: { [key: string]: any }) {
+        console.debug('[nav] setRootScreen', screen, initData)
+        this.stack = [this.createNavElement(screen, initData)]
         this.forceUpdate() // trigger rerender
     }
 
