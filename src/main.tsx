@@ -1,12 +1,11 @@
-import { h, render, Component } from 'preact';
-import { useState } from 'preact/hooks'
+import { h, render } from 'preact';
+import { useRef, useEffect } from 'preact/hooks'
 import { ChatListView } from './views/chatListView';
-import { context } from './manager';
-import { setKeyMap } from './keymanager';
 import { ChatView } from './views/chatView';
 import { AboutView } from './views/aboutView'
+import { Router } from './framework/router';
 
-function getScreen(screen_id: string) {
+function resolveScreenId(screen_id: string) {
     switch (screen_id) {
         case "chatList":
             return ChatListView
@@ -19,24 +18,16 @@ function getScreen(screen_id: string) {
     }
 }
 
-function App(props: any) {
-    const [screen_id, setScreen] = useState('chatList')
-    const [data, setData] = useState({})
-    console.log(screen_id, data)
-    setKeyMap() //clear keymap before switching screen
-    const Screen = getScreen(screen_id)
+function App(props:any) {
+    const navRef = useRef<Router>()
 
-    const goto = (screenId: string, data: any) => {
-        console.log(data, screenId)
-        setScreen(screenId)
-        setData(data)
-    }
+    useEffect(() => {
+        navRef.current?.setRootScreen('chatList')
+    })
 
-    return <div>
-        <Screen context={context} goto={goto} data={data}></Screen>
+    return <div id="app">
+        <Router ref={navRef} resolveScreenId={resolveScreenId}/>
     </div>
-    
 }
 
-
-render(<div id="app"><App /></div>, document.body)
+render(<App/>, document.body)

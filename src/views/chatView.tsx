@@ -1,15 +1,16 @@
 import { h, RefObject } from "preact";
-import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
-import { Context, Message } from "../mock/deltachat";
-import { useRef, useState, useLayoutEffect, useEffect } from "preact/hooks";
-import { setKeyMap, KeyBinding, Key } from "../keymanager";
-import { debounce } from "../util";
+import { Message } from "../mock/deltachat";
+import { useRef, useState, useEffect } from "preact/hooks";
+import { KeyBinding, Key } from "../framework/keymanager";
+import { debounce, PreactProps } from "../framework/util";
 import moment from 'moment';
 import { Icon } from "../components/icon";
 
 import { MessageStatusIcon } from "../components/messageStatus";
 import fa_paperclip from "@fortawesome/fontawesome-free/svgs/solid/paperclip.svg";
-import { Header } from "../components/KaiOS/header";
+
+import { context } from "../manager";
+import { useKeyMap, useScreenSetup, useScreen } from "../framework/router";
 
 const BaseTabIndexOffset = 40
 
@@ -32,8 +33,8 @@ function MessageElement(props: any) {
     </div>
 }
 
-export function ChatView(props: any) {
-    const data = props.data
+export function ChatView(props: PreactProps) {
+    const { data, nav } = useScreen()
     const list: RefObject<HTMLDivElement> = useRef(null)
     const composer: RefObject<HTMLInputElement> = useRef(null)
     const [isAMessageSelected, setMessageSelected] = useState(false)
@@ -45,19 +46,20 @@ export function ChatView(props: any) {
 
     // data.chatId
     // todo call this only on render if this screen is focused and has no dialog infront of it
-    setKeyMap(
-        new KeyBinding(Key.LSK, () => { }),
+    useKeyMap([
+        new KeyBinding(Key.LSK, () => { },
+        isAMessageSelected ? "Options" : <Icon src={fa_paperclip} style={{ 'margin-top': '3px' }} />),
         new KeyBinding(Key.CSK, () => {
             // is input field selected
-        }),
+        }, isAMessageSelected ? "Info" : "Send"),
         new KeyBinding(Key.BACK_CLEAR, () => {
             // if the input field is not selected
             console.log("should go back to chat list view")
-            props?.goto("chatList")
+            nav.setRoot("chatList")
             // else if input field is empty, deselect it
             // or rather do this thinf dependent on a state
         }),
-        new KeyBinding(Key.RSK, () => { }),
+        new KeyBinding(Key.RSK, () => { }, "More"),
         new KeyBinding(Key.UP, () => {
             const target = list.current?.querySelector(":focus")?.previousSibling as HTMLDivElement
             target?.focus()
@@ -66,7 +68,9 @@ export function ChatView(props: any) {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
-    )
+    ], [isAMessageSelected])
+
+    useScreenSetup(context.getChatName(data.chatId))
 
     const focusUpdate = debounce(() => {
         const selectedItem = list.current?.querySelector(":focus")
@@ -82,26 +86,15 @@ export function ChatView(props: any) {
 
     useEffect(() => selectInputField(), [])
 
-    const context: Context = props.context
-    return <div class="screen-wrapper">
-        <Header>{context.getChatName(data.chatId)}</Header>
-        <div class="content">
-            {JSON.stringify(data)}
-            <div ref={list}>
-                {
-                    context.getAllMessagesForChat(data.chatId).map((message) =>
-                        <MessageElement message={message} focusUpdate={focusUpdate} />
-                    )
-                }
-
-                <input id="message-input" ref={composer} type="text" onFocus={focusUpdate} />
-            </div>
+    return <div class="content">
+        {JSON.stringify(data)}
+        <div ref={list}>
+            {
+                context.getAllMessagesForChat(data.chatId).map((message) =>
+                    <MessageElement message={message} focusUpdate={focusUpdate} />
+                )
+            }
+            <input id="message-input" ref={composer} type="text" onFocus={focusUpdate} />
         </div>
-        <SoftwareKeys
-            leftBtnLabel={isAMessageSelected ? "Options" : <Icon src={fa_paperclip} style={{ 'margin-top': '3px' }} />} // Attachment or Message options (depends on wether a message or the input field selected)
-            // attachment could be a big icon of a paperclip on its side  
-            centerBtnLabel={isAMessageSelected ? "Info" : "Send"}
-            rightBtnLabel="More" // or audio message (depends wether message input field is empty)
-        />
     </div>
 }

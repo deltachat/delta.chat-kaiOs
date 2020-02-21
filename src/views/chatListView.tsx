@@ -1,13 +1,12 @@
 import { context } from "../manager";
-import { Component, h, Ref, RefObject } from "preact";
-import { ChatListItem, Context } from "../mock/deltachat";
-import { SoftwareKeys } from "../components/KaiOS/softwareButtonBar";
-import { setKeyMap, KeyBinding, Key } from "../keymanager";
+import { h, RefObject } from "preact";
+import { ChatListItem } from "../mock/deltachat";
+import { KeyBinding, Key } from "../framework/keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
-import { debounce } from "../util";
+import { debounce, PreactProps } from "../framework/util";
 import moment from 'moment';
 import { MessageStatusIcon } from "../components/messageStatus";
-import { Header } from "../components/KaiOS/header";
+import { useKeyMap, useScreen } from "../framework/router";
 
 const BaseTabIndexOffset = 20
 
@@ -19,21 +18,18 @@ export function Avatar({ avatarPath, color, displayName }: avatar_params) {
     return <div class="avatar" style={{ "background-color": color || 'grey' }}>
         {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span>}
     </div>
-
 }
 
-
-export function ChatListItemElement(props: any) {
-    const item: ChatListItem = props.item
-    const focusUpdate: (ev: FocusEvent) => void = props.focusUpdate
-
+export function ChatListItemElement(
+    {item, focusUpdate, onClick}:{item:ChatListItem, focusUpdate:(ev: FocusEvent) => void, onClick:any}
+) {
     return (
         <div
             class="chat-list-item"
             onFocus={focusUpdate}
             onBlur={focusUpdate}
             tabIndex={BaseTabIndexOffset + item.ChatId}
-            onClick={props.onClick}
+            onClick={onClick}
         >
             <Avatar avatarPath={item.avatarImage} color={item.avatarColor} displayName={item.name} />
             <div class="main-part">
@@ -50,15 +46,17 @@ export function ChatListItemElement(props: any) {
 }
 
 
-export const ChatListView = (props: any) => {
+export const ChatListView = (props: PreactProps) => {
+    const { nav } = useScreen()
+
     const list: RefObject<HTMLDivElement> = useRef(null)
-    const [aChatSelected, setAChatSelected] = useState(false)
+    const [_aChatSelected, setAChatSelected] = useState(false)
 
     useEffect(() => {
         (list.current?.firstChild as HTMLElement).focus()
     })
 
-    setKeyMap(
+    useKeyMap([
         new KeyBinding(Key.LSK, () => { }),
         new KeyBinding(Key.CSK, () => {
             if (list.current?.querySelector(":focus") !== null) {
@@ -66,7 +64,7 @@ export const ChatListView = (props: any) => {
             } else {
                 (list.current?.firstChild as HTMLElement).focus()
             }
-        }),
+        }, "Select"),
         new KeyBinding(Key.RSK, () => { }),
         new KeyBinding(Key.UP, () => {
             const target = list.current?.querySelector(":focus")?.previousSibling as HTMLDivElement
@@ -76,12 +74,12 @@ export const ChatListView = (props: any) => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
-        new KeyBinding(Key.HELP, () => {props?.goto("about")}),
-        new KeyBinding(Key.F1, () => {props?.goto("about")}),
-    )
+        new KeyBinding(Key.HELP, () => {nav.push("about")}),
+        new KeyBinding(Key.F1, () => {nav.push("about")}),
+    ])
 
     const OpenChat = (chatId: number) => {
-        props?.goto("chat", { chatId })
+        nav.setRoot("chat", { chatId })
     }
 
     const focusUpdate = debounce(
@@ -89,10 +87,7 @@ export const ChatListView = (props: any) => {
         () => setAChatSelected(list.current?.querySelector(":focus") !== null), 100
     )
 
-    const context: Context = props.context
-    return <div class="screen-wrapper">
-        <Header />
-        <div ref={list} class="content">
+    return <div ref={list}>
             {
                 context.chatList.map((item) =>
                     <ChatListItemElement
@@ -102,12 +97,6 @@ export const ChatListView = (props: any) => {
                     />
                 )
             }
-        </div>
-        <SoftwareKeys
-            leftBtnLabel="Menu"
-            centerBtnLabel={aChatSelected ? "Select" : ""}
-            rightBtnLabel="New"
-        />
     </div>
 };
 
