@@ -1,5 +1,4 @@
-
-export function debounce<TParam>(fn: (...params : TParam[]) => void, millis:number):(...params : TParam[])=>void{
+export function debounce<TParams extends Array<any>>(fn: (...params : TParams) => void, millis:number):(...params : TParams)=>void{
     let isScheduled=false;
 
     return (...params) => {
@@ -11,3 +10,5 @@ export function debounce<TParam>(fn: (...params : TParam[]) => void, millis:numb
         }, millis)
     }
 }
+
+export type PreactProps = Readonly<import("preact").Attributes & { children?: import("preact").ComponentChildren; ref?: import("preact").Ref<any>; }>

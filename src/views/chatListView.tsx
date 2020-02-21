@@ -3,10 +3,10 @@ import { h, RefObject } from "preact";
 import { ChatListItem } from "../mock/deltachat";
 import { KeyBinding, Key } from "../framework/keymanager";
 import { useRef, useEffect, useState } from "preact/hooks";
-import { debounce } from "../framework/util";
+import { debounce, PreactProps } from "../framework/util";
 import moment from 'moment';
 import { MessageStatusIcon } from "../components/messageStatus";
-import { ScreenProps } from "../framework/screen";
+import { useKeyMap, useScreen } from "../framework/router";
 
 const BaseTabIndexOffset = 20
 
@@ -20,17 +20,16 @@ export function Avatar({ avatarPath, color, displayName }: avatar_params) {
     </div>
 }
 
-export function ChatListItemElement(props: any) {
-    const item: ChatListItem = props.item
-    const focusUpdate: (ev: FocusEvent) => void = props.focusUpdate
-
+export function ChatListItemElement(
+    {item, focusUpdate, onClick}:{item:ChatListItem, focusUpdate:(ev: FocusEvent) => void, onClick:any}
+) {
     return (
         <div
             class="chat-list-item"
             onFocus={focusUpdate}
             onBlur={focusUpdate}
             tabIndex={BaseTabIndexOffset + item.ChatId}
-            onClick={props.onClick}
+            onClick={onClick}
         >
             <Avatar avatarPath={item.avatarImage} color={item.avatarColor} displayName={item.name} />
             <div class="main-part">
@@ -47,7 +46,9 @@ export function ChatListItemElement(props: any) {
 }
 
 
-export const ChatListView = ({ctrl}: ScreenProps) => {
+export const ChatListView = (props: PreactProps) => {
+    const { nav } = useScreen()
+
     const list: RefObject<HTMLDivElement> = useRef(null)
     const [_aChatSelected, setAChatSelected] = useState(false)
 
@@ -55,7 +56,7 @@ export const ChatListView = ({ctrl}: ScreenProps) => {
         (list.current?.firstChild as HTMLElement).focus()
     })
 
-    ctrl.screen.setKeyMap(
+    useKeyMap([
         new KeyBinding(Key.LSK, () => { }),
         new KeyBinding(Key.CSK, () => {
             if (list.current?.querySelector(":focus") !== null) {
@@ -63,7 +64,7 @@ export const ChatListView = ({ctrl}: ScreenProps) => {
             } else {
                 (list.current?.firstChild as HTMLElement).focus()
             }
-        }),
+        }, "Select"),
         new KeyBinding(Key.RSK, () => { }),
         new KeyBinding(Key.UP, () => {
             const target = list.current?.querySelector(":focus")?.previousSibling as HTMLDivElement
@@ -73,12 +74,12 @@ export const ChatListView = ({ctrl}: ScreenProps) => {
             const target = list.current?.querySelector(":focus")?.nextSibling as HTMLDivElement
             target?.focus()
         }),
-        new KeyBinding(Key.HELP, () => {ctrl.nav.pushScreen("about")}),
-        new KeyBinding(Key.F1, () => {ctrl.nav.pushScreen("about")}),
-    )
+        new KeyBinding(Key.HELP, () => {nav.push("about")}),
+        new KeyBinding(Key.F1, () => {nav.push("about")}),
+    ])
 
     const OpenChat = (chatId: number) => {
-        ctrl.nav.setRootScreen("chat", { chatId })
+        nav.setRoot("chat", { chatId })
     }
 
     const focusUpdate = debounce(

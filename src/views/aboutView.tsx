@@ -4,16 +4,18 @@ import { KeyBinding, Key } from "../framework/keymanager"
 import { useRef, useEffect } from "preact/hooks"
 
 import * as aboutMd from "../about_information.md"
-import { ScreenProps } from "../framework/screen"
+import { PreactProps } from "../framework/util"
+import { useKeyMap, useScreen, useScreenSetup } from "../framework/router"
 
-export const AboutView = ({ctrl}: ScreenProps) => {
+export const AboutView = (props: PreactProps) => {
+    const { nav } = useScreen()
     const about: RefObject<HTMLDivElement> = useRef(null)
 
-    const goBack = () => { ctrl.nav.closeScreen() };
+    const goBack = nav.closeCurrent;
 
-    ctrl.screen.setKeyMap(
+    useKeyMap([
         new KeyBinding(Key.HELP, goBack),
-        new KeyBinding(Key.F1, goBack),
+        new KeyBinding(Key.ESCAPE, goBack),
         new KeyBinding(Key.BACK_CLEAR, goBack),
         new KeyBinding(Key.CSK, () => {
             window.open("https://delta.chat")
@@ -21,9 +23,9 @@ export const AboutView = ({ctrl}: ScreenProps) => {
         //scroll up and down
         new KeyBinding(Key.UP, () => { about.current?.parentElement.scrollBy(0, -50) }),
         new KeyBinding(Key.DOWN, () => { about.current?.parentElement.scrollBy(0, 50) }),
-    )
+    ])
 
-    ctrl.screen.setHeader("About Delta Chat")
+    useScreenSetup("About Delta Chat")
 
     useEffect(() => { if (about.current) about.current.innerHTML = aboutMd.html })
 

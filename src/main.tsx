@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'preact/hooks'
 import { ChatListView } from './views/chatListView';
 import { ChatView } from './views/chatView';
 import { AboutView } from './views/aboutView'
-import { Nav } from './framework/screen';
+import { Router } from './framework/router';
 
 function resolveScreenId(screen_id: string) {
     switch (screen_id) {
@@ -19,14 +19,14 @@ function resolveScreenId(screen_id: string) {
 }
 
 function App(props:any) {
-    const navRef = useRef<Nav>()
+    const navRef = useRef<Router>()
 
     useEffect(() => {
         navRef.current?.setRootScreen('chatList')
     })
 
     return <div id="app">
-        <Nav ref={navRef} resolveScreenId={resolveScreenId}/>
+        <Router ref={navRef} resolveScreenId={resolveScreenId}/>
     </div>
 }
 
