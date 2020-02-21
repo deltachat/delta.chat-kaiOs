@@ -51,8 +51,34 @@ $kai-software-keys-height: 23px;
     .nav-element {
         position: absolute;
         width: 100%;
+        height: 100%;
     }
 }
+
+.bf-menu-popup {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  background-color: rgba(0,0,0,0.2)
+}
+.bf-menu-popup>.menu {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: wheat;
+  max-height:44%;
+  overflow-x: scroll;
+  border-top: 2px solid black;
+}
+.bf-menu-popup>.menu>.item{
+   padding: 7px 6px;
+   border-top: 1px solid grey 
+}
+.bf-menu-popup>.menu>.item.selected{
+   background-color: gray;
+   outline: none;
+}
+
 
 $kai-statusbar-heigth: 29px;
 

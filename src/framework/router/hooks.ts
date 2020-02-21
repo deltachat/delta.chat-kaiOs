@@ -19,6 +19,9 @@ export function useScreenSetup(header: string | h.JSX.Element, transparent = fal
 }
 
 export function useScreen(){
-    const {initData, nav} = useContext(NavElementContext)
+    const context = useContext(NavElementContext)
+    if(!context) console.error('no context');
+    
+    const {initData, nav} = context
     return {data:initData, nav}
 }

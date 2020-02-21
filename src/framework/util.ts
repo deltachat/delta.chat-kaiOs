@@ -12,3 +12,8 @@ export function debounce<TParams extends Array<any>>(fn: (...params : TParams) =
 }
 
 export type PreactProps = Readonly<import("preact").Attributes & { children?: import("preact").ComponentChildren; ref?: import("preact").Ref<any>; }>
+
+
+export function clamp(min: number, val: number, max: number){
+    return Math.min(Math.max(val, min), max)
+}

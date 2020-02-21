@@ -9,6 +9,7 @@ import { MessageStatusIcon } from "../components/messageStatus";
 import { useKeyMap, useScreen } from "../framework/router";
 import { ChatView } from "./chatView";
 import { AboutView } from "./aboutView";
+import { openMenu } from "../framework/dialogs/menu";
 
 const BaseTabIndexOffset = 20
 
@@ -59,7 +60,30 @@ export const ChatListView = (props: PreactProps) => {
     })
 
     useKeyMap([
-        new KeyBinding(Key.LSK, () => { }),
+        new KeyBinding(Key.LSK, async () => {
+            const selection = await openMenu([
+                    'Settings',
+                    'Verify contact (qr)',
+                    'About',
+                    'Debug Menu'
+                ], nav)
+            if(selection !== null){
+                switch (selection) {
+                    case 0:
+                        console.log('Selected open settings')
+                        break
+                    case 1:
+                        console.log('show/scan qr code here')
+                        break
+                    case 2:
+                        nav.push(AboutView)
+                        break
+                    case 3:
+                        console.log('Debug menu')
+                        break
+                }
+            }
+        }, 'Menu'),
         new KeyBinding(Key.CSK, () => {
             if (list.current?.querySelector(":focus") !== null) {
                 (list.current?.querySelector(":focus") as HTMLElement)?.click()

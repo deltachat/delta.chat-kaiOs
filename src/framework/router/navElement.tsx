@@ -4,7 +4,7 @@ import { Router } from './router';
 
 
 type NavElementContextType = {
-    nav: Navigator
+    nav: NavRemote
     setKeyMap: typeof NavElement.prototype.setKeyMap
     setHeader: typeof NavElement.prototype.setHeader
     setTransparency: typeof NavElement.prototype.setTransparency,
@@ -26,7 +26,7 @@ export class NavElement {
     ) {
 
         this.context = {
-            nav: new Navigator(router, this),
+            nav: new NavRemote(router, this),
             setKeyMap: this.setKeyMap.bind(this),
             setHeader: this.setHeader.bind(this),
             setTransparency: this.setTransparency.bind(this),
@@ -69,7 +69,7 @@ export class NavElement {
     }
 }
 
-class Navigator {
+export class NavRemote {
     setRoot: typeof Router.prototype.setRootScreen;
     push: typeof Router.prototype.pushScreen;
     /** closes the current screen */
