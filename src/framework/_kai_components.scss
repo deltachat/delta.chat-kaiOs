@@ -67,7 +67,8 @@ $kai-software-keys-height: 23px;
   width: 100%;
   background-color: wheat;
   max-height:44%;
-  overflow-x: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border-top: 2px solid black;
 }
 .bf-menu-popup>.menu>.item{
