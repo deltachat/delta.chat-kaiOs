@@ -61,7 +61,7 @@ export class NavElement {
         return <div class='nav-element' style={{
             "z-index": index,
             "background-color": this.transparent ? 'transparent' : 'white'
-        }}>
+        }} key={'screen-' + index}>
             <NavElementContext.Provider value={this.context}>
                 <this.screen/>
             </NavElementContext.Provider>

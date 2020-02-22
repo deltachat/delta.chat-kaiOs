@@ -56,7 +56,8 @@ export const ChatListView = (props: PreactProps) => {
     const [_aChatSelected, setAChatSelected] = useState(false)
 
     useEffect(() => {
-        (list.current?.firstChild as HTMLElement).focus()
+        if(!list.current?.querySelector(":focus"))
+        (list.current?.firstChild as HTMLElement)?.focus()
     })
 
     useKeyMap([
@@ -113,7 +114,8 @@ export const ChatListView = (props: PreactProps) => {
         () => setAChatSelected(list.current?.querySelector(":focus") !== null), 100
     )
 
-    return <div ref={list}>
+    return <div>
+        <div ref={list}>
             {
                 context.chatList.map((item) =>
                     <ChatListItemElement
@@ -123,6 +125,7 @@ export const ChatListView = (props: PreactProps) => {
                     />
                 )
             }
+        </div>
     </div>
 };
 
