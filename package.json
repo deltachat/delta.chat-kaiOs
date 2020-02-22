@@ -7,6 +7,11 @@
     "watch": "parcel src/index.html",
     "package": "npm run build && ./tools/package"
   },
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/deltachat/delta.chat-kaiOs"
+  },
+  "license": "GPL-3.0-or-later",
   "authors": [
     "strukturart",
     "simonLaux"
