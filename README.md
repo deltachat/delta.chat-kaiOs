@@ -21,6 +21,11 @@ to package
 npm run package
 ```
 
+to format the code
+```sh
+npm run fix-formatting
+```
+
 ## Development
 
 run `npm run watch -- --open` and enable the mobile view for firefox (`ctrl` + `shift` + `m`).

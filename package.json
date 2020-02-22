@@ -2,7 +2,9 @@
   "name": "delta.chat-kaios",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsc && npm run check-formatting",
+    "check-formatting": "prettier --check \"src/**/*.{ts,tsx,scss}\"",
+    "fix-formatting": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
     "build": "parcel build src/index.html",
     "watch": "parcel src/index.html",
     "package": "npm run build && ./tools/package"
@@ -30,6 +32,7 @@
     "parcel-plugin-copy": "^1.0.2",
     "parcel-plugin-markdown-it": "^0.1.1",
     "parcel-plugin-svg-sprite": "^1.4.1",
+    "prettier": "^1.19.1",
     "typescript": "^3.7.2"
   },
   "staticPath": {
