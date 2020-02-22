@@ -17,14 +17,13 @@ function Menu() {
 
   const [selectionIndex, setSelection] = useState(0)
 
-  const updateSelection = (n: 1 | -1) =>
-    setSelection(s => clamp(0, s + n, data.entries.length - 1))
+  const updateSelection = (n: 1 | -1) => setSelection(s => clamp(0, s + n, data.entries.length - 1))
 
   useKeyMap([
     new KeyBinding(
       Key.CSK,
       () => {
-        resolve(selectionIndex)
+        menuOptions.current?.querySelector<HTMLDivElement>(".selected")?.click()
       },
       'Select'
     ),
@@ -38,11 +37,11 @@ function Menu() {
   ])
 
   useEffect(() => {
-    ;(menuOptions.current?.firstChild as HTMLElement).focus()
-  }, [0])
+    menuOptions.current?.querySelector(".selected")?.scrollIntoView({block:'nearest'})
+  }, [selectionIndex])
 
   useScreenSetup(undefined, true)
-  console.log(selectionIndex)
+
   return (
     <div class='bf-menu-popup'>
       <div ref={menuOptions} class='menu'>
