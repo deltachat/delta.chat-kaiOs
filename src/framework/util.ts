@@ -1,19 +1,26 @@
-export function debounce<TParams extends Array<any>>(fn: (...params : TParams) => void, millis:number):(...params : TParams)=>void{
-    let isScheduled=false;
+export function debounce<TParams extends Array<any>>(
+  fn: (...params: TParams) => void,
+  millis: number
+): (...params: TParams) => void {
+  let isScheduled = false
 
-    return (...params) => {
-        if(isScheduled) return
-        isScheduled = true
-        setTimeout(() => {
-            isScheduled = false
-            fn(...params)
-        }, millis)
-    }
+  return (...params) => {
+    if (isScheduled) return
+    isScheduled = true
+    setTimeout(() => {
+      isScheduled = false
+      fn(...params)
+    }, millis)
+  }
 }
 
-export type PreactProps = Readonly<import("preact").Attributes & { children?: import("preact").ComponentChildren; ref?: import("preact").Ref<any>; }>
+export type PreactProps = Readonly<
+  import('preact').Attributes & {
+    children?: import('preact').ComponentChildren
+    ref?: import('preact').Ref<any>
+  }
+>
 
-
-export function clamp(min: number, val: number, max: number){
-    return Math.min(Math.max(val, min), max)
+export function clamp(min: number, val: number, max: number) {
+  return Math.min(Math.max(val, min), max)
 }
