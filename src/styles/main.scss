@@ -1,30 +1,29 @@
-
 @import '_chat_view';
 @import '_chat_list';
 @import '../framework/kai_components';
 
-[hidden] { display: none !important; }
-
+[hidden] {
+  display: none !important;
+}
 
 /* KaiOS portrait devices (240x320) */
-@media only screen and (orientation : portrait) {
-    /* styles */
+@media only screen and (orientation: portrait) {
+  /* styles */
 }
 
 /* KaiOS landscape devices (320x240) */
 @media screen and (orientation: landscape) {
-    /* styles */
+  /* styles */
 }
 
-
 html {
-    // defaults
-    --icon-size: 1em;
-    font-family: 'Open Sans', 'Noto Sans', 'Openmoji', sans-serif;
+  // defaults
+  --icon-size: 1em;
+  font-family: 'Open Sans', 'Noto Sans', 'Openmoji', sans-serif;
 }
 
 .icon {
-    display: inline-block;
-    width: var(--icon-size);
-    height: var(--icon-size);
+  display: inline-block;
+  width: var(--icon-size);
+  height: var(--icon-size);
 }

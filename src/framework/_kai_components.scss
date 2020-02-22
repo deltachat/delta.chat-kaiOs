@@ -1,105 +1,102 @@
 $kai-software-keys-height: 23px;
 
 .software-keys {
-    
-    background-color: rgb(165, 165, 165);
+  background-color: rgb(165, 165, 165);
 
-    width: 100%;
-    border-top: 1px solid rgb(168, 168, 168);
-    font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  border-top: 1px solid rgb(168, 168, 168);
+  font-family: 'Courier New', Courier, monospace;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.5rem;
-    line-height: 1.20rem;
-    height: $kai-software-keys-height;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem;
+  line-height: 1.2rem;
+  height: $kai-software-keys-height;
 
-    button {
-        background: none;
-        border: none;
-        overflow: hidden;
-        font-size: 14px;
-        &:first-child {
-            text-align: left;
-            padding-left: 0.5rem;
-        }
-        &:last-child {
-            text-align: right;
-            padding-right: 0.5rem;
-        }
-        &.middle {
-            text-align: center;
-            font-weight: bold;
-            font-size: 19px;
-            text-transform: uppercase;
-        }
+  button {
+    background: none;
+    border: none;
+    overflow: hidden;
+    font-size: 14px;
+    &:first-child {
+      text-align: left;
+      padding-left: 0.5rem;
     }
-
+    &:last-child {
+      text-align: right;
+      padding-right: 0.5rem;
+    }
+    &.middle {
+      text-align: center;
+      font-weight: bold;
+      font-size: 19px;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .screen-wrapper {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .router-content {
-    overflow-y: scroll;
-    flex-grow: 1;
-    position: relative;
+  overflow-y: scroll;
+  flex-grow: 1;
+  position: relative;
 
-    .nav-element {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow-y: scroll;
-    }
+  .nav-element {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+  }
 }
 
 .bf-menu-popup {
-    position: relative;
-    height: 100%;
-    width: 100%;
-  background-color: rgba(0,0,0,0.2)
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
-.bf-menu-popup>.menu {
+.bf-menu-popup > .menu {
   position: absolute;
   bottom: 0;
   width: 100%;
   background-color: wheat;
-  max-height:44%;
+  max-height: 44%;
   overflow-y: scroll;
   overflow-x: hidden;
   border-top: 2px solid black;
 }
-.bf-menu-popup>.menu>.item{
-   padding: 7px 6px;
-   border-top: 1px solid grey 
+.bf-menu-popup > .menu > .item {
+  padding: 7px 6px;
+  border-top: 1px solid grey;
 }
-.bf-menu-popup>.menu>.item.selected{
-   background-color: gray;
-   outline: none;
+.bf-menu-popup > .menu > .item.selected {
+  background-color: gray;
+  outline: none;
 }
-
 
 $kai-statusbar-heigth: 29px;
 
 .header {
-    background-color: #41496B;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    &.empty  {
-        height: $kai-statusbar-heigth;
-    }
+  background-color: #41496b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  &.empty {
+    height: $kai-statusbar-heigth;
+  }
 }
 
 .header-label {
-    margin-top: $kai-statusbar-heigth - 8px;
-    color: white;
-    font-weight: bold;
-    padding: 3px 10px;
-    font-size: 15px;
-    margin-bottom: 3px;
+  margin-top: $kai-statusbar-heigth - 8px;
+  color: white;
+  font-weight: bold;
+  padding: 3px 10px;
+  font-size: 15px;
+  margin-bottom: 3px;
 }

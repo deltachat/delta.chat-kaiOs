@@ -1,6 +1,5 @@
 // import * as $ from './jquery'
 
-
 // $(function () {
 
 //     var socket: WebSocket;
@@ -64,4 +63,3 @@
 //     });
 
 // });
-

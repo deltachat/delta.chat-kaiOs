@@ -17,13 +17,14 @@ function Menu() {
 
   const [selectionIndex, setSelection] = useState(0)
 
-  const updateSelection = (n: 1 | -1) => setSelection(s => clamp(0, s + n, data.entries.length - 1))
+  const updateSelection = (n: 1 | -1) =>
+    setSelection(s => clamp(0, s + n, data.entries.length - 1))
 
   useKeyMap([
     new KeyBinding(
       Key.CSK,
       () => {
-        menuOptions.current?.querySelector<HTMLDivElement>(".selected")?.click()
+        menuOptions.current?.querySelector<HTMLDivElement>('.selected')?.click()
       },
       'Select'
     ),
@@ -37,7 +38,9 @@ function Menu() {
   ])
 
   useEffect(() => {
-    menuOptions.current?.querySelector(".selected")?.scrollIntoView({block:'nearest'})
+    menuOptions.current
+      ?.querySelector('.selected')
+      ?.scrollIntoView({ block: 'nearest' })
   }, [selectionIndex])
 
   useScreenSetup(undefined, true)
@@ -47,7 +50,7 @@ function Menu() {
       <div ref={menuOptions} class='menu'>
         {(data.entries as string[]).map((item, index) => (
           <div
-            class={'item' + (index === selectionIndex?' selected':'')}
+            class={'item' + (index === selectionIndex ? ' selected' : '')}
             tabIndex={4}
             key={'mitem' + index}
             onClick={_ => resolve(index)}
