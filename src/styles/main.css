@@ -82,23 +82,7 @@ div#chat {
 
 
 /*///////////////////////////
-///INTRO////////////////*/
-
-div#intro {
-    height: 100%;
-    width: 100%;
-    background: var(--color-two);
-    position: fixed;
-    z-index: 5;
-}
-
-
-/*///////////////////////////
 ///CHAT LIST////////////////*/
-
-div#chat-list {
-    display: none;
-}
 
 div#chat-list ul.user-item {
     background: var(--color-three);
@@ -117,7 +101,6 @@ div#chat-list ul.user-item:focus {
 div#chat {
     position: relative;
     height: 100%;
-    display: none;
 }
 
 div#chat div#chat-messages {
@@ -191,16 +174,21 @@ div#chat div#chat-input textarea {
     outline: 0;
 }
 
-div#chat div#chat-attachments div {
-    margin: 0 5px 0 0;
+div#chat div#bottom-bar {
+    min-height: 30px;
+    margin: 0 0 0 0px;
+    padding: 0px 8px 0px 8px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 2;
+    background: var(--color-three);
+    border-top: 5px solid white;
 }
 
-div#chat div#chat-attachments div img {
-    width: 20px;
-}
-
-div#chat div#chat-attachments div#inner>div:focus img {
-    width: 24px;
+div#chat div#bottom-bar div {
+    width: 15px;
+    MARGIN: 5PX 0 0 0;
 }
 
 div#chat div#chat-attachments {
@@ -214,31 +202,16 @@ div#chat div#chat-attachments {
     display: none;
 }
 
-
-/*///////////////////////////
-///Buttom-Bar////////////////*/
-
-div#bottom-bar {
-    min-height: 30px;
-    margin: 0 0 0 0px;
-    padding: 0px 8px 0px 8px;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    z-index: 2;
-    background: var(--color-three);
-    border-top: 5px solid white;
+div#chat div#chat-attachments div {
+    margin: 0 5px 0 0;
 }
 
-div#bottom-bar div {
-    width: 40px;
-    margin: 0px 0 0 0;
-    text-align: center;
+div#chat div#chat-attachments div img {
+    width: 20px;
 }
 
-div#bottom-bar div img {
-    width: 15px;
-    margin: 5px 0 0 0;
+div#chat div#chat-attachments div.inner>div:focus img {
+    width: 24px;
 }
 
 

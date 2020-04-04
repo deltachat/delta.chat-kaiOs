@@ -20,11 +20,6 @@
     <div id="app" class="grid-col-48">
         <div id="toast">
         </div>
-        <!--intro page-->
-        <div class="page" id="intro">
-            <div><img src=""></div>
-            <div>copyright text</div>
-        </div>
         <!--login page-->
         <div class="page" id="login">
         </div>
@@ -36,6 +31,65 @@
         <div class="page grid-col-48" id="chat">
             <div id="chat-messages">
 
+                <!--
+                <div class="message">
+                    <div class="inner">
+                        <div class="text algin-item-end">
+                            <div>Klettern ?</div>
+                        </div>
+                        <div class="date">
+                            <div>23.12.2019, 12:00</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="message">
+                    <div class="inner">
+                        <div class="text">
+                            <div>ja! Wohin?</div>
+                        </div>
+                        <div class="date">
+                            <div>23.12.2019, 12:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="inner">
+                        <div class="text">
+                            <div>Falkenwand ?</div>
+                        </div>
+                        <div class="date">
+                            <div>23.12.2019, 12:00</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="message">
+                    <div class="inner">
+                        <div class="text">
+                            <div>Okay, öv + velo</div>
+                        </div>
+                        <div class="date">
+                            <div>23.12.2019, 12:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="inner">
+                        <div class="text">
+                            <div>Gut, denn 14.23 richtung moutier ?</div>
+                        </div>
+                        <div class="date">
+                            <div>23.12.2019, 12:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                -->
             </div>
 
 
@@ -46,7 +100,7 @@
 
 
             <div id="chat-attachments">
-                <div class="flex" id="inner">
+                <div class="inner flex">
                     <div tabindex=0>
                         <img src="icons/media.svg" />
                     </div>
@@ -56,24 +110,22 @@
                 </div>
             </div>
 
+            <div id="bottom-bar" class="flex justify-content-spacebetween grid-col-48">
+                <div id="button-left"><img src="icons/arrow-left.svg" /></div>
+                <div id="button-center"></div>
+                <div id="button-right"><img src="icons/edit.svg" /></div id="button-left">
+            </div>
 
         </div>
-
-        <div id="bottom-bar" class="flex justify-content-spacebetween grid-col-48">
-            <div id="button-left"></div>
-            <div id="button-center">select</div>
-            <div id="button-right"></div>
-        </div>
-
-
     </div>
 
 
+    <script src="main.tsx" defer></script>
+    <script src="lib/jQuery-3.1.0.js" defer></script>
     <script src="lib/moments.min.js" defer></script>
     <script src="js/helper.js" defer></script>
+    <script src="app.js" defer></script>
     <script src="mock/data.js" defer></script>
-    <script src="app.ts" defer></script>
-
 
 </body>
 

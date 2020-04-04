@@ -30,23 +30,16 @@ function notify(param_title, param_text, param_silent) {
 
 }
 
-function toaster(text_string) {
+function toaster(text) {
 
-    let elem = document.getElementById("toast");
-    elem.innerText = text_string;
-
-    elem.style.WebkitTransition = 'linear 1s';
-    elem.style.top = "0px";
+    $("div#toast").text(text)
+    $("div#toast").animate({ top: "0px" }, 1000, "linear", function() {
 
 
-    setTimeout(function() {
-
-        elem.style.WebkitTransition = 'linear 2s';
-        elem.style.top = "-100px";
-
-    }, 2500);
+        $("div#toast").delay(2000).animate({ top: "-100px" }, 1000);
 
 
+    });
 
 }
 
@@ -139,21 +132,13 @@ function lockScreenDisabler() {
 
 ///set tabindex
 //setTabindex("div#menu","div.item");
-// to do with pure javascript
-// the parent element must be an id
 
 let items = [];
 
 function setTabindex(parent_elm, child_elm) {
-    items = [];
-    items = document.getElementById(parent_elm).children;
-
-    for (let i = 0; items.length > i; i++) {
-        //items.push(test[i]);
-
-        items[i].tabIndex = i;
-    };
-
-
+    $(parent_elm + ">" + child_elm).each(function(i) {
+        items.push(this);
+        $(this).attr('tabindex', i);
+    });
 
 }
