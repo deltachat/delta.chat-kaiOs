@@ -24,17 +24,6 @@
 	],
 
 
-	"activities": {
-  "pick": {
-    "filters": {
-      "type": [ "image/png", "image/gif" ]
-    },
-    "href": "index.html",
-    "disposition": "window",
-    "returnValue": true
-  }
-},
-
 
 	"permissions": 
 	{

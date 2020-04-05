@@ -19,7 +19,14 @@ let data_chat_list = [
 
 
 let chat_feed = [
+    { chatId: 1, messageId: 13, direction: 'incoming', text: 'Klettern ?', timestamp: Date.now() - 7000 },
+    { chatId: 1, messageId: 17, direction: 'outgoing', text: 'ja! Wohin?', timestamp: Date.now() - 7000 },
+    { chatId: 1, messageId: 17, direction: 'incoming', text: 'Falkenwand ?', timestamp: Date.now() - 7200 },
+    { chatId: 1, messageId: 17, direction: 'outgoing', text: 'Okay, öv + velo ?', timestamp: Date.now() - 7300 },
+    { chatId: 1, messageId: 17, direction: 'incoming', text: 'Gut, 13:47 Gleis 3 ?', timestamp: Date.now() - 7400 },
+    { chatId: 1, messageId: 17, direction: 'outgoing', text: 'ok', timestamp: Date.now() - 7400 },
 
+    ///////
     { chatId: 7, messageId: 13, direction: 'incoming', text: 'hey wie gehts ?', timestamp: Date.now() - 7000 },
     { chatId: 7, messageId: 17, direction: 'outgoing', text: 'gut, danke', timestamp: Date.now() - 7000 },
     //////

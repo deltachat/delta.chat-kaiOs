@@ -71,10 +71,10 @@ $(document).ready(function() {
 
 
 
-    function showChat(showhidde) {
+    function showChat(showhide) {
 
 
-        if (showhidde == "show") {
+        if (showhide == "show") {
             $('div#chat-messages').empty();
             loadChatData($(':focus').data('id'))
 
@@ -87,7 +87,7 @@ $(document).ready(function() {
             state = "chat";
 
         }
-        if (showhidde == "hidde") {
+        if (showhide == "hide") {
             $("div#chat").css("display", "none");
         }
 
@@ -106,10 +106,27 @@ $(document).ready(function() {
         });
 
         activity.onsuccess = function() {
-            var picture = this.result;
-            console.log("A picture has been retrieved");
 
-            alert(JSON.stringify(picture, null, 4))
+
+
+            let src = window.URL.createObjectURL(this.result.blob);
+            showAttachments("hide");
+
+            $('div#chat-messages ').append(
+                '<div class="message">' +
+                '<div class="inner">' +
+                '<div class="image"><img src="' + src + '">' +
+                '</div>' +
+                '</div>' +
+                '</div>')
+
+            setTabindex("div#chat-messages", "div.message")
+            items = $('div#chat-messages div.message');
+            let last_item = items.length - 1
+            $(items[last_item]).focus();
+            state = "chat";
+
+
 
         };
 
@@ -121,8 +138,8 @@ $(document).ready(function() {
 
 
 
-    function showChatList(showhidde) {
-        if (showhidde == "show") {
+    function showChatList(showhide) {
+        if (showhide == "show") {
             $("div#chat-list").empty();
             for (let i = 0; i < data_chat_list.length; i++) {
                 let user = '<li class="user-name flex">' + data_chat_list[i].name + '</li><li class="unread-messages">' + data_chat_list[i].unreadMessageCount + '</li>';
@@ -136,15 +153,15 @@ $(document).ready(function() {
             $(items[0]).focus();
             state = "chat-list"
         }
-        if (showhidde == "hidde") {
+        if (showhide == "hide") {
             $("div#chat-list").css("display", "none");
         }
     }
 
 
 
-    function showAttachments(showhidde) {
-        if (showhidde == "show") {
+    function showAttachments(showhide) {
+        if (showhide == "show") {
             $("div#chat div#chat-attachments").css("display", "block")
             $("div#chat div#chat-attachments div.inner div:first-child").focus()
             $("div#chat div#bottom-bar div#button-left").html('<img src="icons/arrow-left.svg"/>');
@@ -156,7 +173,7 @@ $(document).ready(function() {
             $(items[last_item]).focus();
             state = "attachment";
         }
-        if (showhidde == "hidde") {
+        if (showhide == "hide") {
             $("div#chat div#chat-attachments").css("display", "none");
             $("div#chat div#chat-input textarea").focus();
             $("div#chat div#bottom-bar div#button-left").html('<img src="icons/arrow-left.svg"/>');
@@ -168,8 +185,8 @@ $(document).ready(function() {
     }
 
 
-    function showChatInput(showhidde) {
-        if (showhidde == "show") {
+    function showChatInput(showhide) {
+        if (showhide == "show") {
             $("div#chat div#chat-input").css("display", "block");
             $("div#chat div#chat-input textarea").focus();
 
@@ -179,7 +196,7 @@ $(document).ready(function() {
             state = "chat-input";
 
         }
-        if (showhidde == "hidde") {
+        if (showhide == "hide") {
             $("div#chat div#chat-input").css("display", "none");
             $("div#chat div#bottom-bar div#button-left").html('<img src="icons/arrow-left.svg"/>');
             $("div#chat div#bottom-bar div#button-center").html('');
@@ -218,7 +235,7 @@ $(document).ready(function() {
                 }
                 if (state == "chat-input") {
                     evt.preventDefault();
-                    showChatInput("hidde")
+                    showChatInput("hide")
                     showAttachments("show")
                     return false;
                 }
@@ -258,18 +275,18 @@ $(document).ready(function() {
             case 'SoftLeft':
                 if (state == "chat") {
                     showChatList("show");
-                    showChat("hidde");
+                    showChat("hide");
                     return false;
                 }
 
                 if (state == "chat-input") {
-                    showChatInput("hidde");
+                    showChatInput("hide");
                     showChat("show");
                     return false;
                 }
 
                 if (state == "attachment") {
-                    showAttachments("hidde");
+                    showAttachments("hide");
                     showChatInput("show");
                     return false;
                 }

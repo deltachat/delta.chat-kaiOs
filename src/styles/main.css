@@ -40,6 +40,7 @@ body {
     min-height: 320px;
     max-height: 320px;
     margin: 0;
+    overflow-y: scroll;
 }
 
 .debug {
@@ -106,6 +107,7 @@ div#chat {
 div#chat div#chat-messages {
     overflow: scroll;
     max-height: 320px;
+    max-width: 95%;
     padding: 0 0 40px 0;
     position: relative;
 }
@@ -129,6 +131,10 @@ div#chat div#chat-messages div.message div.date {
 div#chat div#chat-messages div.message div.text {
     background: var(--color-six);
     padding: 5px;
+}
+
+div#chat div#chat-messages div.message div.image img {
+    max-width: 80%;
 }
 
 div#chat div#chat-messages div.message {
@@ -212,6 +218,7 @@ div#chat div#chat-attachments div img {
 
 div#chat div#chat-attachments div.inner>div:focus img {
     width: 24px;
+    background: yellow;
 }
 
 
