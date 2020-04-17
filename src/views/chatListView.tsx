@@ -15,7 +15,7 @@ const BaseTabIndexOffset = 20
 
 type avatar_params = { avatarPath: string; color: string; displayName: string }
 export function Avatar({ avatarPath, color, displayName }: avatar_params) {
-  const codepoint = displayName.codePointAt(0)
+  const codepoint = displayName?.codePointAt(0)
   const initial = codepoint
     ? String.fromCodePoint(codepoint).toUpperCase()
     : '#'
