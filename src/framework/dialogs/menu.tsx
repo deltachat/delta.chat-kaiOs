@@ -38,9 +38,7 @@ function Menu() {
   ])
 
   useEffect(() => {
-    menuOptions.current
-      ?.querySelector('.selected')
-      ?.scrollIntoView({ block: 'nearest' })
+    menuOptions.current?.querySelector('.selected')?.scrollIntoView(true)
   }, [selectionIndex])
 
   useScreenSetup(undefined, true)
