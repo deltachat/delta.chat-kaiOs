@@ -5,11 +5,11 @@
     "test": "tsc && npm run check-formatting",
     "check-formatting": "prettier --check \"src/**/*.{ts,tsx,scss}\"",
     "fix-formatting": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
-    "build": "parcel build src/index.html",
+    "build": "parcel build src/index.html --no-minify",
     "watch": "parcel src/index.html",
     "package": "npm run build && ./tools/package"
   },
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "https://github.com/deltachat/delta.chat-kaiOs"
   },
@@ -23,7 +23,7 @@
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
-    "preact": "^10.0.5",
+    "preact": "^10.4.0",
     "react": "^16.12.0"
   },
   "devDependencies": {
