@@ -8,12 +8,12 @@ rm ./build/delta.chat.zip || true
 
 cp ./metadata.json ./build/tmp/metadata.json
 
-cd build/tmp
+cd dist
 
-zip -jqr application.zip ../../dist
+zip -qr ../build/tmp/application.zip .
 
-cd ..
+cd ../build/tmp
 
-zip -jqr delta.chat.zip tmp
+zip -qr ../delta.chat.zip .
 
 echo "Created delta.chat.zip"
