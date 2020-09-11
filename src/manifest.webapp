@@ -1,41 +1,41 @@
 {
-	"version": "0.1.0",
-	"name": "Delta Chat",
-	"description": "delta.chat app for KaiOs",
-	"launch_path": "/index.html",
-	"type": "certified",
-	"icons": {
-		"56": "/icons/icon-56-56.png",
-		"112": "/icons/icon-112-112.png",
-		"64": "/icons/delta64px.png",
-		"128": "/icons/delta128px.png",
-		"1024": "/icons/delta-logo.svg"
-	},
-	"theme_color": "#41496B",
-	"chrome": {
-        "statusbar": "overlap"
+  "version": "0.1.0",
+  "name": "Delta Chat",
+  "description": "delta.chat app for KaiOs",
+  "launch_path": "/index.html",
+  "type": "certified",
+  "icons": {
+    "56": "/icons/icon-56-56.png",
+    "112": "/icons/icon-112-112.png",
+    "64": "/icons/delta64px.png",
+    "128": "/icons/delta128px.png",
+    "1024": "/icons/delta-logo.svg"
+  },
+  "theme_color": "#41496B",
+  "chrome": {
+    "statusbar": "overlap"
+  },
+  "developer": {
+    "name": "DeltaChat Contributors",
+    "url": "https://github.com/deltachat/delta.chat-kaiOs/Contributors.md"
+  },
+  "messages": [
+    {
+      "alarm": "/index.html"
+    }
+  ],
+  "permissions": {
+    "desktop-notification": {},
+    "geolocation": {
+      "description": "Required to show user's location"
     },
-	"developer": {
-		"name": "DeltaChat Contributors",
-		"url": "https://github.com/deltachat/delta.chat-kaiOs/Contributors.md"
-	},
-	"messages": [
-		{
-			"alarm": "/index.html"
-		}
-	],
-	"permissions": {
-		"desktop-notification": {},
-		"geolocation": {
-			"description": "Required to show user's location"
-		},
-		"spatialnavigation-app-manage": {
-			"navigator.spatialNavigationEnabled": false
-		},
-		"systemXHR": {
-			"description": "Required to load remote content"
-		}
-	},
-	"default_locale": "en-US",
-	"orientation": "portrait"
+    "spatialnavigation-app-manage": {
+      "navigator.spatialNavigationEnabled": false
+    },
+    "systemXHR": {
+      "description": "Required to load remote content"
+    }
+  },
+  "default_locale": "en-US",
+  "orientation": "portrait"
 }

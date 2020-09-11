@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "noImplicitAny": true,
-      "module": "es6",
-      "target": "es2015",
-      "allowJs": true,
-      "experimentalDecorators": true,
-      "moduleResolution": "node",
-      "jsx": "react",
-      "jsxFactory": "h",
-      "allowSyntheticDefaultImports": true
-    }
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es2015",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "allowSyntheticDefaultImports": true
   }
+}
