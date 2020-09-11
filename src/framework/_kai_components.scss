@@ -45,6 +45,7 @@ $kai-software-keys-height: 23px;
   overflow-y: scroll;
   flex-grow: 1;
   position: relative;
+  overflow-x: hidden;
 
   .nav-element {
     position: absolute;
