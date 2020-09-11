@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "tsc && npm run check-formatting",
-    "check-formatting": "prettier --check \"src/**/*.{ts,tsx,scss}\"",
-    "fix-formatting": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
+    "check-formatting": "prettier --check \"{*.json,*.md,src/**/*.{ts,tsx,scss,html,webapp}}\"",
+    "fix-formatting": "prettier --write \"{*.json,*.md,src/**/*.{ts,tsx,scss,html,webapp}}\"",
     "build": "parcel build src/index.html --no-minify",
     "watch": "parcel src/index.html",
     "package": "npm run build && ./tools/package"
