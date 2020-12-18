@@ -60,8 +60,8 @@ export class NavElement {
       <div
         class='nav-element'
         style={{
-          'z-index': index,
-          'background-color': this.transparent ? 'transparent' : 'white',
+          zIndex: index,
+          backgroundColor: this.transparent ? 'transparent' : 'white',
         }}
         key={'screen-' + index}
       >

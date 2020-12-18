@@ -21,7 +21,7 @@ export function Avatar({ avatarPath, color, displayName }: avatar_params) {
     : '#'
 
   return (
-    <div class='avatar' style={{ 'background-color': color || 'grey' }}>
+    <div class='avatar' style={{ backgroundColor: color || 'grey' }}>
       {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span>}
     </div>
   )

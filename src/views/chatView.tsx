@@ -62,7 +62,7 @@ export function ChatView(props: PreactProps) {
         isAMessageSelected ? (
           'Options'
         ) : (
-          <Icon src={fa_paperclip} style={{ 'margin-top': '3px' }} />
+          <Icon svgReference={fa_paperclip} style={{ 'margin-top': '3px' }} />
         )
       ),
       new KeyBinding(
