@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
+    "sourceMap": true,
     "noImplicitAny": true,
     "module": "es6",
     "target": "es2015",
@@ -10,5 +11,6 @@
     "jsx": "react",
     "jsxFactory": "h",
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": ["./src/**/*"]
 }

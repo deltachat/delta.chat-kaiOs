@@ -15,7 +15,7 @@ npm i
 to build
 
 ```sh
-npm run build
+npm run build-prod
 ```
 
 to package
@@ -60,3 +60,9 @@ but select the dist folder instead of the `build/delta.chat.zip` file.
 - https://support.delta.chat/t/delta-chat-for-kaios/684
 - https://preactjs.com/guide/v10/getting-started
 - https://developer.kaiostech.com/design-guide/ui-component
+
+## Tips
+
+### For vs-code users
+
+Make sure the used tsypesript version is the workspace version and not the globaly installed one.

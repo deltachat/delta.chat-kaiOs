@@ -12,14 +12,16 @@ type messageStatusProps = { status: MessageStatus; size: string }
 export function MessageStatusIcon({ status, size }: messageStatusProps) {
   switch (status) {
     case MessageStatus.PENDING:
-      return <Icon src={hourglass} size={size} color='darkgrey' />
+      return <Icon svgReference={hourglass} size={size} color='darkgrey' />
     case MessageStatus.DELIVERED:
-      return <Icon src={check} size={size} color='darkgrey' />
+      return <Icon svgReference={check} size={size} color='darkgrey' />
     case MessageStatus.READ:
-      return <Icon src={check_double} size={size} color='green' />
+      return <Icon svgReference={check_double} size={size} color='green' />
     case MessageStatus.ERROR:
-      return <Icon src={exclaimation} size={size} color='red' />
+      return <Icon svgReference={exclaimation} size={size} color='red' />
     default:
-      return <Icon src={question_circle} size={size} color='darkgrey' />
+      return (
+        <Icon svgReference={question_circle} size={size} color='darkgrey' />
+      )
   }
 }

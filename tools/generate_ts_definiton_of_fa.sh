@@ -16,6 +16,8 @@ EOF
 
 nl=$'\n'
 
+echo "type svgReference = { id: string; viewBox: string }" >> ../src/definitions/icon_definitons.d.ts
+
 for path in @fortawesome/fontawesome-free/svgs/*/*.svg; do
     name=${path##*/}
     base=${name%%.*}
@@ -23,5 +25,5 @@ for path in @fortawesome/fontawesome-free/svgs/*/*.svg; do
     # if [[ $result =~ ^[0-9] ]]; then
     #     result=$( echo $result | sed -E -r "s/^([0-9].*\$)/_\\1/" )
     # fi
-    echo "declare module '$path' {$nl  const fa_$result: string$nl  export default fa_$result$nl}" >> ../src/definitions/icon_definitons.d.ts
+    echo "declare module '$path' {$nl  const fa_$result: svgReference$nl  export default fa_$result$nl}" >> ../src/definitions/icon_definitons.d.ts
 done
