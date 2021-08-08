@@ -10,12 +10,15 @@
     "test": "tsc && npm run check-formatting"
   },
   "dependencies": {
+    "moment": "^2.29.1",
+    "normalize.css": "^8.0.1",
     "preact": "^10.5.13"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.0.0",
     "@vitejs/plugin-legacy": "^1.5.1",
     "adm-zip": "^0.5.5",
+    "sass": "^1.37.5",
     "typescript": "^4.3.2",
     "vite": "^2.4.4",
     "vite-plugin-checker": "^0.3.4",

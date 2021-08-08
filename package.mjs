@@ -16,8 +16,6 @@ import AdmZip from 'adm-zip'
     manifestURL: 'app://ui.kaios.delta.chat/manifest.webapp',
   }
 
-  
-  inner_zip.addLocalFile('./res/manifest.webapp')
   inner_zip.addLocalFolder('./res/icons', 'icons')
   
   await new Promise((res, rej)=>{

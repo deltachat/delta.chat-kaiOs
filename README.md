@@ -15,13 +15,14 @@ npm i
 to build
 
 ```sh
-npm run build-prod
+npm run build
 ```
 
 to package
 
 ```sh
-npm run package
+npm run build
+node package.mjs
 ```
 
 to format the code
@@ -32,7 +33,7 @@ npm run fix-formatting
 
 ## Development
 
-run `npm run watch -- --open` and enable the mobile view for firefox (`ctrl` + `shift` + `m`).
+run `npm run dev` and enable the mobile view for firefox (`ctrl` + `shift` + `m`).
 
 Add a configuration for your phone into the mobild view and select it. (only the dimensions are important)
 
@@ -47,13 +48,14 @@ For closest-to-real experience make sure you have all the fonts from `developmen
 ## Packaging
 
 ```
-npm run package
+npm run build
+node package.mjs
 ```
 
 (TODO): add an option to exclude the source maps (this will save much space)
 
 If you want to load the app over WebIDE run the package command,
-but select the dist folder instead of the `build/delta.chat.zip` file.
+but select the dist folder instead of the omnisd file.
 
 ## used stuff / usefull links
 

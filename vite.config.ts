@@ -12,7 +12,8 @@ export default defineConfig({
     checker({ typescript: true }),
     legacy({
       targets: ['defaults', 'IE 11', 'firefox 37'],
-    })
+    }),
   ],
-  base: "./"
+  base: './',
+  build: { assetsDir: '.' },
 })
