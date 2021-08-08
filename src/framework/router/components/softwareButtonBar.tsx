@@ -13,8 +13,8 @@ export function SoftwareKeys({ keymap }: { keymap: KeyBinding[] }) {
       >
         {keymap?.find(({ key }) => key === Key.CSK)?.label}
       </button>
-      <button tabIndex={-1} onMouseDown={emulateKeyPress.bind(null, Key.RIGHT)}>
-        {keymap?.find(({ key }) => key === Key.RIGHT)?.label}
+      <button tabIndex={-1} onMouseDown={emulateKeyPress.bind(null, Key.RSK)}>
+        {keymap?.find(({ key }) => key === Key.RSK)?.label}
       </button>
     </div>
   )
