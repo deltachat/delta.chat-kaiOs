@@ -5,9 +5,9 @@ import { useRef, useEffect } from 'preact/hooks'
 import { PreactProps } from '../framework/util'
 import { useKeyMap, useScreen, useScreenSetup } from '../framework/router'
 
-import {dc_core} from "../manager";
+import { dc_core } from '../manager'
 
-export function ConnectView (props: PreactProps) {
+export function ConnectView(props: PreactProps) {
   const { nav } = useScreen()
   const content: RefObject<HTMLDivElement> = useRef(null)
 
@@ -34,13 +34,17 @@ export function ConnectView (props: PreactProps) {
 
   useScreenSetup('Delta Chat')
 
-  useEffect(() => {
-    
-  })
+  useEffect(() => {})
 
-  return <div class='connect-view' ref={content}>
-    <h3>Connect to Core</h3>
-    <p>The core is a native executable that needs to be running for DC to work</p>
-    <p>But currently its not connected, press retry to try connecting again</p>
-  </div>
+  return (
+    <div class='connect-view' ref={content}>
+      <h3>Connect to Core</h3>
+      <p>
+        The core is a native executable that needs to be running for DC to work
+      </p>
+      <p>
+        But currently its not connected, press retry to try connecting again
+      </p>
+    </div>
+  )
 }

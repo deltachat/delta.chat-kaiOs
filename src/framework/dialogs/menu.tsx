@@ -18,7 +18,7 @@ function Menu() {
   const [selectionIndex, setSelection] = useState(0)
 
   const updateSelection = (n: 1 | -1) =>
-    setSelection(s => clamp(0, s + n, data.entries.length - 1))
+    setSelection((s) => clamp(0, s + n, data.entries.length - 1))
 
   useKeyMap([
     new KeyBinding(
@@ -51,7 +51,7 @@ function Menu() {
             class={'item' + (index === selectionIndex ? ' selected' : '')}
             tabIndex={4}
             key={'mitem' + index}
-            onClick={_ => resolve(index)}
+            onClick={(_) => resolve(index)}
           >
             {item}
           </div>

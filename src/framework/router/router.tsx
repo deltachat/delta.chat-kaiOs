@@ -4,10 +4,10 @@ import { SoftwareKeys } from './components/softwareButtonBar'
 import { Header } from './components/header'
 import { NavElement } from './navElement'
 
-import type { h} from 'preact'
+import type { h } from 'preact'
 
 function getTopElement<T>(stack: T[]): T | null {
-  if (stack.length > 0){
+  if (stack.length > 0) {
     return stack[stack.length - 1]
   } else {
     return null
@@ -57,7 +57,7 @@ export class Router extends Component<{}, any> {
 
   closeScreen(element: NavElement) {
     console.debug('[nav] closeScreen', element)
-    this.stack = this.stack.filter(el => el !== element)
+    this.stack = this.stack.filter((el) => el !== element)
     this.forceUpdate() // trigger rerender
   }
 

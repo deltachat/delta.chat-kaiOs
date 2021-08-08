@@ -13,7 +13,11 @@ import { openMenu } from '../framework/dialogs/menu'
 
 const BaseTabIndexOffset = 20
 
-type avatar_params = { avatarPath: string|null; color: string; displayName: string }
+type avatar_params = {
+  avatarPath: string | null
+  color: string
+  displayName: string
+}
 export function Avatar({ avatarPath, color, displayName }: avatar_params) {
   const codepoint = displayName?.codePointAt(0)
   const initial = codepoint
@@ -153,7 +157,7 @@ export const ChatListView = (props: PreactProps) => {
   return (
     <div>
       <div ref={list}>
-        {context.chatList.map(item => (
+        {context.chatList.map((item) => (
           <ChatListItemElement
             item={item}
             focusUpdate={focusUpdate}

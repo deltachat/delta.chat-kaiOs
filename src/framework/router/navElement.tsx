@@ -1,7 +1,7 @@
 import { createContext } from 'preact'
 import { KeyBinding } from '../keymanager'
 import { Router } from './router'
-import type { h} from 'preact'
+import type { h } from 'preact'
 
 type NavElementContextType = {
   nav: NavRemote
@@ -11,7 +11,9 @@ type NavElementContextType = {
   initData: { [key: string]: any }
 }
 
-export const NavElementContext = createContext<NavElementContextType|null>(null)
+export const NavElementContext = createContext<NavElementContextType | null>(
+  null
+)
 
 export class NavElement {
   public keymap: KeyBinding[] = []

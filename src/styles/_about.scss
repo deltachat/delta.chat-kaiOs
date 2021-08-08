@@ -1,3 +1,15 @@
 .about {
-    padding: 0px 4px;
+  padding: 0px 4px;
+}
+.about-info-element {
+  padding: 0px 4px;
+  .key {
+    font-size: small;
+    background: wheat;
+  }
+
+  .value {
+    font-size: small;
+    word-wrap: break-word;
+  }
 }

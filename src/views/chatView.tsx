@@ -24,9 +24,7 @@ function MessageElement(props: any) {
       onBlur={focusUpdate}
       tabIndex={BaseTabIndexOffset + message.messageId}
     >
-      <div class="text">
-        {message.text}
-      </div>
+      <div class='text'>{message.text}</div>
       <div class='meta'>
         <span class='timestamp'>{moment(message.timestamp).fromNow()}</span>
         {message.isOutgoing() && (
@@ -62,7 +60,7 @@ export function ChatView(props: PreactProps) {
         isAMessageSelected ? (
           'Options'
         ) : (
-          <img src="../images/icons/paperclip.svg" class="attachment-icon"/>
+          <img src='../images/icons/paperclip.svg' class='attachment-icon' />
         )
       ),
       new KeyBinding(
@@ -114,7 +112,7 @@ export function ChatView(props: PreactProps) {
     <div class='content'>
       {JSON.stringify(data)}
       <div ref={list}>
-        {context.getAllMessagesForChat(data.chatId).map(message => (
+        {context.getAllMessagesForChat(data.chatId).map((message) => (
           <MessageElement message={message} focusUpdate={focusUpdate} />
         ))}
         <input

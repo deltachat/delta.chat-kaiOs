@@ -5,6 +5,7 @@
 @import 'chat_list';
 @import 'about';
 @import 'status_icon';
+@import 'login_view';
 
 [hidden] {
   display: none !important;
@@ -24,7 +25,6 @@ html {
   // defaults
   --icon-size: 1em;
   font-family: 'Open Sans', 'Noto Sans', 'Openmoji', sans-serif;
-
 
   --messageStatusIcon: green;
   --errorColor: red;

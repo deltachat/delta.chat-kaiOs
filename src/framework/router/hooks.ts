@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'preact/hooks'
 import { NavElementContext } from './navElement'
 import { KeyBinding } from '../keymanager'
-import type {h} from 'preact'
+import type { h } from 'preact'
 
 export function useKeyMap(
   keymap: KeyBinding[],
@@ -15,7 +15,7 @@ export function useKeyMap(
 }
 
 export function useScreenSetup(
-  header: string | h.JSX.Element| undefined,
+  header: string | h.JSX.Element | undefined,
   transparent = false
 ) {
   const context = useContext(NavElementContext)
