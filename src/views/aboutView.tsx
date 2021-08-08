@@ -6,7 +6,7 @@ import aboutMd from '../about_information.md'
 import { PreactProps } from '../framework/util'
 import { useKeyMap, useScreen, useScreenSetup } from '../framework/router'
 
-export const AboutView = (props: PreactProps) => {
+export function AboutView (props: PreactProps) {
   const { nav } = useScreen()
   const about: RefObject<HTMLDivElement> = useRef(null)
 

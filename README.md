@@ -6,10 +6,17 @@ You will need a rooted phone to run it when its done
 
 ## Build
 
-requirement is nodejs >= 10
+requirements:
+- nodejs >= 16
+- rustup
+
+```sh
+git submodule update --recursive --init
+```
 
 ```sh
 npm i
+npm run build:backend:types
 ```
 
 to build
@@ -33,7 +40,12 @@ npm run fix-formatting
 
 ## Development
 
-run `npm run dev` and enable the mobile view for firefox (`ctrl` + `shift` + `m`) or (`command` + `option` + `m` on macOS).
+First open a new seperate terminal and start the native backend -> look into [dc_cmd_api/README.MD](dc_cmd_api/README.MD) for instructions, though in essence its just:
+```sh
+cd dc_cmd_api && RUST_LOG=info cargo run --features webserver
+```
+
+Then run `npm run dev` and enable the mobile view for firefox (`ctrl` + `shift` + `m`) or (`command` + `option` + `m` on macOS).
 
 Add a configuration for your phone into the mobild view and select it. (only the dimensions are important)
 

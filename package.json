@@ -7,9 +7,11 @@
     "serve": "vite preview",
     "check-formatting": "prettier --check \"{*.json,*.md,src/**/*.{ts,tsx,scss,html,webapp}}\"",
     "fix-formatting": "prettier --write \"{*.json,*.md,src/**/*.{ts,tsx,scss,html,webapp}}\"",
-    "test": "tsc && npm run check-formatting"
+    "test": "tsc && npm run check-formatting",
+    "build:backend:types": "cd ./dc_cmd_api/typescript && npm i && npm run build"
   },
   "dependencies": {
+    "dc_cmd_api": "file:dc_cmd_api/typescript",
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "preact": "^10.5.13"

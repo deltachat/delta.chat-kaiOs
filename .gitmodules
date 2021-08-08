@@ -1,0 +1,3 @@
+[submodule "dc_cmd_api"]
+	path = dc_cmd_api
+	url = https://github.com/deltachat/dc_cmd_api.git
