@@ -33,7 +33,7 @@ npm run fix-formatting
 
 ## Development
 
-run `npm run dev` and enable the mobile view for firefox (`ctrl` + `shift` + `m`).
+run `npm run dev` and enable the mobile view for firefox (`ctrl` + `shift` + `m`) or (`control` + `option` + `m` on macOS).
 
 Add a configuration for your phone into the mobild view and select it. (only the dimensions are important)
 
