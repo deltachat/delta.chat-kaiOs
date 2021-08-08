@@ -1,5 +1,4 @@
-import { h, RefObject } from 'preact'
-import { context } from '../manager'
+import { RefObject } from 'preact'
 import { KeyBinding, Key } from '../framework/keymanager'
 import { useRef, useEffect } from 'preact/hooks'
 
@@ -26,10 +25,10 @@ export const AboutView = (props: PreactProps) => {
     ),
     //scroll up and down
     new KeyBinding(Key.UP, () => {
-      about.current?.parentElement.scrollBy(0, -50)
+      about.current?.parentElement?.scrollBy(0, -50)
     }),
     new KeyBinding(Key.DOWN, () => {
-      about.current?.parentElement.scrollBy(0, 50)
+      about.current?.parentElement?.scrollBy(0, 50)
     }),
   ])
 
