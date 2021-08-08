@@ -62,7 +62,7 @@ export function ChatView(props: PreactProps) {
         isAMessageSelected ? (
           'Options'
         ) : (
-          <span class="attachment-icon"></span>
+          <img src="../images/icons/paperclip.svg" class="attachment-icon"/>
         )
       ),
       new KeyBinding(

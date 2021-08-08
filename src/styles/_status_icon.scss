@@ -14,26 +14,18 @@
   margin-left: 2px;
 
   &.sending {
-    @include color-svg(
-      '../images/icons/sending.svg',
-      var(--messageStatusIconSending)
-    );
-    
     animation: __status-icon--spinning 4s linear infinite;
     // ensure the element takes always the same width:
     width: 12px;
     margin-left: 8px;
   }
-  &.delivered {
-    @include color-svg('../images/icons/sent.svg', var(--messageStatusIcon));
-  }
+  // &.delivered {
+  // }
 
-  &.read {
-    @include color-svg('../images/icons/read.svg', var(--messageStatusIcon));
-  }
+  // &.read {
+  // }
 
   &.error {
-    @include color-svg('../images/icons/error.svg', var(--errorColor));
     // ensure the element takes always the same width:
     width: 12px;
     margin-left: 8px;

@@ -3,13 +3,13 @@ import { MessageStatus } from '../mock/deltachat'
 export function MessageStatusIcon({ status }: { status: MessageStatus }) {
   switch (status) {
     case MessageStatus.PENDING:
-      return <span class="status-icon sending"></span>
+      return <img src="../images/icons/sending.svg" class="status-icon sending" />
     case MessageStatus.DELIVERED:
-      return <span class="status-icon delivered"></span>
+      return <img src="../images/icons/sent.svg" class="status-icon delivered"/>
     case MessageStatus.READ:
-      return <span class="status-icon read"></span>
+      return <img src="../images/icons/read.svg" class="status-icon read"/>
     case MessageStatus.ERROR:
-      return <span class="status-icon error"></span>
+      return <img src="../images/icons/error.svg" class="status-icon error"/>
     default:
       return (
         <span class="status-icon"></span>

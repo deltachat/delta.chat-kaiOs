@@ -46,14 +46,10 @@
   margin: 4pt;
 }
 
-span.attachment-icon {
+img.attachment-icon {
   height: 22px;
   width: 22px;
   transform: rotate(-45deg);
   display: inline-block;
   vertical-align: text-bottom;
-  @include color-svg(
-    '../images/icons/paperclip.svg',
-    var(--software-keys-text)
-  );
 }

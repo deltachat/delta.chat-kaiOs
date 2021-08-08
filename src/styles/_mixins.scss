@@ -1,5 +1,6 @@
-@mixin color-svg($svg, $color, $size: 100%) {
-    -webkit-mask: url($svg) no-repeat center;
-    -webkit-mask-size: $size;
-    background-color: $color;
-  }
+// @mixin color-svg($svg, $color, $size: 100%) {
+//   // Doesn't work on kaiOS
+//     -webkit-mask: url($svg) no-repeat center;
+//     -webkit-mask-size: $size;
+//     background-color: $color;
+//   }
