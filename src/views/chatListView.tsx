@@ -92,7 +92,7 @@ export const ChatListView = (props: PreactProps) => {
       Key.LSK,
       async () => {
         const selection = await openMenu(
-          ['Settings', 'Verify contact (qr)', 'About', 'Debug Menu'],
+          ['Settings', 'Scan QR', 'About', 'Debug Menu'],
           nav
         )
         if (selection !== null) {
