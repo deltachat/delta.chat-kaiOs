@@ -1,7 +1,7 @@
 import { dc_core } from '../manager'
 import { RefObject } from 'preact'
 import { KeyBinding, Key } from '../framework/keymanager'
-import { useRef, useEffect, useState } from 'preact/hooks'
+import { useRef, useEffect, useState, useMemo, useCallback } from 'preact/hooks'
 import { debounce, PreactProps } from '../framework/util'
 import moment from 'moment'
 import { MessageStatusIcon } from '../components/messageStatus'
@@ -174,21 +174,30 @@ export const ChatListView = (props: PreactProps) => {
 
   const [chatList, setChatList] = useState<ChatListItemFetchResult_Type[]>([])
 
-  useEffect(() => {
-    const refresh = async () => {
-      const entries = await dc_core.raw_api.sc_get_chatlist_entries(
-        0,
-        null,
-        null
-      )
-      const entry_store =
-        await dc_core.raw_api.sc_get_chatlist_items_by_entries(entries)
-      const chatlist = entries.map(([chatId]) => entry_store[chatId])
-      console.log({ entries, entry_store, chatlist })
-      setChatList(chatlist)
-    }
+  const refresh = useCallback(async () => {
+    const entries = await dc_core.raw_api.sc_get_chatlist_entries(0, null, null)
+    const entry_store = await dc_core.raw_api.sc_get_chatlist_items_by_entries(
+      entries
+    )
+    const chatlist = entries.map(([chatId]) => entry_store[chatId])
+    console.log({ entries, entry_store, chatlist })
+    setChatList(chatlist)
+  }, [])
 
+  const debouncedRefresh = useMemo(() => debounce(refresh, 350), [])
+
+  useEffect(() => {
     refresh()
+    dc_core.addListener('MSGS_CHANGED', debouncedRefresh)
+    dc_core.addListener('MSG_READ', debouncedRefresh)
+    dc_core.addListener('CHAT_MODIFIED', debouncedRefresh)
+    dc_core.addListener('INCOMING_MSG', debouncedRefresh)
+    return () => {
+      dc_core.removeListener('MSGS_CHANGED', debouncedRefresh)
+      dc_core.removeListener('MSG_READ', debouncedRefresh)
+      dc_core.removeListener('CHAT_MODIFIED', debouncedRefresh)
+      dc_core.removeListener('INCOMING_MSG', debouncedRefresh)
+    }
   }, [])
 
   // TODO archived chats toggle
