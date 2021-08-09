@@ -1,15 +1,19 @@
 .about {
-  padding: 0px 4px;
-}
-.about-info-element {
-  padding: 0px 4px;
-  .key {
-    font-size: small;
-    background: wheat;
+  height: 100%;
+  overflow-x: scroll;
+  .about-content {
+    padding: 0px 4px;
   }
+  .about-info-element {
+    padding: 0px 4px;
+    .key {
+      font-size: small;
+      background: wheat;
+    }
 
-  .value {
-    font-size: small;
-    word-wrap: break-word;
+    .value {
+      font-size: small;
+      word-wrap: break-word;
+    }
   }
 }

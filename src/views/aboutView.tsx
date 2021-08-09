@@ -51,8 +51,8 @@ export function AboutView(props: PreactProps) {
   // - debug menu / log view ?
 
   return (
-    <div>
-      <div class='about' ref={about}></div>
+    <div class='about'>
+      <div class='about-content' ref={about}></div>
 
       {info &&
         Object.keys(info).map((key) => {

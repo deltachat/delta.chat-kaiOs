@@ -21,7 +21,7 @@ export function ConnectView(props: PreactProps) {
           console.log(error)
         }
       },
-      'Try Again'
+      'Try'
     ),
     //scroll up and down
     new KeyBinding(Key.UP, () => {

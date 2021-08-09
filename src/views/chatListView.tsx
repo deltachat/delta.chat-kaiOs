@@ -1,6 +1,5 @@
-import { context } from '../manager'
+import { dc_core } from '../manager'
 import { RefObject } from 'preact'
-import { ChatListItem } from '../mock/deltachat'
 import { KeyBinding, Key } from '../framework/keymanager'
 import { useRef, useEffect, useState } from 'preact/hooks'
 import { debounce, PreactProps } from '../framework/util'
@@ -10,11 +9,12 @@ import { useKeyMap, useScreen } from '../framework/router'
 import { ChatView } from './chatView'
 import { AboutView } from './aboutView'
 import { openMenu } from '../framework/dialogs/menu'
+import { ChatListItemFetchResult_Type } from '../../dc_cmd_api/typescript/src/bindings'
 
 const BaseTabIndexOffset = 20
 
 type avatar_params = {
-  avatarPath: string | null
+  avatarPath?: string | null
   color: string
   displayName: string
 }
@@ -33,45 +33,74 @@ export function Avatar({ avatarPath, color, displayName }: avatar_params) {
 
 export function ChatListItemElement({
   item,
-  focusUpdate,
-  onClick,
 }: {
-  item: ChatListItem
-  focusUpdate: (ev: FocusEvent) => void
-  onClick: any
+  item: ChatListItemFetchResult_Type
 }) {
+  const { nav } = useScreen()
+
+  if (item.type === 'ArchiveLink') {
+    return (
+      <div
+        class='chat-list-item archive-link'
+        tabIndex={BaseTabIndexOffset}
+        onClick={() => {
+          alert('TODO')
+        }}
+      >
+        Archive Link
+      </div>
+    )
+  }
+  let content
+  if (item.type === 'ChatListItem') {
+    content = (
+      <>
+        <Avatar
+          avatarPath={item.avatarPath}
+          color={item.color}
+          displayName={item.name}
+        />
+        <div class='main-part'>
+          <div class='name'>{item.name}</div>
+          <div class='summary'>
+            {item.summaryText1} {item.summaryText2}
+          </div>
+        </div>
+        <div class='meta'>
+          {item.lastUpdated && (
+            <div class='timestamp'>{moment(item.lastUpdated).fromNow()}</div>
+          )}
+          <div class='status'>
+            {item.summaryStatus !== 0 && (
+              <MessageStatusIcon status={item.summaryStatus} />
+            )}
+          </div>
+        </div>
+        <div class='unread-counter' hidden={item.freshMessageCounter === 0}>
+          {item.freshMessageCounter}
+        </div>
+      </>
+    )
+  } else {
+    content = (
+      <>
+        <Avatar color='grey' displayName={'?'} />
+        <div class='main-part'>
+          <div class='name'>{`Error Loading Chat id:${item.id}`}</div>
+          <div class='summary'>{String(item.error)}</div>
+        </div>
+      </>
+    )
+  }
   return (
     <div
       class='chat-list-item'
-      onFocus={focusUpdate}
-      onBlur={focusUpdate}
-      tabIndex={BaseTabIndexOffset + item.ChatId}
-      onClick={onClick}
+      tabIndex={BaseTabIndexOffset + item.id}
+      onClick={() => {
+        nav.setRoot(ChatView, { chatId: item.id })
+      }}
     >
-      <Avatar
-        avatarPath={item.avatarImage}
-        color={item.avatarColor}
-        displayName={item.name}
-      />
-      <div class='main-part'>
-        <div class='name'>{item.name}</div>
-        <div class='summary'>
-          {item.summary.text1} {item.summary.text2}
-        </div>
-      </div>
-      <div class='meta'>
-        <div class='timestamp'>
-          {moment(item.lastUpdatedTimestamp).fromNow()}
-        </div>
-        <div class='status'>
-          {item.summary.status && (
-            <MessageStatusIcon status={item.summary.status} />
-          )}
-        </div>
-      </div>
-      <div class='unread-counter' hidden={item.freshMessageCount === 0}>
-        {item.freshMessageCount}
-      </div>
+      {content}
     </div>
   )
 }
@@ -80,7 +109,6 @@ export const ChatListView = (props: PreactProps) => {
   const { nav } = useScreen()
 
   const list: RefObject<HTMLDivElement> = useRef(null)
-  const [_aChatSelected, setAChatSelected] = useState(false)
 
   useEffect(() => {
     if (!list.current?.querySelector(':focus'))
@@ -144,26 +172,33 @@ export const ChatListView = (props: PreactProps) => {
     }),
   ])
 
-  const OpenChat = (chatId: number) => {
-    nav.setRoot(ChatView, { chatId })
-  }
+  const [chatList, setChatList] = useState<ChatListItemFetchResult_Type[]>([])
 
-  const focusUpdate = debounce(
-    // this updates the state on selection
-    () => setAChatSelected(list.current?.querySelector(':focus') !== null),
-    100
-  )
+  useEffect(() => {
+    const refresh = async () => {
+      const entries = await dc_core.raw_api.sc_get_chatlist_entries(
+        0,
+        null,
+        null
+      )
+      const entry_store =
+        await dc_core.raw_api.sc_get_chatlist_items_by_entries(entries)
+      const chatlist = entries.map(([chatId]) => entry_store[chatId])
+      console.log({ entries, entry_store, chatlist })
+      setChatList(chatlist)
+    }
+
+    refresh()
+  }, [])
+
+  // TODO archived chats toggle
 
   return (
     <div>
       <div ref={list}>
-        {context.chatList.map((item) => (
-          <ChatListItemElement
-            item={item}
-            focusUpdate={focusUpdate}
-            onClick={OpenChat.bind(null, item.ChatId)}
-          />
-        ))}
+        {chatList.map((item) => {
+          return <ChatListItemElement item={item} />
+        })}
       </div>
     </div>
   )
