@@ -6,6 +6,64 @@ import { useKeyMap, useScreen, useScreenSetup } from '../framework/router'
 import { RefObject } from 'preact'
 import { dc_core } from '../manager'
 import { ChatListView } from './chatListView'
+import { Event } from '../../dc_cmd_api/typescript/src/deltachat'
+
+import { showAlert } from '../framework/dialogs/alert'
+
+function LoginProgress() {
+  const { nav, data } = useScreen()
+
+  const { account_id } = data
+
+  const [progressState, setProgressState] = useState<{
+    progress: number
+    comment: string | null
+  }>({ progress: 0, comment: null })
+
+  useKeyMap([
+    new KeyBinding(
+      Key.LSK,
+      async () => {
+        await dc_core.raw_api.sc_stop_ongoing_process()
+      },
+      'Cancel'
+    ),
+  ])
+
+  useEffect(() => {
+    const updateProgress = (ev: Event) => {
+      console.info({ progress: ev.field1, account_id })
+      if (ev.contextId !== account_id) {
+        return
+      }
+
+      if (ev.field1 === 1000) {
+        nav.closeCurrent()
+      }
+
+      setProgressState({
+        progress: ev.field1 as number,
+        comment: ev.field2 as string | null,
+      })
+    }
+
+    dc_core.addListener('CONFIGURE_PROGRESS', updateProgress)
+    return () => dc_core.removeListener('CONFIGURE_PROGRESS', updateProgress)
+  })
+
+  useScreenSetup(undefined, true)
+
+  return (
+    <div class='bf-menu-popup'>
+      <div class='menu'>
+        <progress value={progressState.progress / 10} max={100}>
+          {progressState.progress / 10} %
+        </progress>
+        {progressState.progress / 10} %{progressState.comment}
+      </div>
+    </div>
+  )
+}
 
 async function login({
   email,
@@ -63,15 +121,24 @@ export function LoginView(props: PreactProps) {
         : () => {
             ;(async () => {
               setWorking(true)
+              let account_id = await dc_core.raw_api.get_selected_account_id()
+              let closeProgressDialog = nav.push(LoginProgress, { account_id })
               try {
                 const email = emailElem.current?.value
                 const password = passwordElem.current?.value
+                if (!account_id) {
+                  throw new Error('no account selected')
+                }
                 await login({ email, password })
-                nav.setRoot(ChatListView)
+
+                if (await dc_core.raw_api.sc_is_configured()) {
+                  nav.push(ChatListView)
+                }
               } catch (error) {
-                alert(error)
+                showAlert(nav, 'Login failed', error)
               } finally {
                 setWorking(false)
+                closeProgressDialog()
               }
             })()
           },

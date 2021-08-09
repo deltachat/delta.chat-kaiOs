@@ -125,7 +125,7 @@ export const ChatListView = (props: PreactProps) => {
       },
       'Select'
     ),
-    new KeyBinding(Key.RSK, () => {}),
+    new KeyBinding(Key.RSK, () => {}, 'New'),
     new KeyBinding(Key.UP, () => {
       const target = list.current?.querySelector(':focus')
         ?.previousSibling as HTMLDivElement

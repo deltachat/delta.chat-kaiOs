@@ -42,8 +42,10 @@ export class Router extends Component<{}, any> {
     initData?: { [key: string]: any }
   ) {
     console.debug('[nav] pushScreen', screen, initData)
-    this.stack.push(this.createNavElement(screen, initData))
+    let navElement = this.createNavElement(screen, initData)
+    this.stack.push(navElement)
     this.forceUpdate() // trigger rerender
+    return () => navElement.context.nav.closeCurrent()
   }
 
   setRootScreen(
