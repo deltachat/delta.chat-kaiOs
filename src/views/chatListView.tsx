@@ -1,5 +1,5 @@
 import { context } from '../manager'
-import { h, RefObject } from 'preact'
+import { RefObject } from 'preact'
 import { ChatListItem } from '../mock/deltachat'
 import { KeyBinding, Key } from '../framework/keymanager'
 import { useRef, useEffect, useState } from 'preact/hooks'
@@ -13,7 +13,7 @@ import { openMenu } from '../framework/dialogs/menu'
 
 const BaseTabIndexOffset = 20
 
-type avatar_params = { avatarPath: string; color: string; displayName: string }
+type avatar_params = { avatarPath: string|null; color: string; displayName: string }
 export function Avatar({ avatarPath, color, displayName }: avatar_params) {
   const codepoint = displayName?.codePointAt(0)
   const initial = codepoint
@@ -21,7 +21,7 @@ export function Avatar({ avatarPath, color, displayName }: avatar_params) {
     : '#'
 
   return (
-    <div class='avatar' style={{ 'background-color': color || 'grey' }}>
+    <div class='avatar' style={{ backgroundColor: color || 'grey' }}>
       {avatarPath ? <img src={avatarPath} /> : <span>{initial}</span>}
     </div>
   )
@@ -61,7 +61,7 @@ export function ChatListItemElement({
         </div>
         <div class='status'>
           {item.summary.status && (
-            <MessageStatusIcon status={item.summary.status} size='14px' />
+            <MessageStatusIcon status={item.summary.status} />
           )}
         </div>
       </div>

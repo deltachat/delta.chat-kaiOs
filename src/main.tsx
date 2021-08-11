@@ -1,7 +1,9 @@
-import { h, render } from 'preact'
+import { render } from 'preact'
 import { useRef, useEffect } from 'preact/hooks'
 import { ChatListView } from './views/chatListView'
 import { Router } from './framework/router'
+
+import './styles/main.scss'
 
 function App(props: any) {
   const navRef = useRef<Router>()
@@ -17,4 +19,4 @@ function App(props: any) {
   )
 }
 
-render(<App />, document.body)
+render(<App />, document.getElementById('app')!)

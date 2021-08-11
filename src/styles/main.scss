@@ -1,6 +1,10 @@
-@import '_chat_view';
-@import '_chat_list';
+@import '_mixins';
 @import '../framework/kai_components';
+@import 'normalize.css/normalize.css';
+@import 'chat_view';
+@import 'chat_list';
+@import 'about';
+@import 'status_icon';
 
 [hidden] {
   display: none !important;
@@ -20,6 +24,10 @@ html {
   // defaults
   --icon-size: 1em;
   font-family: 'Open Sans', 'Noto Sans', 'Openmoji', sans-serif;
+
+
+  --messageStatusIcon: green;
+  --errorColor: red;
 }
 
 .icon {

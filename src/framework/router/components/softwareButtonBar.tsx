@@ -1,4 +1,3 @@
-import { h } from 'preact'
 import { Key, KeyBinding } from '../../keymanager'
 
 export function SoftwareKeys({ keymap }: { keymap: KeyBinding[] }) {

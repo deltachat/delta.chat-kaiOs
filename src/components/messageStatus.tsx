@@ -1,25 +1,18 @@
-import { h } from 'preact'
 import { MessageStatus } from '../mock/deltachat'
-import { Icon } from './icon'
 
-import hourglass from '@fortawesome/fontawesome-free/svgs/regular/hourglass.svg'
-import check from '@fortawesome/fontawesome-free/svgs/solid/check.svg'
-import check_double from '@fortawesome/fontawesome-free/svgs/solid/check-double.svg'
-import exclaimation from '@fortawesome/fontawesome-free/svgs/solid/exclamation-circle.svg'
-import question_circle from '@fortawesome/fontawesome-free/svgs/solid/question-circle.svg'
-
-type messageStatusProps = { status: MessageStatus; size: string }
-export function MessageStatusIcon({ status, size }: messageStatusProps) {
+export function MessageStatusIcon({ status }: { status: MessageStatus }) {
   switch (status) {
     case MessageStatus.PENDING:
-      return <Icon src={hourglass} size={size} color='darkgrey' />
+      return <img src="../images/icons/sending.svg" class="status-icon sending" />
     case MessageStatus.DELIVERED:
-      return <Icon src={check} size={size} color='darkgrey' />
+      return <img src="../images/icons/sent.svg" class="status-icon delivered"/>
     case MessageStatus.READ:
-      return <Icon src={check_double} size={size} color='green' />
+      return <img src="../images/icons/read.svg" class="status-icon read"/>
     case MessageStatus.ERROR:
-      return <Icon src={exclaimation} size={size} color='red' />
+      return <img src="../images/icons/error.svg" class="status-icon error"/>
     default:
-      return <Icon src={question_circle} size={size} color='darkgrey' />
+      return (
+        <span class="status-icon"></span>
+      )
   }
 }

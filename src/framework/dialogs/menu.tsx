@@ -1,7 +1,7 @@
 import { useScreen, useKeyMap, useScreenSetup } from '../router'
 import { KeyBinding, Key } from '../keymanager'
-import { useRef, useEffect, useLayoutEffect, useState } from 'preact/hooks'
-import { RefObject, h } from 'preact'
+import { useRef, useEffect, useState } from 'preact/hooks'
+import { RefObject } from 'preact'
 import { NavRemote } from '../router/navElement'
 import { clamp } from '../util'
 

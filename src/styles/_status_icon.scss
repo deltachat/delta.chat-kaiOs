@@ -1,0 +1,33 @@
+/* Message Status */
+
+@keyframes __status-icon--spinning {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.status-icon {
+  width: 18px; // respect the 1.5:1 aspect ratio (dictated by delivered & seen icon)
+  height: 12px;
+  display: inline-block;
+  margin-left: 2px;
+
+  &.sending {
+    animation: __status-icon--spinning 4s linear infinite;
+    // ensure the element takes always the same width:
+    width: 12px;
+    margin-left: 8px;
+  }
+  // &.delivered {
+  // }
+
+  // &.read {
+  // }
+
+  &.error {
+    // ensure the element takes always the same width:
+    width: 12px;
+    margin-left: 8px;
+  }
+}

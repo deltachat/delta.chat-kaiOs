@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "name": "Delta Chat",
   "description": "delta.chat app for KaiOs",
-  "origin": "app://kaios.delta.chat",
+  "origin": "app://ui.kaios.delta.chat",
   "launch_path": "/index.html",
   "type": "certified",
   "icons": {

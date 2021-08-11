@@ -1,11 +1,17 @@
-import { h, Component } from 'preact'
+import { Component } from 'preact'
 import { Key } from '../keymanager'
 import { SoftwareKeys } from './components/softwareButtonBar'
 import { Header } from './components/header'
 import { NavElement } from './navElement'
 
-function getTopElement<T>(stack: T[]): T {
-  return stack.length > 0 && stack[stack.length - 1]
+import type { h} from 'preact'
+
+function getTopElement<T>(stack: T[]): T | null {
+  if (stack.length > 0){
+    return stack[stack.length - 1]
+  } else {
+    return null
+  }
 }
 
 export class Router extends Component<{}, any> {
@@ -19,16 +25,16 @@ export class Router extends Component<{}, any> {
         <div class='router-content'>
           {this.stack.map((element, index) => element.renderFunction(index))}
         </div>
-        <SoftwareKeys keymap={top_element.keymap} />
+        <SoftwareKeys keymap={top_element?.keymap || []} />
       </div>
     )
   }
 
   createNavElement(
     screen: (props: any) => h.JSX.Element,
-    initData: { [key: string]: any }
+    initData: { [key: string]: any } | undefined
   ) {
-    return new NavElement(screen, initData, this)
+    return new NavElement(screen, initData || {}, this)
   }
 
   pushScreen(

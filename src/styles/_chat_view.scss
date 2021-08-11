@@ -2,11 +2,21 @@
   border-radius: 10px;
 
   margin: 2px;
-  padding: 5px;
+
+  .text {
+    padding: 5px;
+  }
 
   .meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 1em;
+    margin-right: 5px;
+    padding-bottom: 1px;
     .timestamp {
-      font-size: 0.5em;
+      font-size: 0.6em;
+      opacity: 0.6;
     }
     .status {
     }
@@ -34,4 +44,12 @@
 .message-input {
   width: 90%;
   margin: 4pt;
+}
+
+img.attachment-icon {
+  height: 22px;
+  width: 22px;
+  transform: rotate(-45deg);
+  display: inline-block;
+  vertical-align: text-bottom;
 }

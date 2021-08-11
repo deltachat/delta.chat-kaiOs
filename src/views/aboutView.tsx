@@ -1,9 +1,8 @@
-import { h, RefObject } from 'preact'
-import { context } from '../manager'
+import { RefObject } from 'preact'
 import { KeyBinding, Key } from '../framework/keymanager'
 import { useRef, useEffect } from 'preact/hooks'
 
-import * as aboutMd from '../about_information.md'
+import aboutMd from '../about_information.md'
 import { PreactProps } from '../framework/util'
 import { useKeyMap, useScreen, useScreenSetup } from '../framework/router'
 
@@ -26,17 +25,17 @@ export const AboutView = (props: PreactProps) => {
     ),
     //scroll up and down
     new KeyBinding(Key.UP, () => {
-      about.current?.parentElement.scrollBy(0, -50)
+      about.current?.parentElement?.scrollBy(0, -50)
     }),
     new KeyBinding(Key.DOWN, () => {
-      about.current?.parentElement.scrollBy(0, 50)
+      about.current?.parentElement?.scrollBy(0, 50)
     }),
   ])
 
   useScreenSetup('About Delta Chat')
 
   useEffect(() => {
-    if (about.current) about.current.innerHTML = aboutMd.html
+    if (about.current) about.current.innerHTML = aboutMd
   })
 
   // Future todo: have tabs to split sections so you don't have to scroll that much

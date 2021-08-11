@@ -1,6 +1,7 @@
-import { h, createContext } from 'preact'
+import { createContext } from 'preact'
 import { KeyBinding } from '../keymanager'
 import { Router } from './router'
+import type { h} from 'preact'
 
 type NavElementContextType = {
   nav: NavRemote
@@ -10,12 +11,11 @@ type NavElementContextType = {
   initData: { [key: string]: any }
 }
 
-export const NavElementContext = createContext<NavElementContextType>(null)
+export const NavElementContext = createContext<NavElementContextType|null>(null)
 
 export class NavElement {
-  screen_functions: {}
-  public keymap: KeyBinding[]
-  public header: string | h.JSX.Element
+  public keymap: KeyBinding[] = []
+  public header: string | h.JSX.Element | undefined
   public transparent: boolean = false
   context: NavElementContextType
   constructor(
@@ -41,7 +41,7 @@ export class NavElement {
     this.router.setState({ uKeymap: Math.random() })
   }
 
-  setHeader(header: string | h.JSX.Element) {
+  setHeader(header: string | h.JSX.Element | undefined) {
     if (this.header !== header) {
       this.header = header
       this.router.setState({ uHeader: Math.random() })
@@ -60,8 +60,8 @@ export class NavElement {
       <div
         class='nav-element'
         style={{
-          'z-index': index,
-          'background-color': this.transparent ? 'transparent' : 'white',
+          zIndex: index,
+          backgroundColor: this.transparent ? 'transparent' : 'white',
         }}
         key={'screen-' + index}
       >

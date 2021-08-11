@@ -1,13 +1,11 @@
-import { h, RefObject } from 'preact'
+import { RefObject } from 'preact'
 import { Message } from '../mock/deltachat'
 import { useRef, useState, useEffect } from 'preact/hooks'
 import { KeyBinding, Key } from '../framework/keymanager'
 import { debounce, PreactProps } from '../framework/util'
 import moment from 'moment'
-import { Icon } from '../components/icon'
 
 import { MessageStatusIcon } from '../components/messageStatus'
-import fa_paperclip from '@fortawesome/fontawesome-free/svgs/solid/paperclip.svg'
 
 import { context } from '../manager'
 import { useKeyMap, useScreenSetup, useScreen } from '../framework/router'
@@ -26,12 +24,14 @@ function MessageElement(props: any) {
       onBlur={focusUpdate}
       tabIndex={BaseTabIndexOffset + message.messageId}
     >
-      {message.text}
+      <div class="text">
+        {message.text}
+      </div>
       <div class='meta'>
         <span class='timestamp'>{moment(message.timestamp).fromNow()}</span>
         {message.isOutgoing() && (
           <span class='status'>
-            <MessageStatusIcon status={message.status} size='14px' />
+            <MessageStatusIcon status={message.status} />
           </span>
         )}
       </div>
@@ -62,7 +62,7 @@ export function ChatView(props: PreactProps) {
         isAMessageSelected ? (
           'Options'
         ) : (
-          <Icon src={fa_paperclip} style={{ 'margin-top': '3px' }} />
+          <img src="../images/icons/paperclip.svg" class="attachment-icon"/>
         )
       ),
       new KeyBinding(
@@ -98,7 +98,7 @@ export function ChatView(props: PreactProps) {
 
   const focusUpdate = debounce(() => {
     const selectedItem = list.current?.querySelector(':focus')
-    if (selectedItem !== null) {
+    if (selectedItem) {
       if (selectedItem.classList.contains('message')) {
         // future todo: save message type to a state var
         setMessageSelected(true)
