@@ -11,7 +11,7 @@ export default defineConfig({
     remarkHtml(),
     checker({ typescript: true }),
     legacy({
-      targets: ['defaults', 'IE 11', 'firefox 37'],
+      targets: ['kaios 2.5', 'firefox 37'],
     }),
   ],
   base: './',
