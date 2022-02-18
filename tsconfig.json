@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es2015",
-    "allowJs": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "jsx": "react",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
     "jsxFactory": "h",
-    "allowSyntheticDefaultImports": true
-  }
+    "jsxFragmentFactory": "Fragment"
+  },
+  "include": ["src"]
 }

@@ -1,0 +1,17 @@
+.login-view {
+  p {
+    padding: 5px;
+  }
+
+  .input-field {
+    margin: 5px;
+  }
+
+  .text-field:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  summary:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

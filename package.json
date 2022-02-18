@@ -1,13 +1,30 @@
 {
-  "name": "delta.chat-kaios",
-  "version": "1.0.0",
+  "name": "deltachat-kaios",
+  "version": "0.0.0",
   "scripts": {
-    "test": "tsc && npm run check-formatting",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
     "check-formatting": "prettier --check \"{*.json,*.md,src/**/*.{ts,tsx,scss,html,webapp}}\"",
     "fix-formatting": "prettier --write \"{*.json,*.md,src/**/*.{ts,tsx,scss,html,webapp}}\"",
-    "build": "parcel build src/index.html --no-minify",
-    "watch": "parcel src/index.html",
-    "package": "npm run build && ./tools/package"
+    "test": "tsc && npm run check-formatting",
+    "build:backend:types": "cd ./dc_cmd_api/typescript && npm i && npm run build"
+  },
+  "dependencies": {
+    "dc_cmd_api": "file:dc_cmd_api/typescript",
+    "moment": "^2.29.1",
+    "normalize.css": "^8.0.1",
+    "preact": "^10.5.13"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.0.0",
+    "@vitejs/plugin-legacy": "^1.5.1",
+    "adm-zip": "^0.5.5",
+    "sass": "^1.37.5",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.4",
+    "vite-plugin-checker": "^0.3.4",
+    "vite-remark-html": "^1.1.1"
   },
   "repository": {
     "type": "git",
@@ -17,31 +34,5 @@
   "authors": [
     "strukturart",
     "simonLaux"
-  ],
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.0",
-    "moment": "^2.24.0",
-    "normalize.css": "^8.0.1",
-    "parcel-bundler": "^1.12.4",
-    "preact": "^10.4.0",
-    "react": "^16.12.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/plugin-transform-runtime": "^7.8.3",
-    "adm-zip": "^0.4.13",
-    "fs-extra": "^8.1.0",
-    "node-sass": "^4.13.0",
-    "parcel-plugin-bundle-visualiser": "^1.2.0",
-    "parcel-plugin-clean-dist-fsextra": "git+https://github.com/Simon-Laux/parcel-plugin-clean-dist.git",
-    "parcel-plugin-copy": "^1.0.2",
-    "parcel-plugin-markdown-it": "^0.1.1",
-    "parcel-plugin-svg-sprite": "^1.4.1",
-    "prettier": "^1.19.1",
-    "typescript": "^3.7.2"
-  },
-  "staticPath": {
-    "source": "/static",
-    "target": "/dist"
-  }
+  ]
 }

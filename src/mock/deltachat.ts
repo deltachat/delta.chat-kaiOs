@@ -1,6 +1,6 @@
 export class Context {
   getChatName(chatId: number) {
-    return this.chatList.find(cli => cli.ChatId === chatId).name
+    return this.chatList.find((cli) => cli.ChatId === chatId)?.name || '?'
   }
 
   get chatList() {
@@ -208,7 +208,7 @@ export class ChatListItem {
   constructor(
     public ChatId: number,
     public name: string,
-    public avatarImage: string,
+    public avatarImage: string | null,
     public avatarColor: string,
     public freshMessageCount: number,
     public lastUpdatedTimestamp: number,

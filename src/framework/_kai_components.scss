@@ -1,10 +1,17 @@
 $kai-software-keys-height: 23px;
 
+:root {
+  // Defaults for the theming vars
+  --software-keys-text: black;
+  --software-keys-bg: rgb(165, 165, 165);
+  --software-keys-border-color: rgb(168, 168, 168);
+}
+
 .software-keys {
-  background-color: rgb(165, 165, 165);
+  background-color: var(--software-keys-bg);
 
   width: 100%;
-  border-top: 1px solid rgb(168, 168, 168);
+  border-top: 1px solid var(--software-keys-border-color);
   font-family: 'Courier New', Courier, monospace;
 
   display: grid;
@@ -52,6 +59,37 @@ $kai-software-keys-height: 23px;
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+  }
+}
+
+.bf-dialog-popup {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  & > .dialog {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top: 2px solid black;
+
+    &.alert {
+      & > .title {
+        height: 26px;
+        background-color: #41496b;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        line-height: 26px;
+      }
+
+      & > .content {
+        padding: 5px;
+        background-color: white;
+      }
+    }
   }
 }
 
