@@ -59,4 +59,5 @@ but select the dist folder instead of the `build/delta.chat.zip` file.
 
 - https://support.delta.chat/t/delta-chat-for-kaios/684
 - https://preactjs.com/guide/v10/getting-started
-- https://developer.kaiostech.com/design-guide/ui-component
+- https://developer.kaiostech.com/docs/design-guide/ui-component
+- https://developer.kaiostech.com/docs/sfp-3.0/design-guide/ui-component
